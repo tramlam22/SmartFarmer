@@ -11,7 +11,10 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 Watchdog debug;
 
 void testdrawline();
-/* Initialization and setup of sensors and Wifi */
+
+/* ----------------------------
+ * Initialization and setup
+ * ---------------------------- */
 void setup() {
   /* Initialize serial port */
   delay(1000);
@@ -41,7 +44,9 @@ void setup() {
   Serial.println(F("Finished Initialization!"));
 }
 
-/* Main executable loop */
+/* ----------------------------
+ * Main Loop
+ * ---------------------------- */
 void loop() {
 
 }
