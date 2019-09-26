@@ -9,4 +9,7 @@ LIBS = $(ESP_LIBS)/SPI \
 #   $(ROOT)/libraries 
 #   $(ROOT)/ext_lib
 
+BOARD = nodemcuv2
+
+BUILD_EXTRA_FLAGS = -D_ESP8266
 # UPLOAD_SPEED = 115200

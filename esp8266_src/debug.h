@@ -17,7 +17,7 @@ public:
     Watchdog();
 
     /* */
-    void loop_blink_LED(uint8_t pin, const char* error_message);
+    void loop_blink_LED(uint8_t pin);
 
 };
 
