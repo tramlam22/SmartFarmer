@@ -29,6 +29,8 @@ sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install build-essential
 sudo apt-get install git
+sudo apt-get install python
+sudo apt-get install python3
 ```
 
 After those commands, copy and paste this code in the terminal and run it as well.
