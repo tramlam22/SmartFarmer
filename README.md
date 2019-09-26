@@ -10,7 +10,7 @@ The current steps in this projects are the following:
 - [ ] Code the soil moister (tentative)
 - [ ] Code the Wifi Module to send data
 - [ ] Code the server to accept and ack the data
-- Others
+- [ ] Others
 
 ## Board Design
 
