@@ -17,8 +17,14 @@ from django.contrib import admin
 from django.urls import path
 
 from webapp.views import home_view
-
+from webapp.views import about_view
+from webapp.views import graphs_view
+from webapp.views import contact_view
 urlpatterns = [
     path('',home_view, name='home'),
+    path('Main/',home_view, name='home'),
+    path('About/',about_view, name = 'about'),
+    path('Graphs/',graphs_view, name = 'graphs'),
+    path('Contact/',contact_view, name = 'contact'),
     path('admin/', admin.site.urls),
 ]
