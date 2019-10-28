@@ -23,13 +23,9 @@
 		<div class = "bodypage">
 			<div class = "leftside">
 				{% for numbers in object %}
-					<p class = "bar" style ="height: {{numbers.temp}}em;
-										 margin: 0;
-										 font-size: 6px;
-										 width: 10px;
-										 ">
+					<div class = "bar" style ="width: {{numbers.temp}}em; margin: 0;font-size: 8px;">
 						{{numbers.temp}}
-				</p>
+				</div>
 				{% endfor %}
 			</div>
 		<div class = "rightside">

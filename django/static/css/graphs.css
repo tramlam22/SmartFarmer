@@ -73,10 +73,10 @@ a>h3:hover{
   font-size: 16px;
 }
 .bar:nth-child(even){
-  background-color:blue;
+  background-color: #64ccda;
 }
 .bar:nth-child(odd){
-  background-color:red;
+  background-color: #f9b282;
 }
 .wrapper {
   margin: 0 auto;
@@ -119,6 +119,7 @@ a>h3:hover{
 .leftside{
   grid-column: 1/2;
   grid-row: 1/2;
+
 }
 
 .rightside{
