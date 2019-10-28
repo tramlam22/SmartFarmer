@@ -4,16 +4,17 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	 <link rel="stylesheet" type="text/css" href="{% static 'main.css'%}" />
+	 <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
 	<title>PharmSmart</title>
 </head>
 
 <body>
+	{% include 'navbar.html' %}
 	<div class = "wrapper">
 		<div class = "header">
 			<a id = "main_link" href="index"> <h3 class = "headersub"> Main </h3> </a>
 			<a id = "graphs_link" href="Graphs"> <h3  class = "headersub"> Graphs </h3> </a>
-			<img src = "img/icon.png" id = "icon">
+			<img src = {% static 'img/icon.png' %} id = "icon">
 			<a id = "about_link" href="About"> <h3  class = "headersub"> About </h3></a>
 			<a id = "contact_link" href="Contact"> <h3  class = "headersub"> Contact </h3> </a>
 		</div>
@@ -22,7 +23,7 @@
 		</div>
 		<div class = "bodypage">
 			<div class = "leftside">
-				<img src = "img/graph.png" id = "graph">
+				<img src = {% static 'img/graph.png' %} id = "graph">
 			</div>
 		<div class = "rightside">
 				<p id = "home_page_description"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

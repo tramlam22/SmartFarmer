@@ -25,8 +25,7 @@ SECRET_KEY = 'i_apktns5dg0z18^lna9-_n!zfx@l!xvf^s^#xo#2vgqe-6(do'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['Testing-env.wy7afakpky.us-east-2.elasticbeanstalk.com']
-
+ALLOWED_HOSTS = ['Testing-env.wy7afakpky.us-east-2.elasticbeanstalk.com','127.0.0.1','django-env.4mej33zdbc.us-west-2.elasticbeanstalk.com']
 
 # Application definition
 
@@ -77,8 +76,14 @@ WSGI_APPLICATION = 'ebdjango.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'testDB',
+        'USER': 'admin',
+        'PASSWORD': 'nameless',
+        'HOST': 'sensordb.ctvaewxubied.us-east-2.rds.amazonaws.com',
+        'PORT': '3306',
     }
 }
 
@@ -120,3 +125,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]

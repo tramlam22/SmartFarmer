@@ -4,7 +4,7 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	 <link rel="stylesheet" type="text/css" href="{% static 'graphs.css'%}" />
+	 <link rel="stylesheet" type="text/css" href="{% static 'css/graphs.css'%}" />
 	<title>PharmSmart</title>
 </head>
 
@@ -22,6 +22,11 @@
 		</div>
 		<div class = "bodypage">
 			<div class = "leftside">
+				{% for numbers in object %}
+					<p style ="width: {{numbers.temp}}em; background-color: blue;">
+						{{numbers.temp}}
+				</p>
+				{% endfor %}
 			</div>
 		<div class = "rightside">
 				<p id = "home_page_description"> </p>
