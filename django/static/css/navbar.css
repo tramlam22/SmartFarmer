@@ -1,0 +1,62 @@
+h3{
+  color: #A0410D;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+h1{
+  color: #FCF8E3;
+  margin: 0px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+a>h3:hover{
+  color: black;
+}
+
+#main_link{
+  text-decoration: none;
+}
+
+#main_link>h3{
+  color: black;
+}
+
+#graphs_link{
+  text-decoration: none;
+}
+
+#about_link{
+  text-decoration: none;
+}
+
+#contact_link{
+  text-decoration: none;
+}
+
+#icon{
+  display: block;
+  width: 15%;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header{
+  display: grid;
+  grid-template-columns: 10% 10% 60% 10% 10%;
+  grid-template-rows: auto;
+  grid-row: 1/2;
+  color: white;
+}
+
+.headersub{
+  color: gray;
+  margin: 0px;
+  font-size: 12px;
+  text-align: center;
+  padding-top: 20%;
+  padding-bottom: 20;
+}
