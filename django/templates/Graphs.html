@@ -4,7 +4,8 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	 <link rel="stylesheet" type="text/css" href="{% static 'css/graphs.css'%}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/graphs.css'%}" />
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 	<title>PharmSmart</title>
 </head>
 
@@ -18,8 +19,9 @@
 		</div>
 		<div class = "bodypage">
 
-
 			<div class = "leftside">
+				{{object|safe}}
+<!--
 				<div id = "leftofgraph">
 						<p> a title maybe </p>
 				</div>
@@ -34,6 +36,7 @@
 					</div>
 					{% endfor %}
 				</div>
+-->				
 			</div>
 		<div class = "rightside">
 				<p id = "home_page_description"> </p>
@@ -45,5 +48,6 @@
 		  	</p>
 		</div>
 	</div>
+
 </body>
 </html>
