@@ -11,43 +11,29 @@
 
 <body>
 	<div class = "wrapper">
-		<div >
+		<div class = "naviwrapper">
 			{% include 'navbar.html' %}
 		</div>
-		<div class =  "title">
-			<h2 class = "headersub2">Graphs Page</h2>
+		<div id = "secondCol">
+		<div id =  "title">
+			<h3 id = "titleh2">Graphs Page</h3>
 		</div>
-		<div class = "bodypage">
-
+		<div id = "bodypage">
 			<div class = "leftside">
-				{{object|safe}}
-<!--
-				<div id = "leftofgraph">
-						<p> a title maybe </p>
-				</div>
 				<div id = "graph">
-					{% for numbers in object %}
-					<div class = "bar" style ="width: {{numbers.temp}}em;
-										 margin: 0;
-										 font-size: 14px;
-										 padding-left: 10px;
-										 ">
-						{{numbers.temp}}
-					</div>
-					{% endfor %}
+					{{object|safe}}
 				</div>
--->				
 			</div>
 		<div class = "rightside">
-				<p id = "home_page_description"> </p>
+				<p id = "home_page_description"> in graphs </p>
 		</div>
 	</div>
-		<div class = "footer">
+		<div id = "footer">
 			<p id= "footertext">
 			&copy; Copyright 2019
 		  	</p>
 		</div>
 	</div>
-
+	</div>
 </body>
 </html>
