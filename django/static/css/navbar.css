@@ -55,14 +55,42 @@ a>h3:hover{
   text-decoration: none;
 }
 .naviwrapper{
-  height: 100vh;
   top: 0;
   left: 0;
+  height: 100vh;
   background-color: #93b5b3;
   width: 250px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-
+@media only screen and (max-width: 1640px) {
+  .navivar{
+    display: flex;
+    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  #main_link{order: 1;}
+  #graphs_link{order: 2;}
+  #icon{order: 3;}
+  #about_link{order: 4;}
+  #contact_link{order: 5;}
+  .naviwrapper{
+    height: auto;
+    width: 100%;
+    background-color: #93b5b3;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+  .headersub{
+    color: gray;
+    margin: 0px;
+    font-size: 20px;
+    text-align: center;
+    padding: 20px;
+    font-family: "Arial", sans-serif;
+    width: 100%;
+  }
+}
 /*
 @media only screen and (max-width: 780px) {
   .headersub{
