@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% load static %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	 <link rel="stylesheet" type="text/css" href="{% static 'css/signin.css' %}" />
+	<title>PharmSmart</title>
+</head>
+
+<body>
+	<div class = "wrapper">
+		<div class = "naviwrapper">
+			{% include 'navbar.html' %}
+		</div>
+		<div class = "secondCol">
+			<div id = "before">
+			</div>
+			<div id = "login_box">
+					<div id = "signin_label"><b>Sign in</b></div>
+					<form id = "login_form" action = '' method='POST'>
+						<label for = "username"><b>Username:</b></label>
+						<input id = "username" type = "text" placeholder="Enter Username" name = "username" required> <br>
+						<laber for = "password"><b>Password: </b></label>
+						<input id = "password" type = "password" placeholder="Enter Password" name = "password" required><br><br>
+						<input id = "signin_button" type='submit' value ='Sign in'><br><br>
+
+					</form>
+					<div id = "create_account_label">
+						<a id = "create_account_link" href="{% url 'createaccount' %}"> Create account </a>
+					</div>
+			</div>
+			<div id = "after">
+			</div>
+
+		</div>
+
+	</div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+body{
+  margin: 0px;
+  border: 0px;
+  background-color: #c8dad3;
+  font-family: Arial, sans-serif;
+}
+h4{
+  text-align: center;
+}
+
+input[type=text], input[type=password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+#sign_in_link>h3{
+  color: white;
+  background-color: #63707e;
+}
+#signin_button{
+  background-color: #93b5b3;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width:100%;
+  font-size: 20px;
+}
+
+#signin_button:hover{
+  opacity: 0.8;
+}
+#before{
+  content: '';
+  display: block;
+}
+
+#login_box{
+  margin: auto;
+  height: 600px;
+  width: 600px;
+  display: flex;
+  justify-content: center;
+  background-color: #f2f6f5;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: 30% 40% 30%;
+}
+#after{
+  content: '';
+  display: block;
+}
+
+#signin_label{
+  display: flex;
+  margin: auto;
+  text-align: center;
+}
+
+#login_form{
+  text-align: center;
+}
+
+#create_account_label{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+#signin_label{
+  font-size: 24px;
+}
+#username{
+  font-size: 16px;
+}
+#password{
+  font-size: 16px;
+}
+#create_account_link{
+  font-size: 20px;
+  text-decoration: none;
+}
+
+
+.wrapper {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 250px auto;
+  grid-template-rows: auto;
+}
+.secondCol{
+  grid-template-rows: auto 600px auto;
+  display: grid;
+}
+
+@media only screen and (max-width: 1640px) {
+  .wrapper {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto;
+  }
+
+
+  .secondCol{
+    height: 100vh;
+  }
+  #before{
+    content: '';
+    display: block;
+  }
+
+  #login_box{
+    margin: auto;
+    height: 600px;
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    background-color: #f2f6f5;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    display: grid;
+    grid-template-rows: 30% 40% 30%;
+  }
+  #after{
+    content: '';
+    display: block;
+  }
+}

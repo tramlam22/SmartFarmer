@@ -22,6 +22,8 @@ from webapp.views import about_view
 #from webapp.views import graphs_view
 from webapp.views import SimpleGraphs
 from webapp.views import contact_view
+from webapp.views import signin_view
+from webapp.views import create_account_view
 urlpatterns = [
     #path(r'',home_view, name='home'),
     #path(r'Main/',home_view, name='home'),
@@ -36,4 +38,6 @@ urlpatterns = [
   #  path('^Graph/$', SimpleGraphs.as_view(),name='graphs'),
     url(r'^Contact/$',contact_view, name = 'contact'),
     url(r'^admin/$', admin.site.urls),
+    url(r'^Signin/$',signin_view, name = 'signin' ),
+    url(r'^Createaccount/$', create_account_view, name = 'createaccount'),
 ]

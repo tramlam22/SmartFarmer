@@ -40,3 +40,13 @@ class SimpleGraphs(TemplateView):
     context = super(SimpleGraphs, self).get_context_data(**kwargs)
     context['object'] = plots.get_graph()
     return context
+    
+def signin_view(request, *args, **kwargs):
+  print(args,kwargs)
+  print(request.user)
+  return render(request, "Signin.html",{})
+
+def create_account_view(request, *args, **kwargs):
+  print(args, kwargs)
+  print(request.user)
+  return render(request, "CreateAccount.html", {})

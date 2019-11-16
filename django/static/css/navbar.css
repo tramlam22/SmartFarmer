@@ -19,7 +19,7 @@ a>h3:hover{
 }
 .navivar{
   display: grid;
-  grid-template-rows:100px auto auto auto auto;
+  grid-template-rows:100px auto auto auto auto auto;
 }
 .headersub{
   color: gray;
@@ -54,6 +54,10 @@ a>h3:hover{
 #contact_link{
   text-decoration: none;
 }
+
+#sign_in_link{
+  text-decoration: none;
+}
 .naviwrapper{
   top: 0;
   left: 0;
@@ -67,14 +71,15 @@ a>h3:hover{
     display: flex;
     flex-direction: column;
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
   }
-  #main_link{order: 1;}
-  #graphs_link{order: 2;}
-  #icon{order: 3;}
+  #icon{order: 1;}
+  #main_link{order: 2;}
+  #graphs_link{order: 3;}
   #about_link{order: 4;}
   #contact_link{order: 5;}
+  #sign_in_link{order: 6;}
   .naviwrapper{
     height: auto;
     width: 100%;
