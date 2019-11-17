@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Testtemp
+from .models import Testtemp,Account
 from . import plots
+from webapp.forms import createAccountForm
 #or from .models import (name of class)
 
 # Create your views here.
@@ -36,6 +37,7 @@ def contact_view(request, *args, **kwargs):
 
 class SimpleGraphs(TemplateView):
   template_name='Graphs.html'
+
   def get_context_data(self,**kwargs):
     context = super(SimpleGraphs, self).get_context_data(**kwargs)
     context['object'] = plots.get_graph()
@@ -45,8 +47,24 @@ def signin_view(request, *args, **kwargs):
   print(args,kwargs)
   print(request.user)
   return render(request, "Signin.html",{})
-
+'''
 def create_account_view(request, *args, **kwargs):
   print(args, kwargs)
   print(request.user)
   return render(request, "CreateAccount.html", {})
+'''
+class create_account_view(TemplateView):
+  template_name = 'CreateAccount.html'
+
+  def get(self,request):
+    form = createAccountForm()
+    return render(request, self.template_name,{'form' : form})
+  def post(self,request):
+    form = createAccountForm(request.POST)
+    if form.is_valid():
+      form.save()
+      user = Account(username=userName, password=pw)
+      user.save()
+
+    return render(request,self.template_name,{'form' : form})
+
