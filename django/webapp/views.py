@@ -63,7 +63,8 @@ class create_account_view(TemplateView):
     form = createAccountForm(request.POST)
     if form.is_valid():
       form.save()
-      #user = Account(username='asdfsdf', password='asdfasdf')
-      #user.save()
-    return render(request,"Signin.html",{})
+      return render(request,"Signin.html",{'form' : form})
+
+    else:
+      return render(request, self.template_name,{'form' : form})
 
