@@ -47,7 +47,7 @@ input[type=text], input[type=password]{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   display: grid;
-  grid-template-rows: 25% 75% auto;
+  grid-template-rows: 15% 85% auto;
 }
 #after{
   content: '';

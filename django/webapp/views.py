@@ -55,7 +55,7 @@ def create_account_view(request, *args, **kwargs):
 '''
 class create_account_view(TemplateView):
   template_name = 'CreateAccount.html'
-    
+  
   def get(self,request):
     form = createAccountForm()
     return render(request, self.template_name,{'form' : form})
