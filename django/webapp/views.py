@@ -1,8 +1,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .models import Testtemp,Account
-from . import plots
+from .models import Testtemp, Account
+from .import plots
 from webapp.forms import createAccountForm
 #or from .models import (name of class)
 
@@ -55,7 +55,7 @@ def create_account_view(request, *args, **kwargs):
 '''
 class create_account_view(TemplateView):
   template_name = 'CreateAccount.html'
-
+    
   def get(self,request):
     form = createAccountForm()
     return render(request, self.template_name,{'form' : form})
@@ -63,8 +63,7 @@ class create_account_view(TemplateView):
     form = createAccountForm(request.POST)
     if form.is_valid():
       form.save()
-      user = Account(username=userName, password=pw)
-      user.save()
-
-    return render(request,self.template_name,{'form' : form})
+      #user = Account(username='asdfsdf', password='asdfasdf')
+      #user.save()
+    return render(request,"Signin.html",{})
 

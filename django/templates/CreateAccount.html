@@ -18,7 +18,7 @@
 			</div>
 			<div id = "createaccount_box">
 					<div id = "createaccount_label"><b>Create your Account</b></div>
-					<form id = "createaccount_form" action = {% url 'signin' %}  method='POST'>
+					<form id = "createaccount_form" action = ''  method='POST'>
 						{% csrf_token %}
 						{{form.as_p}}
 						<input id = "create_account_button" type='submit' value ='Create Account'>
