@@ -37,7 +37,8 @@ urlpatterns = [
     url(r'^Graphs/$',SimpleGraphs.as_view(), name = 'graphs'),
     url(r'^Contact/$',contact_view, name = 'contact'),
     url(r'^admin/$', admin.site.urls),
-    url(r'^Signin/$',signin_view, name = 'signin' ),
+  #  url(r'^Signin/$',signin_view, name = 'signin' ),
+    url(r'^Signin/$', signin_view.as_view(), name = 'signin'),
     url(r'^Createaccount/$', create_account_view.as_view(), name = 'createaccount'),
    # url(r'^Createaccount/$', create_account_view, name = 'createaccount'),
 ]

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Testtemp, Account
 from .import plots
-from webapp.forms import createAccountForm
+from webapp.forms import *
 #or from .models import (name of class)
 
 # Create your views here.
@@ -43,28 +43,34 @@ class SimpleGraphs(TemplateView):
     context['object'] = plots.get_graph()
     return context
     
-def signin_view(request, *args, **kwargs):
-  print(args,kwargs)
-  print(request.user)
-  return render(request, "Signin.html",{})
-'''
-def create_account_view(request, *args, **kwargs):
-  print(args, kwargs)
-  print(request.user)
-  return render(request, "CreateAccount.html", {})
-'''
+class signin_view(TemplateView):
+  template_name = 'Signin.html'
+
+  def get(self,request):
+    form = loginForm()
+    return (render(request, self.template_name, {'form' : form}))
+
+  def post(self,request):
+    form = loginForm(request.POST)
+    user = request.POST["username"]
+    pwd = request.POST["password"]
+    if not Account.objects.all().filter(username=user) or not Account.objects.all().filter(password=pwd):
+      return render(request, self.template_name, {'form' : form})
+
+    return render(request, 'index.html', {'form' : form})
+
 class create_account_view(TemplateView):
   template_name = 'CreateAccount.html'
   
   def get(self,request):
     form = createAccountForm()
     return render(request, self.template_name,{'form' : form})
+
   def post(self,request):
     form = createAccountForm(request.POST)
     if form.is_valid():
       form.save()
       return render(request,"Signin.html",{'form' : form})
-
     else:
       return render(request, self.template_name,{'form' : form})
 
