@@ -56,7 +56,7 @@ class signin_view(TemplateView):
     pwd = request.POST["password"]
     if not Account.objects.all().filter(username=user) or not Account.objects.all().filter(password=pwd):
       return render(request, self.template_name, {'form' : form})
-
+      
     return render(request, 'index.html', {'form' : form})
 
 class create_account_view(TemplateView):
