@@ -1,41 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% extends 'base.html' %}
 {% load static %}
-<html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="{% static 'css/graphs.css'%}" />
+{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/graphs.css' %}" />{% endblock %}
+{% block title %}PharmGraphs{% endblock %}
+{% block js %}
 	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-	<title>PharmSmart</title>
-</head>
+{% endblock %}
 
-<body>
-	<div class = "wrapper">
-		<div class = "naviwrapper">
-			{% include 'navbar.html' %}
-		</div>
-		<div id = "secondColwrapper">
-		<div id = "secondCol">
-		<div id =  "title">
-			<h3 id = "titleh2">Graphs Page</h3>
-		</div>
-		<div id = "bodypage">
-			<div class = "leftside">
-				<div id = "graph">
-					{{object|safe}}
-				</div>
+{% block content %}
+<div class = "wrapper">
+	<div class="panel title-panel">
+		<h3>Graphs Page</h3>
+	</div>
+	<div id = "bodypage">
+		<div class = "panel graph-container">
+			<div id = "graph">
+				{{object|safe}}
 			</div>
-		<div class = "rightside">
-				<p id = "home_page_description"> in graphs </p>
+		</div>
+		<div class = "panel article-container">
+				<p> in graphs </p>
 		</div>
 	</div>
-		<div id = "footer">
-			<p id= "footertext">
-			&copy; Copyright 2019
-		  	</p>
-		</div>
-	</div>
-  </div>
-	</div>
-</body>
-</html>
+</div>
+{% endblock %}

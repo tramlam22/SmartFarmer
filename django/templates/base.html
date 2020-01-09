@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% load static %}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" data-theme="light">
+
+<head>
+    <meta content="width=device-width,initial-scale=1.0,minimu-scale=1.0, shrink-to-fit=no" name="viewport">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}" />
+    {% block css %}{% endblock %}
+    {% block js %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+	<title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        {% include 'navbar.html' %}
+    </header>
+
+    <main class="site-content">
+        <center>
+        {% block content %}
+        {% endblock %}
+        </center>
+
+    </main>
+
+    <footer>
+        {% include 'footer.html' %}
+    </fooer>
+
+    <script src="{% static 'js/darkmode.js' %}"></script>
+</body>
+</html>

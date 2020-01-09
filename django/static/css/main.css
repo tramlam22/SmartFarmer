@@ -1,75 +1,28 @@
 /* CSS Document */
-body{
-  margin: 0px;
-  border: 0px;
-  /*background-color: rgb(250, 250, 250);*/
-  background-color: #c8dad3;
-}
-h4{
-  text-align: center;
-}
-#main_link>h3{
+#main_link{
   color:white;
   background-color: #63707e;
 }
-/*#secondCol{
+.wrapper {
   display: grid;
-  grid-template-rows: 100px 197px auto auto;
+  grid-template-rows: auto;
+  grid-gap: 20px;
 }
-*/
-#overviewPanel{
-  margin: 20px;
-  height: 60px;
-  width: 1640px;
-  display: flex;
-  justify-content: center;
-  background-color: #f2f6f5;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-#overviewh3{
-  margin: 0px;
-  padding: 15px;
-  vertical-align: center;
-}
-#numbers{
+.data-panel-container{
   display: grid;
+  grid-gap: 20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  width: 1640px;
-  margin-left: 20px;
-  height: 197px;
 }
-#numbers>div{
-  border-radius: 15px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: #f2f6f5;
-}
-#numbers>div>p{
-  font-size: 50px;
-  margin: 5px;
-}
-#numbers1{
-  margin-right: 20px;
+.data-panel>h4{
   text-align: center;
 }
-#numbers2{
-  margin-right: 10px;
+.data-panel>p{
   text-align: center;
 }
-#numbers3{
-  margin-right: 20px;
-  margin-left:10px;
-  text-align: center;
-}
-#numbers4{
-  text-align: center;
-}
-#bodypage{
+.article-container{
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-row: 3/4;
-  margin: 20px;
-  width: 1640px;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
 }
 #graphs{
   display: block;
@@ -77,107 +30,13 @@ h4{
   margin-left: auto;
   margin-right: auto;
 }
-#home_page_description{
-  color: black;
-  font-size: 30px;
-  padding: 20px;
-}
-#footer{
-  color: #FCF8E3;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  margin: 20px;
-  background-color: #f2f6f5;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  width: 1640px;
-}
-#footertext{
-  text-align: center;
-  vertical-align: middle;
-  font-size: 16px;
-  height: 20px;
-  margin-top: 25px;
-  margin-bottom: 25px;
-  color: black;
-}
-
-.wrapper {
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 250px auto;
-  grid-template-rows: auto;
-}
 .leftside{
-  grid-column: 1/2;
-  grid-row: 1/2;
-  margin-right: 10px;
-  background-color: #f2f6f5;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
 }
 .rightside{
-  grid-column: 2/3;
-  grid-row: 1/2;
-  margin-left: 10px;
-  background-color: #f2f6f5;
-  border-radius: 15px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
-@media only screen and (max-width: 1640px) {
-  #overviewPanel{
-    margin: 20px;
-    height: 60px;
-    width: 800px;
-    display: flex;
-    justify-content: center;
-    background-color: #f2f6f5;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  }
-  #numbers{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 800px;
-    margin-left: 20px;
-    height: 197px;
-  }
-  #footer{
-    color: #FCF8E3;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    margin: 20px;
-    background-color: #f2f6f5;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    width: 800px;
-  }
-  #bodypage{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-row: 3/4;
-    margin: 20px;
-    width: 800px;
-  }
-  .wrapper {
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto;
-
-  }
-  #secondCol{
-    height: 100vh;
-  }
-  #secondColwrapper{
-    display: flex;
-    justify-content: center;
-  }
-  #numbers>div>p{
-    font-size: 25px;
-    margin: 5px;
-  }
+  box-sizing: border-box;
+  padding: 20px;
 }

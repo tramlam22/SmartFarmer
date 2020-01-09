@@ -1,38 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% extends 'base.html' %}
 {% load static %}
-<html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	 <link rel="stylesheet" type="text/css" href="{% static 'css/contact.css'%}" />
-	<title>PharmSmart</title>
-</head>
-
-<body>
-	<div class = "wrapper">
-		<div class = "naviwrapper" >
-			{% include 'navbar.html' %}
-		</div>
-		<div id = "secondColwrapper">
-		<div id = "secondCol">
-		<div id =  "title">
-			<h3>Contact Page</h3>
-		</div>
-		<div class = "bodypage">
-			<div class = "leftside">
-				<p> another title </p>
-			</div>
-		<div class = "rightside">
-				<p id = "home_page_description"> in contact </p>
-		</div>
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css'%}" />
+{% endblock %}
+{% block title %}PharmContact{% endblock %}
+{% block content %}
+<div class = "wrapper">
+	<div class="panel title-panel">
+		<h3>Contact Page</h3>
 	</div>
-		<div id = "footer">
-			<p id= "footertext">
-			&copy; Copyright 2019
-		  	</p>
+	<div class="bodypage">
+		<div class="panel to-be-named-1">
+			<p> another title </p>
+		</div>
+		<div class="panel to-be-named-2">
+			<p> in contact </p>
 		</div>
 	</div>
 </div>
-</div>
-</body>
-</html>
+{% endblock %}

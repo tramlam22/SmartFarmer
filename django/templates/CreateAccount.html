@@ -1,35 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% extends 'base.html' %}
 {% load static %}
-<html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	 <link rel="stylesheet" type="text/css" href="{% static 'css/create_account.css' %}" />
-	<title>PharmSmart</title>
-</head>
-
-<body>
-	<div class = "wrapper">
-		<div class = "naviwrapper">
-			{% include 'navbar.html' %}
-		</div>
-		<div class = "secondCol">
-			<div id = "before">
-			</div>
-			<div id = "createaccount_box">
-					<div id = "createaccount_label"><b>Create your Account</b></div>
-					<form id = "createaccount_form" action = ''  method='POST'>
-						{% csrf_token %}
-						{{form.as_p}}
-						<input id = "create_account_button" type='submit' value ='Create Account'>
-
-					</form>
-			</div>
-			<div id = "after">
-			</div>
-
-		</div>
-
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/create_account.css'%}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/registration-form-base.css'%}" />
+{% endblock %}
+{% block title %}PharmCreateAccount{% endblock %}
+{% block content %}
+<div class = "wrapper">
+	<div class="panel form-panel">
+		<div class="form-label">Create your Account</div>
+		<form class="user-form" id="createaccount_form" action = ''  method='POST'>
+			{% csrf_token %}
+			{{form.as_p}}
+			<input class="form-submit" id = "create_account_button" type='submit' value ='Create Account'>
+		</form>
 	</div>
-</body>
-</html>
+</div>
+{% endblock %}
