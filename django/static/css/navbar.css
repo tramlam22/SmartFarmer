@@ -1,18 +1,31 @@
-.navivar{
+.header{
+  padding: 0px 30px;
   background-color: var(--nav-bg-color);
   box-shadow: 0 1px 4px 0 rgba(32,33,36,0.28);
+}
+.top-header{
+  height: 100px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.navivar{
   height: 40px;
+  border-top: 1px solid gray;
+  padding:  3px 10px;
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: auto repeat(5, minmax(40px, 1fr)) 40px;
+  grid-template-columns: auto;
+  box-sizing: border-box;
 }
 .navivar>a{
+  height: auto;
   font-family: "Arial", sans-serif;
   font-size: 20px;
   color: gray;
   text-decoration: none;
-  height: auto;
   white-space: nowrap;
+  border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,18 +35,50 @@
 }
 #icon{
   height: inherit;
-}
-#icon>img{
-  height: inherit;
-}
-.theme-button-container{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4px;
-  height: inherit;
-  box-sizing: border-box;
 }
+#icon>img{
+  max-width: 200px;
+  width: 100%;
+}
+.header-user-container{
+  display: grid;
+  justify-items: end;
+  grid-template-rows: 1fr 1fr;
+}
+#sign_in_link{
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+  border: 1px solid var(--nav-bg-color);
+  white-space: nowrap;
+  overflow: hidden;
+  outline: none;
+  box-sizing: unset;
+}
+#sign_in_link:hover{
+  border-color: gray;
+}
+#sign_in_link:active{
+  background-color: rgb(201, 201, 201);
+}
+.user-name-container{
+  background-color: aquamarine;
+  height: 30px;
+  line-height: 30px;
+  font-size: 10px;
+  padding: 0px 5px;
+  border-radius: 5px;
+  color: black;
+}
+
 #theme-button{
   margin: 0px;
   padding: 0px;
@@ -43,8 +88,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0;
-  border: 0;
+  border: 1px solid var(--nav-bg-color);
   border-radius: 4px;
   outline: none;
+  box-sizing: unset;
+}
+#theme-button:hover{
+  cursor: pointer;
+  border-color: gray;
 }

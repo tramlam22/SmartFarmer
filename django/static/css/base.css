@@ -16,7 +16,7 @@ html[data-theme='dark']{
     --panel-border-color: rgb(0, 51, 61);
     --nav-bg-color:  rgb(0, 70, 83);
     --footer-bg-color: rgb(0, 51, 61);
-    --footer-border-color: rgb(0, 51, 61);
+    --footer-border-color: rgb(2, 67, 80);
 }
 body{
     margin: 0px;
@@ -65,14 +65,15 @@ center{
     .article-container{
         grid-template-columns: auto;
     }
-    .navivar{
-        grid-template-columns: repeat(5, minmax(40px, auto)) 40px;
-    }
     .navivar>a{
         font-size: 14px;
     }
-    #icon{
-        display: none;
+    #sign_in_link{
+        width: 26px;
+        height: 26px;
+        padding: 2px;
+        border-radius: 5px;
+        content: url('user.svg');
     }
     .form-submit{
         font-size: 14px;
