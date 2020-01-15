@@ -4,14 +4,10 @@
   padding: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  background: var(--nav-bg-color);
 }
 .navbar{
   height: 50px;
   width: inherit;
-  background: var(--nav-bg-color);
-  border-bottom: 1px solid var(--panel-border-color);
-  backdrop-filter: blur(10px);
   z-index: 2;
   width: inherit;
   display: flex;

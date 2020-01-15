@@ -5,38 +5,59 @@
 }
 .wrapper {
   display: grid;
-  grid-template-rows: auto;
+  grid-gap: 20px;
+}
+.article-container{
+  display: grid;
+  grid-template-columns: 250px auto 250px;
   grid-gap: 20px;
 }
 .data-panel-container{
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-.data-panel>h4{
+.data-panel{
+  height: 150px;
+}
+#data-panel-1{
+  background: url(sky.png);
+  background-size: 100% 100%;
+}
+#data-panel-2{
+  background: rgb(58, 159, 177);
+}
+.weather-widget-container{
+  backdrop-filter: blur(5px);
+  height: 100%;
+  width: 100%;
+  color: white;
+  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.932);
+  padding: 10px;
+  box-sizing: border-box;
+}
+.weather-widget-container>h1{
   text-align: center;
+  margin: 0;
 }
-.data-panel>p{
+.weather-widget-container>p{
   text-align: center;
-}
-.article-container{
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 20px;
+  font-size: 50px;
+  margin: 0;
 }
 #graphs{
   display: block;
-  width: 70%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
 .leftside{
+  height: 300px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
   padding: 10px;
 }
-.rightside{
+.middle{
   box-sizing: border-box;
   padding: 20px;
 }
