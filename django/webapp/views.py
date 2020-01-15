@@ -4,37 +4,41 @@ from django.views.generic import TemplateView
 from .models import Testtemp, Account
 from .import plots
 from webapp.forms import *
+import requests
 #or from .models import (name of class)
 
-# Create your views here.
+''' Create your views here. '''
+
+''' index page '''
 def home_view(request, *args, **kwargs):
-  print(args,kwargs)
-  print(request.user)
+  APIurl = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=c3f7f9ebb4a78e437ec87f6a909dd3d0'
+  city = 'Irvine'
+  city_weather = requests.get(APIurl.format(city)).json()
+
+  weather_data = {
+        'city' : city,
+        'temperature' : city_weather['main']['temp'],
+        'description' : city_weather['weather'][0]['description'],
+        'icon' : city_weather['weather'][0]['icon']
+    }
+  print(weather_data)
+ # print(args,kwargs)
+ # print(request.user)
   return render(request,"index.html",{})
 
+''' about page '''
 def about_view(request, *args, **kwargs):
   print(args,kwargs)
   print(request.user)
   return render(request,"About.html")
-  '''
-  def graphs_view(request, *args, **kwargs):
-    print(args,kwargs)
-    print(request.user)
-
-    #obj = Testtemp.objects.values('temp')
-    my_context = {
-        #temp':obj.temp''
-        #'db': "this is a string"
-        #'object': obj,
-        'object' : plots.get_graph()
-    }
-    return render(request,"Graphs.html",my_context)
-'''
+  
 def contact_view(request, *args, **kwargs):
   print(args,kwargs)
   print(request.user)
   return render(request,"Contact.html",{})
 
+
+''' graphs/plot of data '''
 class SimpleGraphs(TemplateView):
   template_name='Graphs.html'
 
@@ -43,6 +47,8 @@ class SimpleGraphs(TemplateView):
     context['object'] = plots.get_graph()
     return context
     
+
+''' sign in page '''
 class signin_view(TemplateView):
   template_name = 'Signin.html'
 
@@ -59,6 +65,8 @@ class signin_view(TemplateView):
       
     return render(request, 'index.html', {'form' : form})
 
+
+'''create account page '''
 class create_account_view(TemplateView):
   template_name = 'CreateAccount.html'
   
