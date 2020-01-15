@@ -1,0 +1,24 @@
+{% load static %}
+<div class="top-header">
+  <div>
+    <button class="button open-aside" onclick="openSidebar()">
+      <svg xmlns="http://www.w3.org/2000/svg" x="0" y="0"
+      viewBox="0 0 100 100" width="100%">
+      <rect width="100" height="20" fill="rgba(128,128,128,0.5)"/>
+      <rect width="100" height="20" y="40" fill="rgba(128, 128, 128, 0.5)"/>
+      <rect width="100" height="20" y="80" fill="rgba(128, 128, 128, 0.5)"/>
+			</svg>
+    </button>
+  </div>
+  <div id = "icon"><img src = "{% static 'img/icon.png' %}"></div>
+</div>
+
+<div class="navbar">
+  <div class = "navivar">
+    <a id = "main_link"    href="{% url 'home' %}"   >Main</a>
+    <a id = "graphs_link"  href="{% url 'graphs' %}" >Graphs</a>
+    <a id = "about_link"   href="{% url 'about' %}"  >About</a>
+    <a id = "contact_link" href="{% url 'contact' %}">Contact</a>
+  </div>
+</div>
+

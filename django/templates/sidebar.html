@@ -1,0 +1,13 @@
+{% load static %}
+<div class="sidebar">
+	<div class="header-user-container">
+    <a id = "sign_in_link" href="{% url 'signin' %}" >Sign in</a>
+    <div class="user-name-container"> {{user}} </div>
+    <button class="button close-aside" onclick="closeSidebar()">X</button>
+  </div>
+  <div>
+    <div class="theme-button-container">
+      <button id="theme-button" onclick="themeChange()"></button>
+    </div>
+	</div>
+</div>

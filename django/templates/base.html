@@ -5,7 +5,8 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}" />
     {% block css %}{% endblock %}
     {% block js %}{% endblock %}
@@ -14,22 +15,26 @@
 </head>
 
 <body>
-    <header>
-        {% include 'navbar.html' %}
-    </header>
+    <div class="page-wrapper">
+    	<header class="header-container">
+    	    {% include 'header.html' %}
+    	</header>
+    
+    	<aside class="aside-container">
+			{% include 'sidebar.html' %}
+    	</aside>
 
-    <main class="site-content">
-        <center>
-        {% block content %}
-        {% endblock %}
-        </center>
+   		<main class="site-content">
+		   <div class="center">
+    	    {% block content %}
+    	    {% endblock %}
+			</div>
+    	</main>
 
-    </main>
-
-    <footer>
-        {% include 'footer.html' %}
-    </fooer>
-
-    <script src="{% static 'js/darkmode.js' %}"></script>
+    	<footer class="footer-container">
+    	    {% include 'footer.html' %}
+    	</footer>
+    </div>
+    <script src="{% static 'js/base.js' %}"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 #about_link{
   color:white;
-  background-color: #63707e;
+  background: var(--link-bg);
 }
 .wrapper {
   display: grid;
