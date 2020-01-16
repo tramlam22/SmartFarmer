@@ -24,7 +24,7 @@ def home_view(request, *args, **kwargs):
   print(weather_data)
  # print(args,kwargs)
  # print(request.user)
-  return render(request,"index.html",{})
+  return render(request,"index.html",weather_data)
 
 ''' about page '''
 def about_view(request, *args, **kwargs):

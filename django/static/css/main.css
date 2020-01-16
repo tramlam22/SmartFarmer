@@ -17,11 +17,32 @@
   grid-gap: 20px;
 }
 .data-panel{
-  height: 150px;
+  height: 200px;
 }
 #data-panel-1{
-  background: url(sky.png);
-  background-size: 100% 100%;
+  background: #36D1DC;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  animation-name: weatherbg; 
+  animation-duration: 16s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  background-size: 300% 300%;
+}
+@-webkit-keyframes weatherbg {
+  0%{background-position:10% 0%}
+  50%{background-position:91% 100%}
+  100%{background-position:10% 0%}
+}
+@-moz-keyframes weatherbg {
+  0%{background-position:10% 0%}
+  50%{background-position:91% 100%}
+  100%{background-position:10% 0%}
+}
+@keyframes weatherbg { 
+  0%{background-position:10% 0%}
+  50%{background-position:91% 100%}
+  100%{background-position:10% 0%}
 }
 #data-panel-2{
   background: rgb(58, 159, 177);
@@ -33,20 +54,16 @@
   color: white;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.932);
   padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  align-items: center;
   box-sizing: border-box;
-}
-.weather-widget-container>h1{
-  text-align: center;
-  margin: 0;
-}
-.weather-widget-container>p{
-  text-align: center;
-  font-size: 50px;
-  margin: 0;
 }
 #graphs{
   display: block;
-  width: 100%;
+  width: auto;
+  max-height: 100%;
   margin-left: auto;
   margin-right: auto;
 }

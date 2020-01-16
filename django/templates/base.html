@@ -1,16 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 {% load static %}
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" data-theme="light">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/header.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}" />
-    {% block css %}{% endblock %}
-    {% block js %}{% endblock %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+	<meta name="Description" content="Track and monitor your plants online">
+	<meta name="theme-color" content="#317EFB"/>
+	{% block css %}{% endblock %}
+	{% block js %}{% endblock %}
+	<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" /> -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/home-deploy.css' %}" />
 	<title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -35,6 +35,6 @@
     	    {% include 'footer.html' %}
     	</footer>
     </div>
-    <script src="{% static 'js/base.js' %}"></script>
+    <script src="{% static 'base.js' %}"></script>
 </body>
 </html>

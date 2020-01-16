@@ -9,11 +9,11 @@
 		<h3> Overview </h3>
 	</div>
 	<div class="article-container">
-		<div class = "panel leftside">
-			
-		</div>
+		<div class = "panel leftside"></div>
 		<div class = "panel middle">
-			<img id = "graphs" src = {% static 'img/graph.png' %}>
+			<div style="width:100%; height: 200px;">
+				<img id = "graphs" src = "{% static 'img/graph.webp' %}" alt="agraph">
+			</div>
 			<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, qui.</p>
 			<p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque modi dicta totam aliquid eveniet sint et vel earum repellendus nisi unde cum corporis incidunt necessitatibus delectus consequatur ad tenetur aspernatur, reprehenderit molestiae eius aut! Asperiores sunt libero assumenda alias nisi reiciendis molestiae ullam delectus eaque laboriosam culpa quaerat expedita sed, enim eligendi neque necessitatibus fuga harum quod. Deleniti, dolore facere. Ut qui illo, atque numquam expedita optio eos ab ex amet quae! Debitis nulla officiis ipsa earum architecto magnam ducimus, blanditiis facilis saepe dolore? Ratione velit amet optio natus magni eaque ipsam corporis, quas eligendi. Nisi quis distinctio doloribus aspernatur?</p>
@@ -22,8 +22,14 @@
 			<div class="data-panel-container">
 				<div class="round-panel data-panel" id="data-panel-1"> 
 					<div class="weather-widget-container">
-						<h1>Weather</h1>
-						<p>64&#176;</p>
+						<div>
+						<h1 style="margin:0; line-height: 50px; overflow: hidden;">{{city}}</h1>
+						<p style="font-size: 40px; margin: 0;">{{temperature}}&#176;</p>
+						</div>
+						<div>
+						<img src="http://openweathermap.org/img/w/{{icon}}.png" alt="Image">
+						<p style="font-size: 24px; margin: 0;">{{description}}</p>
+						</div>
 					</div>
 				</div>
 				<div class="round-panel data-panel" id="data-panel-2"> <h4>Ph Level</h4><p>12345</p></div>
@@ -34,5 +40,4 @@
 
 	</div>
 </div>
-
 {% endblock %}
