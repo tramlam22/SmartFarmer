@@ -11,8 +11,12 @@
 	<div class="article-container">
 		<div class = "panel leftside"></div>
 		<div class = "panel middle">
-			<div style="width:100%; height: 200px;">
-				<img id = "graphs" src = "{% static 'img/graph.webp' %}" alt="agraph">
+			<div>
+				<picture>
+					<source srcset="{% static 'img/graph.webp' %}" type='image/webp'>
+					<source srcset="{% static 'img/graph.jpg' %}" type='image/jpeg'>
+					<img id = "graphs" src = "{% static 'img/graph.jpg' %}"  width=100% height=100% alt="agraph">
+				</picture>
 			</div>
 			<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			<p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, qui.</p>
@@ -27,7 +31,7 @@
 						<p style="font-size: 40px; margin: 0;">{{temperature}}&#176;</p>
 						</div>
 						<div>
-						<img src="http://openweathermap.org/img/w/{{icon}}.png" alt="Image">
+						<img src="../static/{{icon}}.svg" alt="Image" width="100px">
 						<p style="font-size: 24px; margin: 0;">{{description}}</p>
 						</div>
 					</div>

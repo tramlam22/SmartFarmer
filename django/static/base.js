@@ -35,7 +35,7 @@ function themeChange() {
 }
 button.addEventListener("mousedown", buttonPressedTheme);
 
-////////////////////////////////////////////////////////////
+/*///////////////////////////////////////////////////////////*/
 const nav = document.querySelector(".navbar");
 const main = document.querySelector(".site-content");
 let topOfNav = nav.offsetTop;
@@ -53,7 +53,7 @@ function fixNav() {
 fixNav();
 
 window.addEventListener("scroll", fixNav);
-///////////////////////////////////////////////////////////
+/*///////////////////////////////////////////////////////////*/
 const aside = document.querySelector(".aside-container");
 let opening = false;
 function openSidebar() {
