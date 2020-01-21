@@ -1,4 +1,8 @@
 # Python gitignores
 *.pyc
 *.pyo
-__pycache__
+__pycache__/
+
+# Django stuff:
+*.log
+*.pot
