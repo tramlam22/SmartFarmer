@@ -1,0 +1,4 @@
+# Python gitignores
+*.pyc
+*.pyo
+__pycache__
