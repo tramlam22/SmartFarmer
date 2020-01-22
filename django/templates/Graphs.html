@@ -1,20 +1,17 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/graphs.css' %}" />{% endblock %}
 {% block title %}PharmGraphs{% endblock %}
-{% block js %}
-	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-{% endblock %}
-
+{% block js %}<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->{% endblock %}
 {% block content %}
 <div class = "wrapper">
 	<div class="panel title-panel">
-		<h3>Graphs Page</h3>
+		<h1 class="h1">Graphs Page</h1>
 	</div>
 	<div id = "bodypage">
-		<div class = "panel graph-container">
-			<div id = "graph">
+		<div class = "graph-container">
+			<div id = "graph">	
+				<script src="{% static 'plotly-basic.min.js' %}"></script>
 				{{object|safe}}
 			</div>
 		</div>

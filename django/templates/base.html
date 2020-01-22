@@ -1,40 +1,48 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" data-theme="light">
+<!DOCTYPE html>{% load static %}<html lang="en" xmlns="http://www.w3.org/1999/xhtml" data-theme="light">
 
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="Description" content="Track and monitor your plants online">
-	<meta name="theme-color" content="#317EFB"/>
-	{% block css %}{% endblock %}
-	{% block js %}{% endblock %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/home-deploy.css' %}" />
-	<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />  -->
-	<title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="Description" content="Track and monitor your plants online">
+    <meta name="theme-color" content="#A8EEB3" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="same?">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="../static/img/appicon.png">
+    <link rel="shorcut icon" type="image/png" href="../static/img/favicon.png">
+    <link rel="manifest" href="../static/manifest.json">
+    <script type="text/javascript">
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/serviceworker.js', {
+                scope: '.'
+            }).then(function (registration) {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function (err) {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        }
+        if (localStorage.getItem("isDarkModeOn") === "true") {
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+            document.documentElement.setAttribute("data-theme", "light");
+        }
+    </script>{% block css %}{% endblock %}{% block js %}{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <script defer src="{% static 'base.js' %}"></script>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
-    <div class="page-wrapper">
-    	<header class="header-container">
-    	    {% include 'header.html' %}
-    	</header>
-    
-    	<aside class="aside-container">
-			{% include 'sidebar.html' %}
-    	</aside>
-
-   		<main class="site-content">
-		   <div class="center">
-    	    {% block content %}
-    	    {% endblock %}
-			</div>
-    	</main>
-
-    	<footer class="footer-container">
-    	    {% include 'footer.html' %}
-    	</footer>
-	</div>
-    <script src="{% static 'base.js' %}"></script>
+    <div class="base-page-wrapper">
+        <header class="header-container">{% include 'header.html' %}</header>
+        <aside class="sidebar-container">{% include 'sidebar.html' %}</aside>
+        <main class="site-content">
+            <div class="center">{% block content %}{% endblock %}</div>
+        </main>
+        <footer class="footer-container">{% include 'footer.html' %}</footer>
+    </div>
+    {% block weatherjs %}{% endblock %}
 </body>
+
 </html>

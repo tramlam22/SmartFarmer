@@ -18,6 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--extended-shadow);
 }
 .article-container{
   padding: 20px;

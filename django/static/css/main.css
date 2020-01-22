@@ -1,73 +1,124 @@
-/* CSS Document */
-#main_link{
-  color:white;
-  background: var(--link-bg);
+#main_link {
+  color: #fff;
+  background: var(--link-bg)
 }
+
 .wrapper {
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 20px
 }
-.article-container{
+
+.big-image {
+  background-color: #c9c9c9;
+  max-height: 100%;
+  height: auto;
+  overflow: hidden;
+  margin-bottom: -50%
+}
+
+.article-container {
   display: grid;
-  grid-template-columns: 250px auto 250px;
-  grid-gap: 20px;
+  grid-template-rows: auto auto 250px;
+  grid-gap: 20px
 }
-.data-panel-container{
+
+.data-panel-container {
   display: grid;
-  grid-gap: 20px;
+  grid-auto-flow: column;
+  grid-gap: 20px
 }
-.data-panel{
+
+.data-panel {
   height: 200px;
+  box-sizing: border-box
 }
-#data-panel-1{
-  background: #36D1DC;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #5B86E5, #36D1DC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  animation-name: weatherbg; 
-  animation-duration: 14s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease;
-  background-size: 300% 300%;
-}
-@-webkit-keyframes weatherbg {
-  0%{background-position:10% 0%}
-  50%{background-position:91% 100%}
-  100%{background-position:10% 0%}
-}
-@-moz-keyframes weatherbg {
-  0%{background-position:10% 0%}
-  50%{background-position:91% 100%}
-  100%{background-position:10% 0%}
-}
-@keyframes weatherbg { 
-  0%{background-position:10% 0%}
-  50%{background-position:91% 100%}
-  100%{background-position:10% 0%}
-}
-#data-panel-2{
-  background: rgb(58, 159, 177);
-}
-.weather-widget-container{
+
+.weather-widget-container {
   backdrop-filter: blur(5px);
   height: 100%;
   width: 100%;
-  color: white;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.932);
+  color: #fff;
+  text-shadow: 0 0 5px #000000ee;
   padding: 10px;
+  animation-name: weatherbg;
+  animation-duration: 14s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   align-items: center;
-  box-sizing: border-box;
+  box-sizing: border-box
 }
-.leftside{
-  height: 300px;
+
+.wwc-content-box {
+  display: inline-block
+}
+
+.weather-day {
+  background: #36d1dc;
+  background: -webkit-linear-gradient(to right, #5b86e5, #36d1dc);
+  background: linear-gradient(to right, #5b86e5, #36d1dc);
+  background-size: 300% 300%
+}
+
+.weather-night {
+  background: #000046;
+  background: -webkit-linear-gradient(to right, #000046, #1cb5e0);
+  background: linear-gradient(to right, #000046, #1cb5e0);
+  background-size: 300% 300%
+}
+
+@-webkit-keyframes weatherbg {
+  0% {
+    background-position: 10% 0
+  }
+
+  50% {
+    background-position: 91% 100%
+  }
+
+  100% {
+    background-position: 10% 0
+  }
+}
+
+@-moz-keyframes weatherbg {
+  0% {
+    background-position: 10% 0
+  }
+
+  50% {
+    background-position: 91% 100%
+  }
+
+  100% {
+    background-position: 10% 0
+  }
+}
+
+@keyframes weatherbg {
+  0% {
+    background-position: 10% 0
+  }
+
+  50% {
+    background-position: 91% 100%
+  }
+
+  100% {
+    background-position: 10% 0
+  }
+}
+
+#data-panel-2 {
+  background: #3a9fb1
+}
+
+.leftside {
+  max-height: 300px;
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  padding: 10px;
-}
-.middle{
-  box-sizing: border-box;
-  padding: 20px;
+  padding: 10px
 }

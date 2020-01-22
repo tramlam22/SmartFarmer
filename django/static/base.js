@@ -1,17 +1,17 @@
-const button = document.querySelector("#theme-button");
+const bt = document.querySelector("#theme-button"); /*buttonTheme*/
 
-function buttonPressedTheme() {
-    button.style.color = "#ff00ff";
+function bttnPrssdThm() { /*buttonPressedTheme*/
+    bt.style.color = "#ff00ff";
 }
-function buttonLightTheme() {
-    button.innerHTML = "&#9788;";
-    button.style.backgroundColor = "white";
-    button.style.color = "black";
+function buttonLightTheme(){
+    bt.innerHTML = "&#9788;";
+    bt.style.backgroundColor = "white";
+    bt.style.color = "black";
 }
 function buttonDarkTheme() {
-    button.innerHTML = "&#9789;";
-    button.style.backgroundColor = "black";
-    button.style.color = "white";
+    bt.innerHTML = "&#9789;";
+    bt.style.backgroundColor = "black";
+    bt.style.color = "white";
 }
 
 if (localStorage.getItem("isDarkModeOn") === "true") {
@@ -33,7 +33,7 @@ function themeChange() {
         localStorage.setItem("isDarkModeOn", "true");
     }
 }
-button.addEventListener("mousedown", buttonPressedTheme);
+bt.addEventListener("mousedown", bttnPrssdThm);
 
 /*///////////////////////////////////////////////////////////*/
 const nav = document.querySelector(".navbar");
@@ -54,7 +54,7 @@ fixNav();
 
 window.addEventListener("scroll", fixNav);
 /*///////////////////////////////////////////////////////////*/
-const aside = document.querySelector(".aside-container");
+const aside = document.querySelector(".sidebar-container");
 let opening = false;
 function openSidebar() {
     aside.style.display = "block";
@@ -81,3 +81,4 @@ document.addEventListener("click", function (event) {
     let isClickedInside = aside.contains(event.target);
     so(isClickedInside);
 });
+/*///////////////////////////////////////////*/

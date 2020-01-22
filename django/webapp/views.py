@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .models import Testtemp, Account
@@ -10,21 +11,24 @@ import requests
 ''' Create your views here. '''
 
 ''' index page '''
-def home_view(request, *args, **kwargs):
-  APIurl = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=c3f7f9ebb4a78e437ec87f6a909dd3d0'
-  city = 'Irvine'
-  city_weather = requests.get(APIurl.format(city)).json()
+def home_view(request):
 
-  weather_data = {
+	APIurl = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=c3f7f9ebb4a78e437ec87f6a909dd3d0'
+	city = 'Irvine'
+	city_weather = requests.get(APIurl.format(city)).json()
+
+	weather_data = {
         'city' : city,
         'temperature' : city_weather['main']['temp'],
         'description' : city_weather['weather'][0]['description'],
         'icon' : city_weather['weather'][0]['icon']
-    }
-  print(weather_data)
- # print(args,kwargs)
- # print(request.user)
-  return render(request,"index.html",weather_data)
+  }
+ 	# print(args,kwargs)
+ 	# print(request.user)
+	print(weather_data)
+	if request.is_ajax():
+		return JsonResponse(weather_data, safe=False)
+	return render(request,'index.html',weather_data)
 
 ''' about page '''
 def about_view(request, *args, **kwargs):
@@ -81,4 +85,10 @@ class create_account_view(TemplateView):
       return render(request,"Signin.html",{'form' : loginForm()})
     else:
       return render(request, self.template_name,{'form' : form})
+
+'''get service woker as app/js when /serviceworker.js is called'''
+def service_workers(request):
+    response = HttpResponse(open("serviceworker.js").read(), content_type='application/javascript')
+    return response
+
 
