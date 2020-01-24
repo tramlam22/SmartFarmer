@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}" />
-{% endblock %}
 {% block title %}PharmAbout{% endblock %}
 {% block content %}
-<div class = "wrapper">
+<div class="wrapper">
 	<div class="panel title-panel">
-		<h1 class="h1">About Page</h1>
+		<h2 class="h2">About Page</h2>
 	</div>
-	<div class = "panel article">
-			<p> in about</p>
+	<div class="panel article-section">
+		<p>In about</p>
 	</div>
 </div>
+{% endblock %}
+{% block css %}
+<style>
+#about_link{
+  	color:white;
+  	background: var(--link-bg);
+}
+.wrapper {
+  	display: grid;
+  	grid-gap: 20px;
+}
+</style>
 {% endblock %}

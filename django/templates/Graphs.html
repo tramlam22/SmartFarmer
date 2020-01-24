@@ -1,23 +1,41 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block css %}<link rel="stylesheet" type="text/css" href="{% static 'css/graphs.css' %}" />{% endblock %}
 {% block title %}PharmGraphs{% endblock %}
 {% block js %}<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->{% endblock %}
 {% block content %}
 <div class = "wrapper">
 	<div class="panel title-panel">
-		<h1 class="h1">Graphs Page</h1>
+		<h2 class="h2">Graphs Page</h2>
 	</div>
-	<div id = "bodypage">
-		<div class = "graph-container">
-			<div id = "graph">	
-				<script src="{% static 'plotly-basic.min.js' %}"></script>
-				{{object|safe}}
-			</div>
+	<div class = "graph-container">
+		<div id = "graph">	
+			<script src="{% static 'plotly-basic.min.js' %}"></script>
+			{{object|safe}}
 		</div>
-		<div class = "panel article-container">
-				<p> in graphs </p>
-		</div>
+	</div>
+	<div class = "panel article-section">
+		<p> in graphs </p>
 	</div>
 </div>
+{% endblock %}
+{% block css %}
+<style>
+	#graphs_link{
+  		color:white;
+  		background: var(--link-bg);
+	}
+	.wrapper {
+  		display: grid;
+  		grid-gap: 20px;
+	}
+	#graph{
+  		width: 100%;
+	}
+	.graph-container{
+  		display: flex;
+  		align-items: center;
+  		justify-content: center;
+  		box-shadow: var(--extended-shadow);
+	}
+</style>
 {% endblock %}

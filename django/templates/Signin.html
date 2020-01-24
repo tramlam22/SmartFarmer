@@ -1,10 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block css %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/signin.css'%}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'css/registration-form-base.css'%}" />
-{% endblock %}
 {% block title %}PharmSignin{% endblock %}
 {% block content %}
 <div class = "wrapper">
@@ -20,4 +15,74 @@
 		</div>
 	</div>
 </div>
+{% endblock %}
+{% block css %}
+<style>
+#signin_label{
+  display: flex;
+  margin: auto;
+  text-align: center;
+}
+#login_form{
+  text-align: center;
+}
+#create_account_label{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+#create_account_link{
+  font-size: 20px;
+  color: var(--link-color);
+  text-decoration: none;
+}
+#create_account_link:hover{
+  text-decoration: underline;
+}
+/*SAME IN CREATE ACCOUNT*/
+input[type=text], input[type=password]{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid rgb(206, 206, 206);
+  box-sizing: border-box;
+}
+.wrapper{
+  text-align: center;
+}
+.form-submit{
+  background-color: #93b5b3;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width:100%;
+  font-size: 20px;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+.form-submit:hover{
+  opacity: 0.8;
+}
+.form-panel{
+  max-width: 500px;
+  display: inline-block;
+  width: 100%;
+}
+.user-form{
+  width: 50%;
+  margin: auto;
+}
+.form-label{
+  height: 60px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
 {% endblock %}

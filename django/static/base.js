@@ -1,17 +1,12 @@
 const bt = document.querySelector("#theme-button"); /*buttonTheme*/
 
-function bttnPrssdThm() { /*buttonPressedTheme*/
-    bt.style.color = "#ff00ff";
-}
 function buttonLightTheme(){
     bt.innerHTML = "&#9788;";
     bt.style.backgroundColor = "white";
-    bt.style.color = "black";
 }
 function buttonDarkTheme() {
     bt.innerHTML = "&#9789;";
     bt.style.backgroundColor = "black";
-    bt.style.color = "white";
 }
 
 if (localStorage.getItem("isDarkModeOn") === "true") {
@@ -33,35 +28,17 @@ function themeChange() {
         localStorage.setItem("isDarkModeOn", "true");
     }
 }
-bt.addEventListener("mousedown", bttnPrssdThm);
-
-/*///////////////////////////////////////////////////////////*/
-const nav = document.querySelector(".navbar");
-const main = document.querySelector(".site-content");
-let topOfNav = nav.offsetTop;
-
-function fixNav() {
-    if (window.scrollY >= topOfNav) {
-        console.log(nav.offsetHeight);
-        main.style.paddingTop = nav.offsetHeight + "px";
-        document.body.classList.add("fixed-nav");
-    } else {
-        main.style.paddingTop = 0;
-        document.body.classList.remove("fixed-nav");
-    }
-}
-fixNav();
-
-window.addEventListener("scroll", fixNav);
-/*///////////////////////////////////////////////////////////*/
+/*////////////SIDEBAR/////////// */
 const aside = document.querySelector(".sidebar-container");
 let opening = false;
+let isWidthZero = false;
 function openSidebar() {
-    aside.style.display = "block";
+    aside.style.width = "320px";
     opening = true;
+    isWidthZero = false;
 }
 function isSideBarOpened() {
-    if (opening && aside.style.display == "block") {
+    if (opening && !isWidthZero) {
         opening = false;
         return false;
     } else {
@@ -69,11 +46,11 @@ function isSideBarOpened() {
     }
 }
 function closeSidebar() {
-    aside.style.display = "none";
+    aside.style.width = "0";
+    isWidthZero = true;
 }
 function so(isCI) {
-    let opened = isSideBarOpened();
-    if (!isCI && opened) {
+    if (!isCI && isSideBarOpened()) {
         closeSidebar();
     }
 }

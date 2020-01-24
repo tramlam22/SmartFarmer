@@ -1,22 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block css %}
-	<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css'%}" />
-{% endblock %}
 {% block title %}PharmContact{% endblock %}
 {% block content %}
-<div class = "wrapper">
+<div class="wrapper">
 	<div class="panel title-panel">
-		<h1 class="h1">Contact Page</h1>
+		<h2 class="h2">Contact Page</h2>
 	</div>
-	<div class="bodypage">
-		<div class="panel to-be-named-1">
-			<p> another title </p>
-		</div>
-		<div class="panel to-be-named-2">
-			<p> in contact </p>
-		</div>
+	<div class="panel article-section">
+		<p>Another title </p>
+	</div>
+	<div class="panel article-section">
+		<p>In contact </p>
 	</div>
 </div>
+{% endblock %}
+{% block css %}
+<style>
+	#contact_link{
+  		color:white;
+  		background: var(--link-bg);
+	}
+	.wrapper {
+  		display: grid;
+  		grid-gap: 20px;
+	}
+</style>
 {% endblock %}
