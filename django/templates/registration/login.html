@@ -7,7 +7,14 @@
 		<div class="form-label">Sign in</div>
 		<form class="user-form" id="login_form" action = '' method='POST'>
 			{% csrf_token %}
-			{{form.as_p}}
+			<p>
+        <label>Username</label>
+        <input type="text" name="username">
+    </p>
+    <p>
+        <label>Password</label>
+        <input type="password" name="password">
+    </p>
 			<input class="form-submit" id="signin_button" type='submit' value ='Sign in'>
 		</form>
 		<div id = "create_account_label">

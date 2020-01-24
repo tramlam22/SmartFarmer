@@ -136,3 +136,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+#redirects user to the homerpage
+LOGIN_REDIRECT_URL = 'home'

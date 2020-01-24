@@ -16,32 +16,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls import url
+from django.contrib.auth import views as auth_views
 
 from webapp.views import home_view
 from webapp.views import about_view
 #from webapp.views import graphs_view
 from webapp.views import SimpleGraphs
 from webapp.views import contact_view
-from webapp.views import signin_view
+#from webapp.views import signin_view
 from webapp.views import create_account_view
 from webapp.views import service_workers#new
 # from webapp.views import manifest
+
 urlpatterns = [
-    #path(r'',home_view, name='home'),
-    #path(r'Main/',home_view, name='home'),
-    #path('About/',about_view, name = 'about'),
-    #path('Graphs/',graphs_view, name = 'graphs'),
-    #path('Contact/',contact_view, name = 'contact'),
-    #path('admin/', admin.site.urls),
+    url(r'^login/$', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    #url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^$',home_view, name='home'),
-    #url(r'^Main/$',home_view, name='home'),
+    #url(r'^home/$',home_view, name='home'),
     url(r'^About/$',about_view, name = 'about'),
     url(r'^Graphs/$',SimpleGraphs.as_view(), name = 'graphs'),
     url(r'^Contact/$',contact_view, name = 'contact'),
     url(r'^admin/', admin.site.urls),
-  #  url(r'^Signin/$',signin_view, name = 'signin' ),
-    url(r'^Signin/$', signin_view.as_view(), name = 'signin'),
+    #url(r'^Signin/$', signin_view.as_view(), name = 'signin'),
     url(r'^Createaccount/$', create_account_view.as_view(), name = 'createaccount'),
-   # url(r'^Createaccount/$', create_account_view, name = 'createaccount'),
     url('^serviceworker.js$', service_workers),#new
+
 ]
