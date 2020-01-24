@@ -151,8 +151,8 @@ body {
   float: right;
 }
 #sign_in_link {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   text-align: center;
   text-decoration: none;
   color: black;
@@ -161,8 +161,6 @@ body {
   border: 0;
   white-space: nowrap;
   overflow: hidden;
-  width: 30px;
-  height: 30px;
   border-radius: 50%;
   outline: none;
   box-sizing: border-box;
@@ -175,9 +173,9 @@ body {
 }
 .user-name-container {
   background-color: aquamarine;
-  height: 30px;
-  line-height: 30px;
-  font-size: 10px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 2.3rem;
   padding: 0 5px;
   margin-left: 5px;
   border-radius: 5px;
@@ -185,10 +183,13 @@ body {
   float: left;
 }
 #theme-button{
+  height: 5rem;
+  width: 5rem;
+  font-size: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-self: right;
+  justify-self:left;
 }
 /*///////////////MAIN////////////////////*/
 .site-content {
