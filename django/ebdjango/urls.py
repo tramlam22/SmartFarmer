@@ -22,7 +22,7 @@ from webapp.views import home_view
 from webapp.views import about_view
 from webapp.views import SimpleGraphs
 from webapp.views import contact_view
-from webapp.views import signin_view
+# from webapp.views import signin_view
 from webapp.views import create_account_view
 from webapp.views import service_workers #new
 from webapp.views import data_collection_view #also new 
@@ -38,7 +38,7 @@ urlpatterns = [
     url(r'^Contact/$',contact_view, name = 'contact'),
     url(r'^admin/', admin.site.urls),
     #url(r'^Signin/$',signin_view, name = 'signin' ),
-    url(r'^Signin/$', signin_view.as_view(), name = 'signin'),
+    # url(r'^Signin/$', signin_view.as_view(), name = 'signin'),
     url(r'^Createaccount/$', create_account_view.as_view(), name = 'createaccount'),
     url('^serviceworker.js$', service_workers),#new
     #url(r'^Createaccount/$', create_account_view, name = 'createaccount'),
