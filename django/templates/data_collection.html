@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}" />
+{% endblock %}
+{% block title %}PharmAbout{% endblock %}
+{% block content %}
+<div class = "wrapper">
+	<div class="panel title-panel">
+		<h3>Data Collection</h3>
+	</div>
+	<div class = "panel article">
+			<p>Probably shouldn't be snoopin around here.</p>
+	</div>
+</div>
+{% endblock %}

@@ -35,7 +35,8 @@ def about_view(request, *args, **kwargs):
   print(args,kwargs)
   print(request.user)
   return render(request,"About.html")
-  
+
+''' contact page '''  
 def contact_view(request, *args, **kwargs):
   print(args,kwargs)
   print(request.user)
@@ -92,3 +93,18 @@ def service_workers(request):
     return response
 
 
+''' data collection page '''
+class data_collection_view(TemplateView):
+  template_name = 'data_collection.html'
+
+  def get(self, request):
+    data = request.POST
+    print(data)
+    print(type(data))
+    return render(request, self.template_name, {})
+
+  def post(self, request):
+    data = request.POST
+    print(data)
+    print(type(data))
+    return render(request, self.template_name, {})
