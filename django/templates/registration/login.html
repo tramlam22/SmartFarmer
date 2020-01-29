@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}PharmSignin{% endblock %}
+{% block header %}
+	{% include "logo.html" %}
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
 {% block content %}
 <div class = "wrapper">
 	<div class="panel form-panel">
@@ -17,13 +22,18 @@
     </p>
 			<input class="form-submit" id="signin_button" type='submit' value ='Sign in'>
 		</form>
-		<div id = "create_account_label">
-			<a id="create_account_link" href="{% url 'createaccount' %}"> Create account </a>
-		</div>
+		<a class="underline-link" href="{% url 'createaccount' %}">Create account</a>
 	</div>
 </div>
 {% endblock %}
-{% block css %}
+{% block headercss %}
+<style>
+.uwu-logo{
+  margin: 5px auto;
+}
+</style>
+{% endblock %}
+{% block contentcss %}
 <style>
 #signin_label{
   display: flex;
@@ -48,6 +58,11 @@
   text-decoration: underline;
 }
 /*SAME IN CREATE ACCOUNT*/
+.underline-link{
+  color: black;
+  margin: 20px;
+  display: inline-block;
+}
 input[type=text], input[type=password]{
   width: 100%;
   padding: 12px 20px;
@@ -74,7 +89,7 @@ input[type=text], input[type=password]{
   opacity: 0.8;
 }
 .form-panel{
-  max-width: 500px;
+  max-width: 700px;
   display: inline-block;
   width: 100%;
 }

@@ -1,25 +1,43 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}PharmCreateAccount{% endblock %}
+{% block header %}
+  {% include "logo.html" %}
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
 {% block content %}
-<div class = "wrapper">
+<div class="wrapper">
 	<div class="panel form-panel">
 		<div class="form-label">Create your Account</div>
 		<form class="user-form" id="createaccount_form" action = ''  method='POST'>
 			{% csrf_token %}
 			{{form.as_p}}
 			<input class="form-submit" id = "create_account_button" type='submit' value ='Create Account'>
-		</form>
+    </form>
+    <a class="underline-link" href="{% url 'login' %}" aria-label="Sign in">Sign in</a>
 	</div>
 </div>
 {% endblock %}
-{% block css %}
+{% block headercss %}
+<style>
+  .uwu-logo {
+    margin: 5px auto;
+  }
+</style>
+{% endblock %}
+{% block contentcss %}
 <style>
 #createaccount_form{
 	text-align: center;
   	font-size: 16px;
 }
 /*SAME IN SININ*/
+.underline-link{
+  color: black;
+  margin: 20px;
+  display: inline-block;
+}
 input[type=text], input[type=password]{
   width: 100%;
   padding: 12px 20px;
@@ -46,7 +64,7 @@ input[type=text], input[type=password]{
   opacity: 0.8;
 }
 .form-panel{
-  max-width: 500px;
+  max-width: 700px;
   display: inline-block;
   width: 100%;
 }

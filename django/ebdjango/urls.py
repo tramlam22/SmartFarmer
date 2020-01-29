@@ -24,14 +24,16 @@ from webapp.views import SimpleGraphs
 from webapp.views import contact_view
 # from webapp.views import signin_view
 from webapp.views import create_account_view
-from webapp.views import service_workers #new
+from webapp.views import service_workers  #new
+from webapp.views import uwu_view
 from webapp.views import data_collection_view #also new 
 # from webapp.views import manifest
 
 urlpatterns = [
     url(r'^login/$', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     #url(r'^logout/$', auth_views.logout, name='logout'),
-    url(r'^$',home_view, name='home'),
+    url(r'^$',uwu_view, name='uwuplants'),
+    url(r'^home/$',home_view, name='home'),
     #url(r'^home/$',home_view, name='home'),
     url(r'^About/$',about_view, name = 'about'),
     url(r'^Graphs/$',SimpleGraphs.as_view(), name = 'graphs'),

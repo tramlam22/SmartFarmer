@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}PharmContact{% endblock %}
+{% block header %}
+	{% include "logo.html" %}
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
 {% block content %}
 <div class="wrapper">
 	<div class="panel title-panel">
@@ -14,7 +19,14 @@
 	</div>
 </div>
 {% endblock %}
-{% block css %}
+{% block headercss %}
+<style>
+	.uwu-logo {
+		margin: 5px auto;
+	}
+</style>
+{% endblock %}
+{% block contentcss %}
 <style>
 	#contact_link{
   		color:white;

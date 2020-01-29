@@ -30,7 +30,82 @@
     </script>
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
-    {% block css %}{% endblock %}
+    {% if user.is_authenticated %}
+    <style>
+        .header-container {
+            grid-area: header;
+            z-index: 4;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 50px;
+            background: #62caab;
+            /*fallback*/
+            background: var(--nav-bg-webkit);
+            background: var(--nav-bg-color);
+            box-shadow: 0 0 5px 2px #0000004d;
+            padding: 5px;
+            display: grid;
+            align-items: center;
+            grid-template-columns: 1fr 5fr 1fr;
+            box-sizing: border-box;
+        }
+        .open-sidebar-button {
+            justify-self: right;
+        }
+    
+        .button-svg {
+            fill: var(--svg-open-sb-fill);
+        }
+    
+        .navbar {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+    
+        .navbar ul {
+            max-width: 760px;
+            width: 100%;
+            margin: 0;
+            padding: 0 5px;
+            list-style: none;
+            text-align: center;
+            display: grid;
+            grid-gap: 5px;
+            grid-auto-flow: column;
+            grid-template-columns: auto;
+        }
+    
+        .navbar li {
+            display: inline-block;
+        }
+    
+        .navbar a {
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 2.4rem;
+            color: var(--text-color);
+            text-decoration: none;
+            white-space: nowrap;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+    
+        .navbar a:hover {
+            color: #1b7be9;
+        }
+    </style>
+    {% else %}
+        {% block headercss %}
+        {% endblock %}
+    {% endif %}
+    {% block contentcss %}{% endblock %}
     <style>
     @media only screen and (max-width: 1250px){
   		.page-title-logo{
@@ -41,8 +116,11 @@
 	}
 	@media only screen and (max-width: 1000px){
   		.widgets-container {
-    		grid-auto-flow: row; /*check main.css*/
-  		}
+    		grid-auto-flow: row; 
+          }
+          .side-by-side{
+            grid-template-columns: auto;
+        }
 	}
 	@media only screen and (max-width: 500px){
         html {
@@ -54,7 +132,7 @@
   		}
   		.form-submit {
     		font-size: 14px;
-  		}
+        }
 	}
     </style>
     {% block js %}{% endblock %}
@@ -63,39 +141,47 @@
 
 <body>
     <div class="base-page-wrapper">
-        <header class="header-container">
-            <h1 class="page-title-logo">Pharmsmart</h1>
-            <nav class="navbar">
-                <ul>
-                    <li><a id="main_link" href="{% url 'home' %}">Main</a></li>
-                    <li><a id="graphs_link" href="{% url 'graphs' %}">Graphs</a></li>
-                    <li><a id="about_link" href="{% url 'about' %}">About</a></li>
-                    <li><a id="contact_link" href="{% url 'contact' %}">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="button open-sidebar-button" onclick="openSidebar()" aria-label="Open sidebar"> 
-                <svg class="button-svg" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 100 100" width="100%">
-                    <rect width="100" height="20" />
-                    <rect width="100" height="20" y="40" />
-                    <rect width="100" height="20" y="80" />
-                </svg> 
-            </button> 
-        </header>
-        <aside class="sidebar-container">
+
+
+        {% if user.is_authenticated %}
+            <header class="header-container">
+                {% include 'logo.html' %}
+                <nav class="navbar">
+                    <ul>
+                        <li><a id="main_link" href="{% url 'home' %}">Main</a></li>
+                        <li><a id="graphs_link" href="{% url 'graphs' %}">Graphs</a></li>
+                        <li><a id="about_link" href="{% url 'about' %}">About</a></li>
+                        <li><a id="contact_link" href="{% url 'contact' %}">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="button open-sidebar-button" onclick="openSidebar()" aria-label="Open sidebar">
+                    <svg class="button-svg" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 100 100" width="100%">
+                        <rect width="100" height="20" />
+                        <rect width="100" height="20" y="40" />
+                        <rect width="100" height="20" y="80" />
+                    </svg>
+                </button>
+            </header>
+        	<aside class="sidebar-container">
             <div class="sidebar">
                 <div class="header-user-container">
-                	<a id="sign_in_link" href="{% url 'login' %}">
+                	<!-- <div id="sign_in_link" href="{% url 'login' %}" aria-label="User"> -->
+                    <div class="user-logo">
                 	  	<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"viewBox="0 0 258.75 258.75" width="100%">
                 	        <circle cx="129.375" cy="60" r="60"/>
                 	        <path d="M129.375,150c-60.061,0-108.75,48.689-108.75,108.75h217.5C238.125,198.689,189.436,150,129.375,150z"/>
                 	    </svg>
-                	</a>
+                	</div>
                 	<div class="user-name-container">{{request.user}}</div>
                 	<button class="button close-aside" onclick="closeSidebar()">X</button>
             	</div>
                 <button id="theme-button" class="button" onclick="themeChange()"></button>
             </div>
-        </aside>
+        	</aside>
+        {% else %}
+        	{% block header %}
+        	{% endblock %}
+		{% endif %}
         <main class="site-content">
             <div class="center">{% block content %}{% endblock %}</div>
         </main>
@@ -103,8 +189,11 @@
             <p>&copy; Copyright 2019</p>
         </footer>
     </div>
-    <script defer src="{% static 'base.js' %}"></script>
+    {% if user.is_authenticated %}
+    <script src="{% static 'base.js' %}"></script>
+    {% endif %}
     {% block weatherjs %}{% endblock %}
+    {% block endjs %}{% endblock %}
 </body>
 
 </html>

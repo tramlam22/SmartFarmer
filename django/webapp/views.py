@@ -7,29 +7,39 @@ from .models import Testtemp
 from .import plots
 from webapp.forms import *
 import requests
+from django.http import HttpRequest
 #or from .models import (name of class)
 
 ''' Create your views here. '''
 
 ''' index page '''
 def home_view(request):
+		if request.user.is_authenticated:
+				APIurl = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=c3f7f9ebb4a78e437ec87f6a909dd3d0'
+				city = 'Irvine'
+				city_weather = requests.get(APIurl.format(city)).json()
 
-	APIurl = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=c3f7f9ebb4a78e437ec87f6a909dd3d0'
-	city = 'Irvine'
-	city_weather = requests.get(APIurl.format(city)).json()
-
-	weather_data = {
-        'city' : city,
-        'temperature' : city_weather['main']['temp'],
-        'description' : city_weather['weather'][0]['description'],
-        'icon' : city_weather['weather'][0]['icon']
-  }
- 	# print(args,kwargs)
- 	# print(request.user)
-	print(weather_data)
-	if request.is_ajax():
-		return JsonResponse(weather_data, safe=False)
-	return render(request,'index.html',weather_data)
+				weather_data = {
+        		'city' : city,
+        		'temperature' : city_weather['main']['temp'],
+        		'description' : city_weather['weather'][0]['description'],
+        		'icon' : city_weather['weather'][0]['icon']
+  			}
+ 				# print(args,kwargs)
+ 				# print(request.user)
+				#if 'HTTP_X_REQUEST_WITH' in HttpRequest.META:
+				print(weather_data)
+				if request.is_ajax():
+						return JsonResponse(weather_data, safe=False)
+				return render(request, 'index.html', weather_data)
+		else:
+				return HttpResponseRedirect('/')
+    
+def uwu_view(request):
+		if request.user.is_authenticated:
+				return HttpResponseRedirect('/home')
+		else:
+				return render(request, 'uwuplants.html')
 
 ''' about page '''
 def about_view(request, *args, **kwargs):
@@ -99,14 +109,14 @@ class create_account_view(TemplateView):
         user.last_name = lname
         user.save()
         user = authenticate(username = username, password = password)
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/home')
       else:
         raise forms.ValidationError('Looks like a username with that email or password already exists')
     else:
       return render(request, self.template_name,{'form' : form})
 
 
-'''get service woker as app/js when /serviceworker.js is called'''
+'''get service woker as app/js when '/serviceworker.js' is called'''
 def service_workers(request):
     response = HttpResponse(open("serviceworker.js").read(), content_type='application/javascript')
     return response

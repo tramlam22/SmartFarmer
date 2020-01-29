@@ -2,200 +2,203 @@
 {% load static %}
 {% block weatherjs %}
 <script defer>
-    const weatherWidget = document.querySelector(".weather-widget-container");
-    const cityName = document.querySelector(".city");
-    const temperature = document.querySelector(".temperature");
-    const weatherIcon = document.querySelector(".weathericon");
-    const description = document.querySelector(".description");
-    let lastSrc = weatherIcon.getAttribute('src');
+  const weatherWidget = document.querySelector(".weather-widget-container");
+  const cityName = document.querySelector(".city");
+  const temperature = document.querySelector(".temperature");
+  const weatherIcon = document.querySelector(".weathericon");
+  const description = document.querySelector(".description");
+  let lastSrc = weatherIcon.getAttribute('src');
 
-    function getAjax(url, success) {
-        var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
-        xhr.open('GET', url);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState > 3 && xhr.status == 200) success(xhr.responseText);
-        };
-        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.send();
-        return xhr;
-    }
-    if (lastSrc.slice(-5).charAt(0) == ('n')) {
+  if (lastSrc.slice(-5).charAt(0) == ('n')) {
+    weatherWidget.classList.remove("weather-day");
+    weatherWidget.classList.add("weather-night");
+  }
+  function getAjax(url, success) {
+   	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+    xhr.open('GET', url);
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState > 3 && xhr.status == 200) success(xhr.responseText);
+    };
+    xhr.send();
+    return xhr;
+  }
+
+  function getWeather() {
+    getAjax("/home", function (data) {
+      let json = JSON.parse(data);
+      cityName.innerHTML = json.city;
+      temperature.innerHTML = json.temperature + '&#176;';
+      let newSrc = "../static/weathericons/" + json.icon + ".svg";
+      if (lastSrc != newSrc) {
+        lastSrc = newSrc;
+        weatherIcon.setAttribute("src", newSrc);
+      }
+      if ((json.icon).slice(-1) == ('n')) {
         weatherWidget.classList.remove("weather-day");
         weatherWidget.classList.add("weather-night");
-    }
-
-    function getWeather() {
-        getAjax("/", function (data) {
-            let json = JSON.parse(data);
-            cityName.innerHTML = json.city;
-            temperature.innerHTML = json.temperature + '&#176;';
-            let newSrc = "../static/weathericons/" + json.icon + ".svg";
-            if (lastSrc != newSrc) {
-                lastSrc = newSrc;
-                weatherIcon.setAttribute("src", newSrc);
-            }
-            if ((json.icon).slice(-1) == ('n')) {
-                weatherWidget.classList.remove("weather-day");
-                weatherWidget.classList.add("weather-night");
-            }
-            description.innerHTML = json.description;
-        })
-    }
-    setInterval(getWeather, 60000);
+      }
+      description.innerHTML = json.description;
+    })
+  }
+  setInterval(getWeather, 60000); 
 </script>
 {% endblock %}{% block title %}PharmHome{% endblock %}
 {% block content %}
 <div class="wrapper">
-    <div class="widgets-section">
-        <h2 class="h2">Quick Glance</h2>
-        <div class="widgets-container">
-            <div class="widget-panel" id="data-panel-1"><!--widget1-->
-                <div class="weather-widget-container weather-day">
-                    <div class="wwc-content-box">
-                        <h2 class="city" style="margin:0; line-height: 50px; overflow: hidden;">{{city}}</h2>
-                        <div style="display: flex; justify-content: center;">
-                            <p class="temperature"
-                                style="font-size: 40px; margin: 0; width: 120px; overflow: hidden;">
-                                {{temperature}}&#176;
-                            </p>
-                        </div>
-                    </div>
-                    <div class="wwc-content-box"><img class="weathericon" src="../static/weathericons/{{icon}}.svg"
-                            alt="Image" width="100px">
-                        <p class="description" style="font-size: 24px; margin: 0;">{{description}}</p>
-                    </div>
-                </div>
+  <div class="widgets-section">
+    <h2 class="h2">Quick Glance</h2>
+    <div class="widgets-container">
+      <div class="widget-panel" id="data-panel-1">
+        <!--widget1-->
+        <div class="weather-widget-container weather-day">
+          <div class="wwc-content-box">
+            <h2 class="city" style="margin:0; line-height: 50px; overflow: hidden;">{{city}}</h2>
+            <div style="display: flex; justify-content: center;">
+              <p class="temperature" style="font-size: 40px; margin: 0; width: 120px; overflow: hidden;">
+                {{temperature}}&#176;
+              </p>
             </div>
-            <div class="widget-panel" id="data-panel-2"><!--widget2-->
-                <h4>Ph Level</h4>
-                <p>12345</p>
-            </div>
-            <div class="widget-panel" id="data-panel-3"><!--widget3-->
-                <h4>ET</h4>
-                <p>1,000,000</p>
-            </div>
-            <div class="widget-panel" id="data-panel-4"><!--widget4-->
-                <h4>Temperature</h4>
-                <p>30 Degrees Celcius</p>
-            </div>
-    	</div>
+          </div>
+          <div class="wwc-content-box"><img class="weathericon" src="../static/weathericons/{{icon}}.svg" alt="Image"
+              width="100px">
+            <p class="description" style="font-size: 24px; margin: 0;">{{description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="widget-panel" id="data-panel-2">
+        <!--widget2-->
+        <h4>Ph Level</h4>
+        <p>12345</p>
+      </div>
+      <div class="widget-panel" id="data-panel-3">
+        <!--widget3-->
+        <h4>ET</h4>
+        <p>1,000,000</p>
+      </div>
+      <div class="widget-panel" id="data-panel-4">
+        <!--widget4-->
+        <h4>Temperature</h4>
+        <p>30 Degrees Celcius</p>
+      </div>
     </div>
-    <div class="article-section">
-        <h2 class="h2">Green Leafs</h2>
-        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-    	    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-            fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-            deserunt mollit anim id est laborum.</p>
-        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, qui.</p>
-        <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque modi dicta totam aliquid eveniet sint et
-    	   vel earum repellendus nisi unde cum corporis incidunt necessitatibus delectus consequatur ad tenetur
-            aspernatur, reprehenderit molestiae eius aut! Asperiores sunt libero assumenda alias nisi reiciendis
-            molestiae ullam delectus eaque laboriosam culpa quaerat expedita sed, enim eligendi neque necessitatibus
-            fuga harum quod. Deleniti, dolore facere. Ut qui illo, atque numquam expedita optio eos ab ex amet quae!
-            Debitis nulla officiis ipsa earum architecto magnam ducimus, blanditiis facilis saepe dolore? Ratione
-            velit amet optio natus magni eaque ipsam corporis, quas eligendi. Nisi quis distinctio doloribus
-            aspernatur?</p>
-    </div>
-    <div class="panel"></div>
+  </div>
+  <div class="article-section">
+    <h2 class="h2">Green Leafs</h2>
+    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+      deserunt mollit anim id est laborum.</p>
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, qui.</p>
+    <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque modi dicta totam aliquid eveniet sint et
+      vel earum repellendus nisi unde cum corporis incidunt necessitatibus delectus consequatur ad tenetur
+      aspernatur, reprehenderit molestiae eius aut! Asperiores sunt libero assumenda alias nisi reiciendis
+      molestiae ullam delectus eaque laboriosam culpa quaerat expedita sed, enim eligendi neque necessitatibus
+      fuga harum quod. Deleniti, dolore facere. Ut qui illo, atque numquam expedita optio eos ab ex amet quae!
+      Debitis nulla officiis ipsa earum architecto magnam ducimus, blanditiis facilis saepe dolore? Ratione
+      velit amet optio natus magni eaque ipsam corporis, quas eligendi. Nisi quis distinctio doloribus
+      aspernatur?</p>
+  </div>
+  <div class="panel"></div>
 </div>
 {% endblock %}
-{% block css %}
+{% block contentcss %}
 <style>
-#main_link {
-  color: #fff;
-  background: var(--link-bg)
-}
-
-.wrapper {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-rows: auto auto 250px;
-  grid-gap: 20px
-}
-
-.widgets-container {
-  display: grid;
-  grid-auto-flow: column;
-  grid-gap: 20px
-}
-
-.weather-widget-container {
-  backdrop-filter: blur(5px);
-  height: 100%;
-  width: 100%;
-  color: #fff;
-  text-shadow: 0 0 5px #000000ee;
-  padding: 10px;
-  animation-name: weatherbg;
-  animation-duration: 14s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
-  align-items: center;
-  box-sizing: border-box
-}
-
-.wwc-content-box {
-  display: inline-block
-}
-
-.weather-day {
-  background: #36d1dc;
-  background: -webkit-linear-gradient(to right, #5b86e5, #36d1dc);
-  background: linear-gradient(to right, #5b86e5, #36d1dc);
-  background-size: 300% 300%
-}
-
-.weather-night {
-  background: #000046;
-  background: -webkit-linear-gradient(to right, #000046, #1cb5e0);
-  background: linear-gradient(to right, #000046, #1cb5e0);
-  background-size: 300% 300%
-}
-
-@-webkit-keyframes weatherbg {
-  0% {
-    background-position: 10% 0
+  #main_link {
+    color: #fff;
+    background: var(--link-bg)
   }
 
-  50% {
-    background-position: 91% 100%
+  .wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-rows: auto auto 250px;
+    grid-gap: 20px
   }
 
-  100% {
-    background-position: 10% 0
-  }
-}
-
-@-moz-keyframes weatherbg {
-  0% {
-    background-position: 10% 0
+  .widgets-container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 20px
   }
 
-  50% {
-    background-position: 91% 100%
+  .weather-widget-container {
+    backdrop-filter: blur(5px);
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    text-shadow: 0 0 5px #000000ee;
+    padding: 10px;
+    animation-name: weatherbg;
+    animation-duration: 14s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    align-items: center;
+    box-sizing: border-box
   }
 
-  100% {
-    background-position: 10% 0
-  }
-}
-
-@keyframes weatherbg {
-  0% {
-    background-position: 10% 0
+  .wwc-content-box {
+    display: inline-block
   }
 
-  50% {
-    background-position: 91% 100%
+  .weather-day {
+    background: #36d1dc;
+    background: -webkit-linear-gradient(to right, #5b86e5, #36d1dc);
+    background: linear-gradient(to right, #5b86e5, #36d1dc);
+    background-size: 300% 300%
   }
 
-  100% {
-    background-position: 10% 0
+  .weather-night {
+    background: #000046;
+    background: -webkit-linear-gradient(to right, #000046, #1cb5e0);
+    background: linear-gradient(to right, #000046, #1cb5e0);
+    background-size: 300% 300%
   }
-}
+
+  @-webkit-keyframes weatherbg {
+    0% {
+      background-position: 10% 0
+    }
+
+    50% {
+      background-position: 91% 100%
+    }
+
+    100% {
+      background-position: 10% 0
+    }
+  }
+
+  @-moz-keyframes weatherbg {
+    0% {
+      background-position: 10% 0
+    }
+
+    50% {
+      background-position: 91% 100%
+    }
+
+    100% {
+      background-position: 10% 0
+    }
+  }
+
+  @keyframes weatherbg {
+    0% {
+      background-position: 10% 0
+    }
+
+    50% {
+      background-position: 91% 100%
+    }
+
+    100% {
+      background-position: 10% 0
+    }
+  }
 </style>
 {% endblock %}

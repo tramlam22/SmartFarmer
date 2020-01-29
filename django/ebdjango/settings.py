@@ -29,9 +29,14 @@ ALLOWED_HOSTS = [
     'Testing-env.wy7afakpky.us-east-2.elasticbeanstalk.com',
     '127.0.0.1',
     'django-env.4mej33zdbc.us-west-2.elasticbeanstalk.com',
+    'testing-env-2.wy7afakpky.us-east-2.elasticbeanstalk.com',
+    '172.31.29.223',
     '192.168.0.11',
     '0.0.0.0',
     'localhost',
+    '18.219.221.140',
+    'www.uwuplants.org',
+    'uwuplants.org',
     ]
 
 # Application definition
