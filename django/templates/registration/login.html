@@ -1,46 +1,42 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}PharmSignin{% endblock %}
-{% block header %}
-	{% include "logo.html" %}
-{% endblock %}
-{% block sidebar %}
-{% endblock %}
+{% block headerlink %}{% url 'createaccount' %}{% endblock %}
+{% block regislink %}Register{% endblock %}
 {% block content %}
 <div class = "wrapper">
-	<div class="panel form-panel">
+	<div class="form-panel">
 		<div class="form-label">Sign in</div>
 		<form class="user-form" id="login_form" action = '' method='POST'>
 			{% csrf_token %}
-			<p>
         <label>Username</label>
         <input type="text" name="username">
-    </p>
-    <p>
         <label>Password</label>
         <input type="password" name="password">
-    </p>
 			<input class="form-submit" id="signin_button" type='submit' value ='Sign in'>
 		</form>
-		<a class="underline-link" href="{% url 'createaccount' %}">Create account</a>
 	</div>
 </div>
 {% endblock %}
-{% block headercss %}
-<style>
-.uwu-logo{
-  margin: 5px auto;
-}
-</style>
+{% block footer %}
 {% endblock %}
 {% block contentcss %}
 <style>
+.wel-header{
+	position: relative;
+}
+.regis-link{
+  color: rgb(29,29,29);
+}
+.site-content{
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #signin_label{
   display: flex;
   margin: auto;
-  text-align: center;
-}
-#login_form{
   text-align: center;
 }
 #create_account_label{
@@ -56,55 +52,6 @@
 }
 #create_account_link:hover{
   text-decoration: underline;
-}
-/*SAME IN CREATE ACCOUNT*/
-.underline-link{
-  color: black;
-  margin: 20px;
-  display: inline-block;
-}
-input[type=text], input[type=password]{
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  border: 1px solid rgb(206, 206, 206);
-  box-sizing: border-box;
-}
-.wrapper{
-  text-align: center;
-}
-.form-submit{
-  background-color: #93b5b3;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width:100%;
-  font-size: 20px;
-  border-radius: 0;
-  -webkit-appearance: none;
-}
-.form-submit:hover{
-  opacity: 0.8;
-}
-.form-panel{
-  max-width: 700px;
-  display: inline-block;
-  width: 100%;
-}
-.user-form{
-  width: 50%;
-  margin: auto;
-}
-.form-label{
-  height: 60px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
-  font-weight: 900;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>
 {% endblock %}

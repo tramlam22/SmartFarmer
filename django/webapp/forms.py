@@ -11,13 +11,13 @@ class createAccountForm(forms.ModelForm):
         required = 'True',
         label="First Name:",
         max_length=45, 
-        widget=forms.TextInput(attrs={'placeholder': 'First name'})
+        widget=forms.TextInput(attrs={'placeholder': 'First name', 'autocomplete': 'off'})
     )
     lastName = forms.CharField(
         required = 'True',
         label="Last Name:",
         max_length=45, 
-        widget=forms.TextInput(attrs={'placeholder': 'Last name'})
+        widget=forms.TextInput(attrs={'placeholder': 'Last name', 'autocomplete': 'off'})
     )
     email = forms.CharField(
         required = 'True',
@@ -28,13 +28,13 @@ class createAccountForm(forms.ModelForm):
     username = forms.CharField(
         required = 'True',
         label="Username:",max_length=45, 
-        widget=forms.TextInput(attrs={'placeholder': 'Username'})
+        widget=forms.TextInput(attrs={'placeholder': 'Username', 'autocomplete': 'off'})
     )
     password = forms.CharField(
         required = 'True',
         label="Password:",
         max_length=45, 
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password'})
+        widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'autocomplete': 'new-password'})
     )
 
     class Meta:

@@ -102,8 +102,41 @@
         }
     </style>
     {% else %}
-        {% block headercss %}
-        {% endblock %}
+    <style>
+     .wel-header{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .page-title-logo{ 
+  margin: 0;
+  font-size: 32px;
+  width: 190px;
+  color: white;
+  font-family: monospace;
+  background: #159957;/*fallback*/
+  background: -webkit-linear-gradient(to right, #155799, #159957);
+  background: linear-gradient(to right, #155799, #159957);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+	}
+	.wel-link{
+    font-family: monospace;
+    text-decoration: none;
+    color: black;
+  }
+  .regis-link{
+      font-size: 3.2rem;
+      color: white;
+  }
+    </style>
     {% endif %}
     {% block contentcss %}{% endblock %}
     <style>
@@ -135,6 +168,7 @@
         }
 	}
     </style>
+    {% block logocss %}{% endblock %}
     {% block js %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -179,18 +213,25 @@
             </div>
         	</aside>
         {% else %}
-        	{% block header %}
-        	{% endblock %}
+            <header class="wel-header border-box">
+                {% include 'logo.html' %}
+                <a class="wel-link regis-link" href="{% block headerlink %}{% endblock %}" aria-label="Sign in">{% block regislink %}Sign
+                    in{% endblock %}</a>
+            </header>
 		{% endif %}
         <main class="site-content">
             <div class="center">{% block content %}{% endblock %}</div>
         </main>
-        <footer class="footer-container">
-            <p>&copy; Copyright 2019</p>
-        </footer>
+        {% block footer %}
+        	<footer class="footer-container">
+            	<p>&copy; Copyright 2019</p>
+        	</footer>
+        {% endblock %}
     </div>
     {% if user.is_authenticated %}
     <script src="{% static 'base.js' %}"></script>
+    {% else %}
+    
     {% endif %}
     {% block weatherjs %}{% endblock %}
     {% block endjs %}{% endblock %}

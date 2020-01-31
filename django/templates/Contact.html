@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}PharmContact{% endblock %}
-{% block header %}
-	{% include "logo.html" %}
-{% endblock %}
+{% block headerlink %}{% url 'login' %}{% endblock %}
 {% block sidebar %}
 {% endblock %}
 {% block content %}
@@ -19,15 +17,14 @@
 	</div>
 </div>
 {% endblock %}
-{% block headercss %}
-<style>
-	.uwu-logo {
-		margin: 5px auto;
-	}
-</style>
-{% endblock %}
 {% block contentcss %}
 <style>
+	.wel-header{
+		position: relative;
+	}
+	.regis-link{
+		color: rgb(46, 46, 46);
+	}
 	#contact_link{
   		color:white;
   		background: var(--link-bg);

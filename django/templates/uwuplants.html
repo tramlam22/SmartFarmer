@@ -1,27 +1,25 @@
 {% extends 'base.html' %}
 {% block title %}Welcome{% endblock %}
+{% block headerlink %}{% url 'login' %}{% endblock %}
 {% block endjs %}
 <script>
   const welHeader = document.querySelector(".wel-header");
+  welHeader.style.transition = "0.25s";
+
   if (window.scrollY > 20) {
-      welHeader.style.backgroundColor = "#13547a";
+    welHeader.style.backgroundColor = "#13547a";
   } else {
     welHeader.style.backgroundColor = "rgba(0,0,0,0)";
   }
-  window.addEventListener('scroll', ()=>{
-		if (window.scrollY > 20){
-    	welHeader.style.backgroundColor = "#13547a";
-  	}else{
-    	welHeader.style.backgroundColor = "rgba(0,0,0,0)";
-  	}
+  window.addEventListener('scroll', () => {
+    welHeader.style.transition = "0.25s";
+    if (window.scrollY > 20) {
+      welHeader.style.backgroundColor = "#13547a";
+    } else {
+      welHeader.style.backgroundColor = "rgba(0,0,0,0)";
+    }
   });
 </script>
-{% endblock %}
-{% block header %}
-<header class="wel-header border-box">
-  {% include 'logo.html' %}
-  <a class="wel-signin wel-link" href="{% url 'login' %}" aria-label="Sign in">Sign in</a>
-</header>
 {% endblock %}
 {% block content %}
 <div class="wrapper">
@@ -44,43 +42,6 @@
   <div class="to-be-named"></div>
 
 </div>
-{% endblock %}
-{% block headercss %}
-<style>
-  .wel-header{
-    height: 50px;
-    width: 100%;
-    display: flex;
-    padding: 0 20px;
-    position: fixed;
-    top: 0;
-    justify-content: space-between;
-    align-items: center;
-    transition: 0.25s;
-  }
-  .page-title-logo{ 
-  margin: 0;
-  font-size: 32px;
-  width: 190px;
-  color: white;
-  font-family: monospace;
-  background: #159957;/*fallback*/
-  background: -webkit-linear-gradient(to right, #155799, #159957);
-  background: linear-gradient(to right, #155799, #159957);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-	}
-	.wel-link{
-    font-family: monospace;
-    text-decoration: none;
-    color: black;
-  }
-  .wel-signin{
-    font-size: 3.2rem;
-		color: white;
-  }
-</style>
 {% endblock %}
 {% block contentcss %}
 <style>
