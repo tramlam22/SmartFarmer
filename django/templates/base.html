@@ -50,14 +50,15 @@
             grid-template-columns: 1fr 5fr 1fr;
             box-sizing: border-box;
         }
+
         .open-sidebar-button {
             justify-self: right;
         }
-    
+
         .button-svg {
             fill: var(--svg-open-sb-fill);
         }
-    
+
         .navbar {
             height: 100%;
             width: 100%;
@@ -65,7 +66,7 @@
             justify-content: center;
             box-sizing: border-box;
         }
-    
+
         .navbar ul {
             max-width: 760px;
             width: 100%;
@@ -78,11 +79,11 @@
             grid-auto-flow: column;
             grid-template-columns: auto;
         }
-    
+
         .navbar li {
             display: inline-block;
         }
-    
+
         .navbar a {
             height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -96,77 +97,86 @@
             align-items: center;
             box-sizing: border-box;
         }
-    
+
         .navbar a:hover {
             color: #1b7be9;
         }
     </style>
     {% else %}
     <style>
-     .wel-header{
-    height: 50px;
-    width: 100%;
-    display: flex;
-    padding: 0 20px;
-    position: fixed;
-    top: 0;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-  }
-  .page-title-logo{ 
-  margin: 0;
-  font-size: 32px;
-  width: 190px;
-  color: white;
-  font-family: monospace;
-  background: #159957;/*fallback*/
-  background: -webkit-linear-gradient(to right, #155799, #159957);
-  background: linear-gradient(to right, #155799, #159957);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-	}
-	.wel-link{
-    font-family: monospace;
-    text-decoration: none;
-    color: black;
-  }
-  .regis-link{
-      font-size: 3.2rem;
-      color: white;
-  }
+        .wel-header {
+            height: 50px;
+            width: 100%;
+            display: flex;
+            padding: 0 20px;
+            position: fixed;
+            top: 0;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .page-title-logo {
+            margin: 0;
+            font-size: 32px;
+            width: 190px;
+            color: white;
+            font-family: monospace;
+            background: #159957;
+            /*fallback*/
+            background: -webkit-linear-gradient(to right, #155799, #159957);
+            background: linear-gradient(to right, #155799, #159957);
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .wel-link {
+            font-family: monospace;
+            text-decoration: none;
+            color: black;
+        }
+
+        .regis-link {
+            font-size: 3.2rem;
+            color: white;
+        }
     </style>
     {% endif %}
     {% block contentcss %}{% endblock %}
     <style>
-    @media only screen and (max-width: 1250px){
-  		.page-title-logo{
-    		width: 36px;
-    		justify-content: flex-start;
-    		overflow: hidden;
-  		}
-	}
-	@media only screen and (max-width: 1000px){
-  		.widgets-container {
-    		grid-auto-flow: row; 
-          }
-          .side-by-side{
-            grid-template-columns: auto;
+        @media only screen and (max-width: 1250px) {
+            .page-title-logo {
+                width: 36px;
+                justify-content: flex-start;
+                overflow: hidden;
+            }
         }
-	}
-	@media only screen and (max-width: 500px){
-        html {
-            font-size: 62.5%;
-            -webkit-text-size-adjust: none;
+
+        @media only screen and (max-width: 1000px) {
+            .widgets-container {
+                grid-auto-flow: row;
+            }
+
+            .side-by-side {
+                grid-template-columns: auto;
+            }
         }
-  		.navbar a {
-    		font-size: 1.7rem;
-  		}
-  		.form-submit {
-    		font-size: 14px;
+
+        @media only screen and (max-width: 500px) {
+            html {
+                font-size: 62.5%;
+                -webkit-text-size-adjust: none;
+            }
+
+            .navbar a {
+                font-size: 1.7rem;
+            }
+
+            .form-submit {
+                font-size: 14px;
+            }
         }
-	}
     </style>
     {% block logocss %}{% endblock %}
     {% block js %}{% endblock %}
@@ -178,60 +188,73 @@
 
 
         {% if user.is_authenticated %}
-            <header class="header-container">
-                {% include 'logo.html' %}
-                <nav class="navbar">
-                    <ul>
-                        <li><a id="main_link" href="{% url 'home' %}">Main</a></li>
-                        <li><a id="graphs_link" href="{% url 'graphs' %}">Graphs</a></li>
-                        <li><a id="about_link" href="{% url 'about' %}">About</a></li>
-                        <li><a id="contact_link" href="{% url 'contact' %}">Contact</a></li>
-                    </ul>
-                </nav>
-                <button class="button open-sidebar-button" onclick="openSidebar()" aria-label="Open sidebar">
-                    <svg class="button-svg" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 100 100" width="100%">
-                        <rect width="100" height="20" />
-                        <rect width="100" height="20" y="40" />
-                        <rect width="100" height="20" y="80" />
-                    </svg>
-                </button>
-            </header>
-        	<aside class="sidebar-container">
+        <header class="header-container">
+            {% include 'logo.html' %}
+            <nav class="navbar">
+                <ul>
+                    <li><a id="main_link" href="{% url 'home' %}">Main</a></li>
+                    <li><a id="graphs_link" href="{% url 'graphs' %}">Graphs</a></li>
+                    <li><a id="about_link" href="{% url 'about' %}">About</a></li>
+                    <li><a id="contact_link" href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="button open-sidebar-button" onclick="openSidebar()" aria-label="Open sidebar">
+                <svg class="button-svg" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 100 100"
+                    width="100%">
+                    <rect width="100" height="20" />
+                    <rect width="100" height="20" y="40" />
+                    <rect width="100" height="20" y="80" />
+                </svg>
+            </button>
+        </header>
+        <aside class="sidebar-container">
             <div class="sidebar">
                 <div class="header-user-container">
-                	<!-- <div id="sign_in_link" href="{% url 'login' %}" aria-label="User"> -->
+                    <!-- <div id="sign_in_link" href="{% url 'login' %}" aria-label="User"> -->
                     <div class="user-logo">
-                	  	<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"viewBox="0 0 258.75 258.75" width="100%">
-                	        <circle cx="129.375" cy="60" r="60"/>
-                	        <path d="M129.375,150c-60.061,0-108.75,48.689-108.75,108.75h217.5C238.125,198.689,189.436,150,129.375,150z"/>
-                	    </svg>
-                	</div>
-                	<div class="user-name-container">{{request.user}}</div>
-                	<button class="button close-aside" onclick="closeSidebar()">X</button>
-            	</div>
-                <button id="theme-button" class="button" onclick="themeChange()"></button>
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 258.75 258.75"
+                            width="100%">
+                            <circle cx="129.375" cy="60" r="60" />
+                            <path
+                                d="M129.375,150c-60.061,0-108.75,48.689-108.75,108.75h217.5C238.125,198.689,189.436,150,129.375,150z" />
+                        </svg>
+                    </div>
+                    <div class="user-name-container">{{request.user}}</div>
+                    <button class="button close-aside" onclick="closeSidebar()">X</button>
+                </div>
+                <div class="sidebar-links">
+                    <div class="link-box"><a class="common-link" href="{% url 'home' %}">Main</a></div>
+                    <div class="link-box"><a class="common-link" href="{% url 'graphs' %}">Graphs</a></div>
+                    <div class="link-box"><a class="common-link" href="{% url 'about' %}">About</a></div>
+                    <div class="link-box"><a class="common-link" href="{% url 'contact' %}">Contact</a></div>
+                </div>
+                <div class="signout-link">
+                    <a>Sign out</a>
+                    <button id="theme-button" class="button" onclick="themeChange()"></button>
+                </div>
             </div>
-        	</aside>
+        </aside>
         {% else %}
-            <header class="wel-header border-box">
-                {% include 'logo.html' %}
-                <a class="wel-link regis-link" href="{% block headerlink %}{% endblock %}" aria-label="Sign in">{% block regislink %}Sign
-                    in{% endblock %}</a>
-            </header>
-		{% endif %}
+        <header class="wel-header border-box">
+            {% include 'logo.html' %}
+            <a class="wel-link regis-link" href="{% block headerlink %}{% endblock %}"
+                aria-label="Sign in">{% block regislink %}Sign
+                in{% endblock %}</a>
+        </header>
+        {% endif %}
         <main class="site-content">
             <div class="center">{% block content %}{% endblock %}</div>
         </main>
         {% block footer %}
-        	<footer class="footer-container">
-            	<p>&copy; Copyright 2019</p>
-        	</footer>
+        <footer class="footer-container">
+            <p>&copy; Copyright 2019</p>
+        </footer>
         {% endblock %}
     </div>
     {% if user.is_authenticated %}
     <script src="{% static 'base.js' %}"></script>
     {% else %}
-    
+
     {% endif %}
     {% block weatherjs %}{% endblock %}
     {% block endjs %}{% endblock %}
