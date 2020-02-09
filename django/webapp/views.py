@@ -60,6 +60,7 @@ class SimpleGraphs(TemplateView):
     context = super(SimpleGraphs, self).get_context_data(**kwargs)
     sensor_data = sensorData("farm")
     context['object'] = sensor_data.createTestGraph()
+    context['object2'] = sensor_data.createTestGraph()
     #context['object'] = plots.get_graph()
     return context
     

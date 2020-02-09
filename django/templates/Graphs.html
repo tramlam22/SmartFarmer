@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}PharmGraphs{% endblock %}
-{% block js %}<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->{% endblock %}
+{% block js %}
+<!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+<script src="{% static 'plotly-basic.min.js' %}"></script>
+{% endblock %}
 {% block content %}
 <div class = "wrapper">
 	<div class="panel title-panel">
@@ -9,8 +12,12 @@
 	</div>
 	<div class = "graph-container">
 		<div id = "graph">	
-			<script src="{% static 'plotly-basic.min.js' %}"></script>
 			{{object|safe}}
+		</div>
+	</div>
+	<div class = "graph-container">
+		<div id = "graph">	
+			{{object2|safe}}
 		</div>
 	</div>
 	<div class = "panel article-section">
