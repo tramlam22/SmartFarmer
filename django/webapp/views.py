@@ -3,14 +3,12 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.views.generic import TemplateView
-from .models import Testtemp
-from .import plots
+#from .import plots
+from webapp.plots import *
 from webapp.forms import *
 import requests
 from django.http import HttpRequest
 #or from .models import (name of class)
-
-''' Create your views here. '''
 
 ''' index page '''
 def home_view(request):
@@ -60,7 +58,9 @@ class SimpleGraphs(TemplateView):
 
   def get_context_data(self,**kwargs):
     context = super(SimpleGraphs, self).get_context_data(**kwargs)
-    context['object'] = plots.get_graph()
+    sensor_data = sensorData("farm")
+    context['object'] = sensor_data.createTestGraph()
+    #context['object'] = plots.get_graph()
     return context
     
 
