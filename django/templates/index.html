@@ -14,7 +14,7 @@
     weatherWidget.classList.add("weather-night");
   }
   function getAjax(url, success) {
-   	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
     xhr.open('GET', url);
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.onreadystatechange = function () {
@@ -46,61 +46,54 @@
 {% endblock %}{% block title %}PharmHome{% endblock %}
 {% block content %}
 <div class="wrapper">
-  <div class="widgets-section">
-    <h2 class="h2">Welcome {{request.user}}!</h2>
-    <div class="widgets-container">
-      <div class="widget-panel" id="data-panel-1">
-        <!--widget1-->
-        <div class="weather-widget-container weather-day">
-          <div class="wwc-content-box">
-            <h2 class="city" style="margin:0; line-height: 50px; overflow: hidden;">{{city}}</h2>
-            <div style="display: flex; justify-content: center;">
-              <p class="temperature" style="font-size: 40px; margin: 0; width: 120px; overflow: hidden;">
-                {{temperature}}&#176;
-              </p>
-            </div>
-          </div>
-          <div class="wwc-content-box"><img class="weathericon" src="../static/weathericons/{{icon}}.svg" alt="Image"
-              width="100px">
-            <p class="description" style="font-size: 24px; margin: 0;">{{description}}</p>
+  <h2 class="h2">Welcome {{request.user}}!</h2>
+  <div class="row">
+    <div class="widget-panel data-panel-1">
+      <!--widget1-->
+      <div class="weather-widget-container weather-day">
+        <div class="wwc-content-box">
+          <h2 class="city" style="margin:0; line-height: 50px; overflow: hidden;">{{city}}</h2>
+          <div style="display: flex; justify-content: center;">
+            <p class="temperature" style="font-size: 40px; margin: 0; width: 120px; overflow: hidden;">
+              {{temperature}}&#176;
+            </p>
           </div>
         </div>
-      </div>
-      <div class="widget-panel" id="data-panel-2">
-        <!--widget2-->
-        <h4>Ph Level</h4>
-        <p>12345</p>
-      </div>
-      <div class="widget-panel" id="data-panel-3">
-        <!--widget3-->
-        <h4>ET</h4>
-        <p>1,000,000</p>
-      </div>
-      <div class="widget-panel" id="data-panel-4">
-        <!--widget4-->
-        <h4>Temperature</h4>
-        <p>30 Degrees Celcius</p>
+        <div class="wwc-content-box"><img class="weathericon" src="../static/weathericons/{{icon}}.svg" alt="Image"
+            width="100px">
+          <p class="description" style="font-size: 24px; margin: 0;">{{description}}</p>
+        </div>
       </div>
     </div>
+    <div class="widget-panel data-panel-2">
+      <!--widget2-->
+      <h4>Ph Level</h4>
+      <p>12345</p>
+    </div>
   </div>
-  <div class="article-section">
-    <h2 class="h2">Green Leafs</h2>
-    <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-      ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-      fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-      deserunt mollit anim id est laborum.</p>
-    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, qui.</p>
-    <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Neque modi dicta totam aliquid eveniet sint et
-      vel earum repellendus nisi unde cum corporis incidunt necessitatibus delectus consequatur ad tenetur
-      aspernatur, reprehenderit molestiae eius aut! Asperiores sunt libero assumenda alias nisi reiciendis
-      molestiae ullam delectus eaque laboriosam culpa quaerat expedita sed, enim eligendi neque necessitatibus
-      fuga harum quod. Deleniti, dolore facere. Ut qui illo, atque numquam expedita optio eos ab ex amet quae!
-      Debitis nulla officiis ipsa earum architecto magnam ducimus, blanditiis facilis saepe dolore? Ratione
-      velit amet optio natus magni eaque ipsam corporis, quas eligendi. Nisi quis distinctio doloribus
-      aspernatur?</p>
+  <div class="row">
+    <div class="widget-panel data-panel-3">
+      <!--widget3-->
+      <h4>ET</h4>
+      <p>1,000,000</p>
+    </div>
+    <div class="widget-panel data-panel-4">
+      <!--widget4-->
+      <h4>Temperature</h4>
+      <p>30 Degrees Celcius</p>
+    </div>
+
+    <div class="widget-panel data-panel-5">
+      <h4>Thing</h4>
+      <p>30493</p>
+    </div>
+
+    <div class="widget-panel data-panel-6">
+      <h4>Thing2</h4>
+      <p>24320</p>
+    </div>
+
   </div>
-  <div class="panel"></div>
 </div>
 {% endblock %}
 {% block contentcss %}
@@ -113,14 +106,14 @@
   .wrapper {
     display: grid;
     grid-gap: 20px;
-    grid-template-rows: auto auto 250px;
-    grid-gap: 20px
   }
 
-  .widgets-container {
+  .row {
     display: grid;
+    grid-gap: 20px;
+    grid-auto-columns: 1fr;
     grid-auto-flow: column;
-    grid-gap: 20px
+    width: 100%;
   }
 
   .weather-widget-container {
@@ -158,6 +151,36 @@
     background: linear-gradient(to right, #000046, #1cb5e0);
     background-size: 300% 300%
   }
+
+  .data-panel-1 {
+    height: 250px;
+  }
+
+  .data-panel-2 {
+    height: 250px;
+  }
+
+  .data-panel-3 {
+    height: 150px;
+  }
+
+  .data-panel-4 {
+    height: 150px;
+  }
+
+  .data-panel-5 {
+    height: 150px;
+  }
+
+  .data-panel-6 {
+    height: 150px;
+  }
+
+
+
+
+
+
 
   @-webkit-keyframes weatherbg {
     0% {

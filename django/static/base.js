@@ -1,6 +1,6 @@
 const bt = document.querySelector("#theme-button"); /*buttonTheme*/
 
-function buttonLightTheme(){
+function buttonLightTheme() {
     bt.innerHTML = "&#9788;";
     bt.style.backgroundColor = "white";
 }
@@ -30,32 +30,27 @@ function themeChange() {
 }
 /*////////////SIDEBAR/////////// */
 const aside = document.querySelector(".sidebar-container");
-let opening = false;
-let isWidthZero = false;
+const pageWrapper = document.querySelector(".base-page-wrapper");
+const navbar = document.querySelector(".header-container");
+let isOpened = false;
 function openSidebar() {
-    aside.style.width = "320px";
-    opening = true;
-    isWidthZero = false;
-}
-function isSideBarOpened() {
-    if (opening && !isWidthZero) {
-        opening = false;
-        return false;
-    } else {
-        return true;
-    }
+    aside.style.marginLeft = "0px";
+    pageWrapper.style.marginLeft = "170px";
+    navbar.style.marginLeft = "-170px";
+    isOpened = true;
 }
 function closeSidebar() {
-    aside.style.width = "0";
-    isWidthZero = true;
+    aside.style.marginLeft = "-170px";
+    pageWrapper.style.marginLeft = "0";
+    navbar.style.marginLeft = "0";
+    isOpened = false;
 }
-function so(isCI) {
-    if (!isCI && isSideBarOpened()) {
+
+function changeSidebarState() {
+    if (isOpened) {
         closeSidebar();
+    } else {
+        openSidebar();
     }
 }
-document.addEventListener("click", function (event) {
-    let isClickedInside = aside.contains(event.target);
-    so(isClickedInside);
-});
 /*///////////////////////////////////////////*/

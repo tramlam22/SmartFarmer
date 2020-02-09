@@ -1,21 +1,22 @@
 html {
   font-size: 62.5%; /*makes default font 10px?*/
   height: 100%;
-  --body-bg: #fff;
-  --panel-bg-color: #CEFCE9;
-  --widget-panel-bg: #aaecaa;
+  --body-bg: rgb(236, 237, 241);
+  --panel-bg-color: rgb(255, 255, 255);
+  --widget-panel-bg: #ffffff;
   --link-bg: #18997259;
   --text-color: #292929;
   --link-color: #0e759e;
   --panel-border-color: #cccccc;
   --nav-bg-webkit: -webkit-linear-gradient(to right,#7affd7,#a9ff7a);
   --nav-bg-color: linear-gradient(to right,#7affd7,#a9ff7a);
-  --aside-bg: #fff;
+  --aside-bg: #ffffff;
   --footer-bg-color: #547a70;
   --footer-text-color: white;
   --footer-border-color: #949494;
   --svg-open-sb-fill: #80808099;
-  --extended-shadow: 0 4px 8px 0 #00000033, 0 6px 20px 0 #00000030;
+  --extended-shadow: 0 4px 8px 0 #00000033;
+  --sidebar-header-color: rgb(68,109,217);
 }
 html[data-theme="dark"] {
   --body-bg: black;
@@ -31,6 +32,7 @@ html[data-theme="dark"] {
   --footer-bg-color: #323232;
   --footer-border-color: #024350;
   --svg-open-sb-fill: #fff;
+  --sidebar-header-color: #fff;
 }
 body {
   margin: 0;
@@ -45,40 +47,42 @@ body {
   font-size: 2rem;
   display: grid;
   position: relative;
-  grid-template-columns: auto;
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
   	"header"
     "main"
     "footer";
+  transition: .3s;
 }
 /*//////////////SIDEBAR//////////////////*/
 .sidebar-container {
-  grid-area: aside;
   height: 100%;
-  width: 0;
+  margin-left: -170px;
   background: var(--aside-bg);
-  z-index: 5;
+  z-index: 3;
   position: fixed;
-  right: 0;
-  box-shadow: 3px 0 6px 2px #2021244f;
+  left: 0;
   transition: .3s;
+  top: 0;
+  /* overflow: hidden; */
 }
 .sidebar {
   height: 100%;
-  width: 320px;
-  padding: 5px;
+  width: 170px;
+  padding: 60px 5px 5px 10px;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  
   /* align-content: flex-start; */
   box-sizing: border-box;
+  transition: 0.3s;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .close-aside {
   float: right;
 }
 .user-logo {
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   text-align: center;
   text-decoration: none;
   color: black;
@@ -96,11 +100,10 @@ body {
 }
 .user-name-container {
   background-color: aquamarine;
-  height: 40px;
-  line-height: 40px;
-  font-size: 2.3rem;
+  height: 20px;
+  line-height: 20px;
+  font-size: 2rem;
   padding: 0 5px;
-  margin-left: 5px;
   border-radius: 5px;
   color: black;
   float: left;
@@ -118,9 +121,12 @@ body {
   /*box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.253);*/
   width: auto;
   height: auto;
-  font-size: xx-large;
+  font-size: 1.2rem;
   color: var(--text-color);
   text-decoration: none;
+}
+.h6{
+  margin: 0;
 }
 .signout-link{
   justify-content: center;
@@ -128,27 +134,26 @@ body {
   /*grid-auto-flow: column;*/
   grid-template-columns: 4fr 1fr;
   align-content: space-between;
-  font-size: xx-large;
+  font-size: 1.5rem;
   align-self: flex-end;
 }
 
 .sidebar-links{
   display: grid;
   align-self: start;
-  margin-top: 20px;
-  grid-gap: 20px;
+  grid-gap: 5px;
+  justify-content: center;
 }
 .header-user-container{
   height: auto;
+  color: var(--sidebar-header-color);
 }
-.link-box{
-  border-bottom: 1px solid var(--text-color);
-}
+
 
 
 /*///////////////MAIN////////////////////*/
 .site-content {
-  margin-top: 50px;
+  margin-top: 30px;
   grid-area: main;
   height: 100%;
   width: 100%;
@@ -165,7 +170,8 @@ body {
 /*////////FOOTER//////////*/
 .footer-container {
   grid-area: footer;
-  min-height: 150px;
+  min-height: 100px;
+  margin: 20px;
   font-family: monospace;
   color: var(--footer-text-color);
   font-size: 3rem;
@@ -181,8 +187,8 @@ body {
 }
 .page-title-logo {
   margin: 0;
-  font-size: 32px;
-  width: 190px;
+  font-size: 18px;
+  width: 140px;
   color: white;
   font-family: monospace;
   background: #159957;/*fallback*/
@@ -207,7 +213,6 @@ body {
   background: #aaecaa; /*fallback*/
   background: var(--widget-panel-bg);
   box-shadow: var(--extended-shadow);
-  height: 200px;
   box-sizing: border-box;
 }
 .article-section{
@@ -225,8 +230,8 @@ body {
 .button {
   margin: 0;
   padding: 0;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   font-size: 22px;
   border-radius: 0;
   border: 0;
