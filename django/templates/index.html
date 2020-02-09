@@ -46,7 +46,16 @@
 {% endblock %}{% block title %}PharmHome{% endblock %}
 {% block content %}
 <div class="wrapper">
-  <h2 class="h2">Welcome {{request.user}}!</h2>
+  <div class="row">
+    <div class="widget-panel data-panel-0">
+      <div class="notification-panel">
+        Notifications<br><br>New sensors installed!
+      </div>
+      <div class="suggestions-panel">
+        Suggestions<br><br>Decrease water use in plot 3.
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="widget-panel data-panel-1">
       <!--widget1-->
@@ -152,31 +161,67 @@
     background-size: 300% 300%
   }
 
+  .data-panel-0 {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    height: 150px;
+  }
+
   .data-panel-1 {
     height: 250px;
   }
 
   .data-panel-2 {
     height: 250px;
+    background: -webkit-linear-gradient(to right, #f19011, #f5af19);
+    background: linear-gradient(to right, #f19011, #f5af19);
+    color: white;
   }
 
   .data-panel-3 {
     height: 150px;
+    background: -webkit-linear-gradient(to right, #38ef7d, #21eb53);
+    background: linear-gradient(to right, #38ef7d, #21eb53);
+    color: white;
   }
 
   .data-panel-4 {
     height: 150px;
+    background: -webkit-linear-gradient(to right, #8f94fb, #8388e6);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #8f94fb, #8488df);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
   }
 
   .data-panel-5 {
     height: 150px;
+    background: -webkit-linear-gradient(to right, #ffd151, #ffe259);
+    background: linear-gradient(to right, #ffd151, #ffe259);
+    color: white;
   }
 
   .data-panel-6 {
     height: 150px;
+    background: -webkit-linear-gradient(to right, #ff4800, #ff6969);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ff4800, #ff6969);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
   }
 
+  .notification-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
+  .suggestions-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
 
 

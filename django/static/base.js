@@ -2,11 +2,9 @@ const bt = document.querySelector("#theme-button"); /*buttonTheme*/
 
 function buttonLightTheme() {
     bt.innerHTML = "&#9788;";
-    bt.style.backgroundColor = "white";
 }
 function buttonDarkTheme() {
     bt.innerHTML = "&#9789;";
-    bt.style.backgroundColor = "black";
 }
 
 if (localStorage.getItem("isDarkModeOn") === "true") {

@@ -8,8 +8,10 @@ html {
   --text-color: #292929;
   --link-color: #0e759e;
   --panel-border-color: #cccccc;
-  --nav-bg-webkit: -webkit-linear-gradient(to right,#7affd7,#a9ff7a);
-  --nav-bg-color: linear-gradient(to right,#7affd7,#a9ff7a);
+  --nav-bg-webkit: -webkit-linear-gradient(to right,rgb(62, 219, 188),rgb(62, 219, 198));
+  --nav-bg-color: linear-gradient(to right,rgb(62, 219, 188),rgb(62, 219, 185));
+  /*--nav-bg-webkit: white;
+  --nav-bg-color: white;*/
   --aside-bg: #ffffff;
   --footer-bg-color: #547a70;
   --footer-text-color: white;
@@ -69,13 +71,19 @@ body {
 .sidebar {
   height: 100%;
   width: 170px;
-  padding: 60px 5px 5px 10px;
+  padding: 60px 5px 5px 5px;
   display: grid;
-  
   /* align-content: flex-start; */
   box-sizing: border-box;
   transition: 0.3s;
   font-family: Arial, Helvetica, sans-serif;
+  align-items: flex-start;
+}
+.sidebar-content{
+  display: grid;
+  grid-auto-rows: auto;
+  height: auto;
+  grid-gap: 20px;
 }
 .close-aside {
   float: right;
@@ -119,17 +127,27 @@ body {
 }
 .common-link{
   /*box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.253);*/
-  width: auto;
-  height: auto;
+  width: 80%;
+  height: 20px;
   font-size: 1.2rem;
-  color: var(--text-color);
   text-decoration: none;
+  background: linear-gradient(to right,rgb(86, 212, 187),rgb(78, 211, 193));
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  border-radius: 2px;
+}
+.common-link:hover{
+  opacity: .8;
 }
 .h6{
   margin: 0;
 }
 .signout-link{
   justify-content: center;
+  align-items: center;
   display: grid;
   /*grid-auto-flow: column;*/
   grid-template-columns: 4fr 1fr;
@@ -142,14 +160,26 @@ body {
   display: grid;
   align-self: start;
   grid-gap: 5px;
-  justify-content: center;
+  width: 100%;
 }
+
 .header-user-container{
   height: auto;
   color: var(--sidebar-header-color);
 }
 
-
+.signout-button{
+  text-decoration: none;
+  background: linear-gradient(45deg,rgb(66,106,217),rgb(91, 129, 231));
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+}
+.signout-button:hover{
+	opacity: .8;
+}
 
 /*///////////////MAIN////////////////////*/
 .site-content {
