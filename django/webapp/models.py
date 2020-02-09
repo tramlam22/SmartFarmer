@@ -7,6 +7,7 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 
+
 class Account(models.Model):
     username = models.CharField(primary_key=True, max_length=45)
     password = models.CharField(max_length=45, blank=True, null=True)
@@ -14,6 +15,7 @@ class Account(models.Model):
     class Meta:
         managed = False
         db_table = 'account'
+
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -89,6 +91,22 @@ class Comments(models.Model):
         db_table = 'comments'
 
 
+class dataMCU(models.Model):
+    mcu_no = models.ForeignKey('Moduleplantlink', models.DO_NOTHING, db_column='mcu_no', primary_key=True)
+    data_date = models.DateField()
+    soil_moisture = models.IntegerField()
+    temp = models.IntegerField()
+    humidity = models.IntegerField()
+    light_reading = models.IntegerField()
+    heat_index = models.IntegerField()
+    battery_lvl = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'dataMCU'
+        unique_together = (('mcu_no', 'data_date'),)
+
+
 class DjangoAdminLog(models.Model):
     action_time = models.DateTimeField()
     object_id = models.TextField(blank=True, null=True)
@@ -133,8 +151,18 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
+class modulePlantLink(models.Model):
+    username = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='username')
+    plant_type = models.CharField(max_length=45)
+    mcu_no = models.IntegerField(primary_key=True)
+
+    class Meta:
+        managed = False
+        db_table = 'modulePlantLink'
+
+
 class Testtemp(models.Model):
-    temp = models.DecimalField(max_digits=7, decimal_places=2, blank=True, null=True)
+    temp = models.DecimalField(max_digits=10, decimal_places=7)
 
     class Meta:
         managed = False

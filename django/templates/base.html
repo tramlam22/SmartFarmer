@@ -272,7 +272,9 @@
 
 
                 <div class="signout-link">
-                    <a>Sign out</a>
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Sign out</a>
+                    {% endif %}
                     <button id="theme-button" class="button" onclick="themeChange()"></button>
                 </div>
             </div>

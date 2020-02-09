@@ -144,3 +144,5 @@ STATICFILES_DIRS = [
 
 #redirects user to the homerpage
 LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'uwuplants'
