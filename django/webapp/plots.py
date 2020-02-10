@@ -20,9 +20,21 @@ class sensorData():
 
     #get avg graphs for certain time intervals
     #default page should be at hours
-    def getAvgGraph(self, typeofData, dateInterval):
-     #   timeData, x, y = [], [], []
-        cmd = """SELECT date_data, AVG({})FROM dataMCU GROUP BY DATE(date_data), HOUR(date_data)""".format(typeofData, moduleList[num])
+    def getAvgGraph(self, typeofData, timeInterval):
+        
+        if timeInterval == "hour":
+            cmd = """SELECT date_data, AVG({})
+                    FROM dataMCU 
+                    GROUP BY DATE(date_data), HOUR(date_data)""".format(typeofData)
+        elif timeInterval == "day":
+            cmd = """SELECT date_data, AVG({})
+                    FROM dataMCU 
+                    GROUP BY DATE(date_data)""".format(typeofData)
+        elif timeInterval == "months":
+            cmd = """SELECT date_data, AVG({})
+                    FROM dataMCU 
+                    GROUP BY MONTH(date_data)""".format(typeofData)
+
         cursor.execute(cmd)
         avgDataList = cursor.fetchall()
         x = [row[0] for row in avgDataList]
@@ -38,6 +50,19 @@ class sensorData():
         plot_div = plot(figure, output_type='div', include_plotlyjs=False)
         return plot_div
 
+    #get graphs for each module
+    def moduleGraph(self, typeofData, timeInterval):
+        for module in moduleList:
+            cmd = """SELECT AVG({})
+                    FROM dataMCU
+                    WHERE mcu_no = {}
+                    GROUP BY HOUR(date_data)""".format(typeofData, module)
+        cursor.execute(cmd)
+        moduleData = cursor.fetchall()
+        x = [row[0] for row in moduleData]
+
+
+    #for testing purposes
     def createTestGraph(self):
         data = Testtemp.objects.all()
         x = [row.id for row in data]
