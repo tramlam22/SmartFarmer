@@ -1,6 +1,6 @@
-const CACHE_NAME = 'my-site-cache-v'; //+ new Date().getTime();
+const CACHE_NAME = 'my-site-cache-v3'; //+ new Date().getTime();
 const urlsToCache = [
-  //  'static/base.js',
+    'static/base.js',
 ];
 
 self.addEventListener('install', function (event) {

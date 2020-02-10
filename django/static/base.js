@@ -31,24 +31,49 @@ const aside = document.querySelector(".sidebar-container");
 const pageWrapper = document.querySelector(".base-page-wrapper");
 const navbar = document.querySelector(".header-container");
 let isOpened = false;
-function openSidebar() {
+function openSidebar(mobile) {
     aside.style.marginLeft = "0px";
-    pageWrapper.style.marginLeft = "170px";
-    navbar.style.marginLeft = "-170px";
     isOpened = true;
+    if(!mobile){
+		pageWrapper.style.marginLeft = "170px";
+    }
 }
-function closeSidebar() {
+function closeSidebar(mobile) {
     aside.style.marginLeft = "-170px";
-    pageWrapper.style.marginLeft = "0";
-    navbar.style.marginLeft = "0";
     isOpened = false;
+    if(!mobile){
+        pageWrapper.style.marginLeft = "0";
+    }
 }
 
 function changeSidebarState() {
-    if (isOpened) {
-        closeSidebar();
-    } else {
-        openSidebar();
+    if (window.matchMedia('screen and (max-width: 1000px)').matches){
+        aside.style.boxShadow = "0 0 8px 0px rgba(0,0,0,0.3)";
+		if (isOpened) {
+        	closeSidebar(true);
+    	} else {
+        	openSidebar(true);
+    	}
+    }else{
+        aside.style.boxShadow = "none";
+        if (isOpened) {
+        	closeSidebar(false);
+    	} else {
+        	openSidebar(false);
+    	}
     }
 }
+window.addEventListener('resize', ()=>{
+    if (window.matchMedia('screen and (max-width: 1000px)').matches){
+        pageWrapper.style.marginLeft = "0";
+        aside.style.boxShadow = "0 0 8px 0px rgba(0,0,0,0.3)";
+    }else{
+        aside.style.boxShadow = "none";
+		if (isOpened) {
+        	pageWrapper.style.marginLeft = "170px";
+    	} else {
+        	pageWrapper.style.marginLeft = "0";
+    	}
+    }
+});
 /*///////////////////////////////////////////*/

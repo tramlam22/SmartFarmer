@@ -1,6 +1,6 @@
 html {
-  font-size: 62.5%; /*makes default font 10px?*/
   height: 100%;
+  font-size: 62.5%; /*makes default font 10px?*/
   --body-bg: rgb(236, 237, 241);
   --panel-bg-color: rgb(255, 255, 255);
   --widget-panel-bg: #ffffff;
@@ -37,24 +37,20 @@ html[data-theme="dark"] {
   --sidebar-header-color: #fff;
 }
 body {
+  min-height: 100%;
   margin: 0;
   border: 0;
-  height: 100%;
   min-width: 320px;
   background: var(--body-bg);
   color: var(--text-color);
 }
 .base-page-wrapper {
-  height: 100%;
+  min-height: 100vh;
   font-size: 2rem;
-  display: grid;
-  position: relative;
-  grid-template-rows: auto 1fr auto;
-  grid-template-areas:
-  	"header"
-    "main"
-    "footer";
   transition: .3s;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-rows: 1fr auto;
 }
 /*//////////////SIDEBAR//////////////////*/
 .sidebar-container {
@@ -184,8 +180,6 @@ body {
 /*///////////////MAIN////////////////////*/
 .site-content {
   margin-top: 30px;
-  grid-area: main;
-  height: 100%;
   width: 100%;
   text-align: center;
   box-sizing: border-box;
@@ -199,7 +193,6 @@ body {
 }
 /*////////FOOTER//////////*/
 .footer-container {
-  grid-area: footer;
   min-height: 100px;
   margin: 20px;
   font-family: monospace;
@@ -285,8 +278,9 @@ body {
   padding-bottom: 30px;
   margin-bottom: 50px;
   /* box-shadow: 0 0 16px 2px #d8dcfd; */
-  box-shadow: 0 5px 40px 0px #bdbcc7cb;
+  box-shadow: 0 5px 40px -20px #bdbcc7cb;
   backdrop-filter: blur(40px);
+  transition: 0.3s;
 }
 .underline-link{
   color: black;
