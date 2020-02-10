@@ -1,12 +1,10 @@
 const bt = document.querySelector("#theme-button"); /*buttonTheme*/
 
-function buttonLightTheme(){
+function buttonLightTheme() {
     bt.innerHTML = "&#9788;";
-    bt.style.backgroundColor = "white";
 }
 function buttonDarkTheme() {
     bt.innerHTML = "&#9789;";
-    bt.style.backgroundColor = "black";
 }
 
 if (localStorage.getItem("isDarkModeOn") === "true") {
@@ -30,32 +28,52 @@ function themeChange() {
 }
 /*////////////SIDEBAR/////////// */
 const aside = document.querySelector(".sidebar-container");
-let opening = false;
-let isWidthZero = false;
-function openSidebar() {
-    aside.style.width = "320px";
-    opening = true;
-    isWidthZero = false;
-}
-function isSideBarOpened() {
-    if (opening && !isWidthZero) {
-        opening = false;
-        return false;
-    } else {
-        return true;
+const pageWrapper = document.querySelector(".base-page-wrapper");
+const navbar = document.querySelector(".header-container");
+let isOpened = false;
+function openSidebar(mobile) {
+    aside.style.marginLeft = "0px";
+    isOpened = true;
+    if(!mobile){
+		pageWrapper.style.marginLeft = "170px";
     }
 }
-function closeSidebar() {
-    aside.style.width = "0";
-    isWidthZero = true;
-}
-function so(isCI) {
-    if (!isCI && isSideBarOpened()) {
-        closeSidebar();
+function closeSidebar(mobile) {
+    aside.style.marginLeft = "-170px";
+    isOpened = false;
+    if(!mobile){
+        pageWrapper.style.marginLeft = "0";
     }
 }
-document.addEventListener("click", function (event) {
-    let isClickedInside = aside.contains(event.target);
-    so(isClickedInside);
+
+function changeSidebarState() {
+    if (window.matchMedia('screen and (max-width: 1000px)').matches){
+        aside.style.boxShadow = "0 0 8px 0px rgba(0,0,0,0.3)";
+		if (isOpened) {
+        	closeSidebar(true);
+    	} else {
+        	openSidebar(true);
+    	}
+    }else{
+        aside.style.boxShadow = "none";
+        if (isOpened) {
+        	closeSidebar(false);
+    	} else {
+        	openSidebar(false);
+    	}
+    }
+}
+window.addEventListener('resize', ()=>{
+    if (window.matchMedia('screen and (max-width: 1000px)').matches){
+        pageWrapper.style.marginLeft = "0";
+        aside.style.boxShadow = "0 0 8px 0px rgba(0,0,0,0.3)";
+    }else{
+        aside.style.boxShadow = "none";
+		if (isOpened) {
+        	pageWrapper.style.marginLeft = "170px";
+    	} else {
+        	pageWrapper.style.marginLeft = "0";
+    	}
+    }
 });
 /*///////////////////////////////////////////*/
