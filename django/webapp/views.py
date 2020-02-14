@@ -10,6 +10,7 @@ import requests
 from django.http import HttpRequest
 # or from .models import (name of class)
 
+
 ''' index page '''
 
 
@@ -145,13 +146,13 @@ class data_collection_view(TemplateView):
     template_name = 'data_collection.html'
 
     def get(self, request):
-        data = request.META
-        print(data)
-        print(type(data))
-        return render(request, self.template_name, {'data': data})
+        msg = request.META
+        return render(request, self.template_name, {'data': msg})
 
     def post(self, request):
-        data = request.META
-        print(data)
-        print(type(data))
-        return render(request, self.template_name, {'data': data})
+        data = createDataForm(request.POST) # I think this is where the data gets validated and checked
+        
+        # insert code here to take data and send it over to database? no idea
+
+        msg = request.META
+        return render(request, self.template_name, {'data': msg})
