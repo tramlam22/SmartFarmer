@@ -147,12 +147,16 @@ class data_collection_view(TemplateView):
 
     def get(self, request):
         msg = request.META
+        print("get")
         return render(request, self.template_name, {'data': msg})
 
     def post(self, request):
-        data = createDataForm(request.POST) # I think this is where the data gets validated and checked
-        
-        # insert code here to take data and send it over to database? no idea
+        print("post")
+        data = createDataForm(request.POST)
+        msg = request.POST
 
-        msg = request.META
-        return render(request, self.template_name, {'data': msg})
+        if form.is_valid():
+          dataObj = form.cleaned_data
+          temp = dataObj['temperature']
+          print("hello")
+        return render(request, self.template_name, {'data': "hello\n" + msg})

@@ -57,15 +57,31 @@ class createDataForm(forms.ModelForm):
     #missing batterylvl and 
 
     # -- Justin 
-
-
-    class Meta:
-        model = dataMCU
-        fields = ['mcu_no','temperature', 'humidity', 'soil_moisture', 'soil_temp', 'light_reading', 'heat_index', 'battery_level']
-
     mcu_no = forms.CharField(
 
     )
     temperature = forms.CharField(
-        label='temp'
+        
     )
+    humidity = forms.CharField(
+
+    )
+    soil_moisture = forms.CharField(
+
+    )
+    light_reading = forms.CharField(
+        
+    )
+    soil_temp = forms.CharField(
+        
+    )
+    heat_index = forms.CharField(
+        
+    )
+    battery_level = forms.CharField(
+        
+    )
+
+    class Meta:
+        model = dataMCU
+        fields = ['mcu_no','temperature', 'humidity', 'soil_moisture', 'soil_temp', 'light_reading', 'heat_index', 'battery_level']
