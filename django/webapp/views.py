@@ -146,14 +146,14 @@ def service_workers(request):
 class data_collection_view(TemplateView):
     template_name = 'data_collection.html'
 
-    """    def get(self, request):
+    def get(self, request):
         msg = "getting request {} and {}".format(request.GET, request.POST)
-        return render(request, self.template_name, {'data': msg})"""
+        return render(request, self.template_name, {'data': msg})
 
     def post(self, request):
 
         data = createDataForm(request.POST)
-        msg = "hello there \n{}".format(data['mcu_no'])
+        msg = "hello there \n{} \n and the {}".format(data['mcu_no'],request.POST)
 
     #    if form.is_valid():
      #     dataObj = form.cleaned_data
