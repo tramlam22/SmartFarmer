@@ -107,6 +107,7 @@ class create_account_view(TemplateView):
         return render(request, self.template_name, {'form': form})
 
     def post(self, request):
+        print(request.POST)
         form = createAccountForm(request.POST)
         if form.is_valid():
             # form.save()
@@ -145,18 +146,17 @@ def service_workers(request):
 class data_collection_view(TemplateView):
     template_name = 'data_collection.html'
 
-    def get(self, request):
-        msg = request.META
-        print("get")
-        return render(request, self.template_name, {'data': "GETTING\n" + msg})
+    """    def get(self, request):
+        msg = "getting request {} and {}".format(request.GET, request.POST)
+        return render(request, self.template_name, {'data': msg})"""
 
     def post(self, request):
-        print("post")
+
         data = createDataForm(request.POST)
-        msg = request.POST
+        msg = "hello there \n{}".format(data['mcu_no'])
 
     #    if form.is_valid():
      #     dataObj = form.cleaned_data
       #    temp = dataObj['temperature']
        #   print("hello")
-        return render(request, self.template_name, {'data': "hello\n" + msg})
+        return render(request, self.template_name, {'data': msg})
