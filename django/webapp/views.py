@@ -192,4 +192,4 @@ class data_collection_view(TemplateView):
 
         print(data.light_reading)
         data.save()
-        return render(request, self.template_name, {'data': data})
+        return render(request, "data_post.html", {'data': "SUCCESFULLY RECEIVED"})
