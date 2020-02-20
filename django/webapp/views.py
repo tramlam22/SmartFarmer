@@ -153,7 +153,7 @@ class data_collection_view(TemplateView):
     def post(self, request):
 
         data = createDataForm(request.POST)
-        msg = "hello there \n{} \n and the {}".format(data['mcu_no'],request.POST)
+        msg = "hello there \n{} \n and the {}".format(data['temperature'],request.POST.get("temperature"))
 
     #    if form.is_valid():
      #     dataObj = form.cleaned_data
