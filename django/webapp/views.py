@@ -147,7 +147,7 @@ class data_collection_view(TemplateView):
     template_name = 'data_collection.html'
 
     def get(self, request):
-        msg = "getting request {} and {}".format(request.GET, request.POST)
+        msg = "getting request {} and {}".format(request.GET.get("temperature"), request.POST)
         return render(request, self.template_name, {'data': msg})
 
     def post(self, request):
