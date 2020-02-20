@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
     '18.219.221.140',
     'www.uwuplants.org',
     'uwuplants.org',
+    '192.168.1.18'
 ]
 
 # Application definition

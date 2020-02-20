@@ -42,46 +42,25 @@ class createAccountForm(forms.ModelForm):
         model = AuthUser
         fields = ('username','password','email','firstName','lastName')
 
-class createDataForm(forms.ModelForm):
+# class createDataForm(forms.ModelForm):
+#     # mcu_no = forms.IntegerField(label="mcu_no")
 
-    # Note to tram: I didn't realize that the soil sensor also did soil temp. Could you add 
-    # that to the database or is it too late?
+#     # data_date = forms.DateTimeField()
 
-    # Also, I have no idea what im doing and I think you have a better idea than I do.
-    # Why are names from forms.py slightly different from models.py ah im lost
+#     # soil_moisture = forms.IntegerField(label="soil_moisture")
 
-    # I think this is where the data gets processed and validated?
+#     # soil_temp = forms.FloatField(label="soil_temp")
 
-    #data string 
-    #num=1&temp=23.700&hum=41.000&soil_t=-1.000&soil=65535
-    #missing batterylvl and 
+#     # temp = forms.FloatField(label="temp")
 
-    # -- Justin 
-    mcu_no = forms.CharField(
+#     # humidity = forms.FloatField(label="humidity")
 
-    )
-    temperature = forms.CharField(
-        
-    )
-    humidity = forms.CharField(
+#     # light_reading = forms.IntegerField(label="light_reading")
 
-    )
-    soil_moisture = forms.CharField(
+#     # heat_index = forms.IntegerField(label="heat_index")
 
-    )
-    light_reading = forms.CharField(
-        
-    )
-    soil_temp = forms.CharField(
-        
-    )
-    heat_index = forms.CharField(
-        
-    )
-    battery_level = forms.CharField(
-        
-    )
+#     # battery_level = forms.IntegerField(label="battery_level")
 
-    class Meta:
-        model = dataMCU
-        fields = ['mcu_no','temperature', 'humidity', 'soil_moisture', 'soil_temp', 'light_reading', 'heat_index', 'battery_level']
+#     class Meta:
+#         model = dataMCU
+#         fields = ['mcu_no','temp', 'humidity', 'soil_moisture', 'soil_temp', 'light_reading', 'heat_index', 'battery_lvl']

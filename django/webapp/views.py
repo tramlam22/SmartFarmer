@@ -152,11 +152,44 @@ class data_collection_view(TemplateView):
 
     def post(self, request):
 
-        data = createDataForm(request.POST)
-        msg = "hello there \n{} \n and the {}".format(data['temperature'],request.POST.get("temperature"))
+        # data = createDataForm(request.POST)
+        # if data.is_valid():
+        #     print("valid")
+        # else:
+        #     print("invalid")
+        #     print(data.visible_fields)
+        # # if form.is_valid():
+        # #     dataObj = form.cleaned_data
+        # #     temp = dataObj['temperature']
+        # #     print("hello")
 
-    #    if form.is_valid():
-     #     dataObj = form.cleaned_data
-      #    temp = dataObj['temperature']
-       #   print("hello")
-        return render(request, self.template_name, {'data': msg})
+        data = dataMCU()
+
+        if request.POST.get("mcu_no"):
+            data.mcu_no = request.POST.get("mcu_no")
+
+        if request.POST.get("soil_moisture"):
+            data.soil_moisture = request.POST.get("soil_moisture")
+
+        if request.POST.get("soil_temp"):    
+            data.soil_temp = request.POST.get("soil_temp")
+
+        if request.POST.get("temp"):    
+            data.temp = request.POST.get("temp")
+
+        if request.POST.get("humidity"):
+            data.humidity = request.POST.get("humidity")
+
+        if request.POST.get("light_reading"):
+            data.light_reading = request.POST.get("light_reading")
+        
+        if request.POST.get("heat_index"):
+            data.heat_index = request.POST.get("heat_index")
+
+        if request.POST.get("battery_lvl"):
+            data.battery_lvl = request.POST.get("battery_lvl")
+
+
+        print(data.light_reading)
+        data.save()
+        return render(request, self.template_name, {'data': data})
