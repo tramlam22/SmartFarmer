@@ -119,11 +119,12 @@
     </style>
     {% else %}
     <style>
-        .base-page-wrapper{
+        .base-page-wrapper {
             height: auto;
             display: block;
             transition: none;
         }
+
         .wel-header {
             height: 50px;
             width: 100%;
@@ -268,7 +269,7 @@
                         <h6 class="h6">PERSONAL</h6>
                     </div>
                     <div class="sidebar-links">
-                        <a class="common-link">Reports</a>
+                        <a class="common-link" href="{% url 'data_collection' %}">Reports</a>
                         <a class="common-link">Contact</a>
                         <a class="common-link">Settings</a>
                     </div>

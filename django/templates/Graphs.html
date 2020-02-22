@@ -6,43 +6,46 @@
 <script src="{% static 'plotly-basic.min.js' %}"></script>
 {% endblock %}
 {% block content %}
-<div class = "wrapper">
+<div class="wrapper">
 	<div class="panel title-panel">
 		<h2 class="h2">Graphs Page</h2>
 	</div>
-	<div class = "graph-container">
-		<div id = "graph">	
+	<div class="graph-container">
+		<div id="graph">
 			{{object|safe}}
 		</div>
 	</div>
-	<div class = "graph-container">
-		<div id = "graph">	
+	<div class="graph-container">
+		<div id="graph">
 			{{object2|safe}}
 		</div>
 	</div>
-	<div class = "panel article-section">
+	<div class="panel article-section">
 		<p> in graphs </p>
 	</div>
 </div>
 {% endblock %}
 {% block contentcss %}
 <style>
-	#graphs_link{
-  		color:white;
-  		background: var(--link-bg);
+	#graphs_link {
+		color: white;
+		background: var(--link-bg);
 	}
+
 	.wrapper {
-  		display: grid;
-  		grid-gap: 20px;
+		display: grid;
+		grid-gap: 20px;
 	}
-	#graph{
-  		width: 100%;
+
+	#graph {
+		width: 100%;
 	}
-	.graph-container{
-  		display: flex;
-  		align-items: center;
-  		justify-content: center;
-  		box-shadow: var(--extended-shadow);
+
+	.graph-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: var(--extended-shadow);
 	}
 </style>
 {% endblock %}
