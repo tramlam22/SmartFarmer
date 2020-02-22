@@ -24,27 +24,27 @@ class sensorData():
     def getAvgGraph(self, typeofData, timeInterval):
 
         if timeInterval == "hour":
-            cmd = """SELECT date_data, AVG({})
+            cmd = """SELECT data_date, AVG({})
                     FROM dataMCU 
-                    GROUP BY DATE(date_data), HOUR(date_data)""".format(typeofData)
+                    GROUP BY DATE(data_date), HOUR(data_date)""".format(typeofData)
         elif timeInterval == "day":
-            cmd = """SELECT date_data, AVG({})
+            cmd = """SELECT data_date, AVG({})
                     FROM dataMCU 
-                    GROUP BY DATE(date_data)""".format(typeofData)
+                    GROUP BY DATE(data_date)""".format(typeofData)
         elif timeInterval == "months":
-            cmd = """SELECT date_data, AVG({})
+            cmd = """SELECT data_date, AVG({})
                     FROM dataMCU 
-                    GROUP BY MONTH(date_data)""".format(typeofData)
+                    GROUP BY MONTH(data_date)""".format(typeofData)
 
         cursor.execute(cmd)
         avgDataList = cursor.fetchall()
         x = [row[0] for row in avgDataList]
-        y = [row[0] for row in avgDataList]
+        y = [row[1] for row in avgDataList]
 
         figure = go.Figure()
         figure.add_trace(go.Scatter(x=x, y=y, mode='lines',
                                     name=typeofData,
-                                    line=dict(color="#ff0000", width=4),
+                                    line=dict(color="#5AFFC9", width=4),
                                     connectgaps=True,
                                     ))
 

@@ -70,9 +70,9 @@ class SimpleGraphs(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(SimpleGraphs, self).get_context_data(**kwargs)
-        sensor_data = sensorData("farm")
-        context['object'] = sensor_data.createTestGraph()
-        context['object2'] = sensor_data.createTestGraph()
+        sensor_data = sensorData("efai")
+        context['object'] = sensor_data.getAvgGraph("temp","hour")
+        context['object2'] = sensor_data.getAvgGraph("soil_temp","hour")
         #context['object'] = plots.get_graph()
         return context
 
@@ -147,11 +147,9 @@ class data_collection_view(TemplateView):
     template_name = 'data_collection.html'
 
     def get(self, request):
-        #msg = "getting request {} and {}".format(request.GET.get("temperature"), request.POST)
-        # return render(request, self.template_name, {'data': msg})
+        
         sensor_data = sensorData("farm")
         data = sensor_data.getAllData()
-        #context['object'] = plots.get_graph()
         return render(request, self.template_name, {'data': data})
 
     def post(self, request):
@@ -193,6 +191,6 @@ class data_collection_view(TemplateView):
         if request.POST.get("battery_lvl"):
             data.battery_lvl = request.POST.get("battery_lvl")
 
-        print(data.light_reading)
+        #print(data.light_reading)
         data.save()
         return render(request, "data_post.html", {'data': "SUCCESFULLY RECEIVED"})
