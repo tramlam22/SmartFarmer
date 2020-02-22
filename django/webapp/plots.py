@@ -81,6 +81,7 @@ class sensorData():
 
     # getting all data, delete after
     def getAllData(self):
-        data = dataMCU.objects.values_list('soil_temp', flat=True)
+        data = dataMCU.objects.values(
+            'data_date', 'soil_temp', 'soil_moisture', 'temp', 'humidity').order_by('-data_date')
         x = data
         return x
