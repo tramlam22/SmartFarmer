@@ -7,8 +7,6 @@ import numpy as np
 from .models import *
 from django.db import connection
 
-cursor = connection.cursor()
-
 
 class sensorData():
     user = ''
@@ -22,6 +20,8 @@ class sensorData():
     # get avg graphs for certain time intervals
     # default page should be at hours
     def getAvgGraph(self, typeofData, timeInterval):
+
+        cursor = connection.cursor()
 
         if timeInterval == "hour":
             cmd = """SELECT data_date, AVG({})
@@ -40,6 +40,8 @@ class sensorData():
         avgDataList = cursor.fetchall()
         x = [row[0] for row in avgDataList]
         y = [row[1] for row in avgDataList]
+
+        cursor.close()
 
         figure = go.Figure()
         figure.add_trace(go.Scatter(x=x, y=y, mode='lines',
