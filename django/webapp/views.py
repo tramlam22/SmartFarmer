@@ -15,24 +15,34 @@ from django.http import HttpRequest
 
 
 def home_view(request):
+
     if request.user.is_authenticated:
         APIurl = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=c3f7f9ebb4a78e437ec87f6a909dd3d0'
         city = 'Irvine'
         city_weather = requests.get(APIurl.format(city)).json()
 
-        weather_data = {
+        sensor_data = sensorData("efai") 
+        
+        homeview_data = {
             'city': city,
             'temperature': city_weather['main']['temp'],
             'description': city_weather['weather'][0]['description'],
-            'icon': city_weather['weather'][0]['icon']
+            'icon': city_weather['weather'][0]['icon'],
+            'object' : sensor_data.getAvgGraph("temp","hour"),
+            'object2' : sensor_data.getAvgGraph("humidity","hour"),
+            'object3' : sensor_data.getAvgGraph("soil_temp","hour"),
+            'object4' : sensor_data.getAvgGraph("soil_moisture","hour")
         }
-        # print(args,kwargs)
-        # print(request.user)
-        # if 'HTTP_X_REQUEST_WITH' in HttpRequest.META:
-        print(weather_data)
+
         if request.is_ajax():
-            return JsonResponse(weather_data, safe=False)
-        return render(request, 'index.html', weather_data)
+            return JsonResponse(homeview_data, safe=False)
+
+        #context = super(SimpleGraphs, self).get_context_data(**kwargs)
+        #sensor_data = sensorData("efai")
+        #homeview_data['object'] = sensor_data.getAvgGraph("temp","hour")
+        #homeview_data['object2'] = sensor_data.getAvgGraph("soil_temp","hour")
+        
+        return render(request, 'index.html', homeview_data)
     else:
         return HttpResponseRedirect('/')
 
@@ -73,31 +83,10 @@ class SimpleGraphs(TemplateView):
         sensor_data = sensorData("efai")
         context['object'] = sensor_data.getAvgGraph("temp","hour")
         context['object2'] = sensor_data.getAvgGraph("soil_temp","hour")
-        #context['object'] = plots.get_graph()
+        context['object3'] = sensor_data.getAvgGraph("soil_moisture","hour")
+        context['object4'] = sensor_data.getAvgGraph("humidity","hour")
+
         return context
-
-
-''' sign in page '''
-'''
-class signin_view(TemplateView):
-  template_name = 'Signin.html'
-
-  def get(self,request):
-    form = loginForm()
-    return (render(request, self.template_name, {'form' : form}))
-
-  def post(self,request):
-    form = loginForm(request.POST)
-    user = request.POST["username"]
-    pwd = request.POST["password"]
-    if not Account.objects.all().filter(username=user) or not Account.objects.all().filter(password=pwd):
-      return render(request, self.template_name, {'form' : form})
-      
-    return render(request, 'index.html', {'form' : form})
-'''
-
-'''create account page '''
-
 
 class create_account_view(TemplateView):
     template_name = 'CreateAccount.html'

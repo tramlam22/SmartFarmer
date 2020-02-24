@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block js %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock %}
+
 {% block weatherjs %}
 <script defer>
   const weatherWidget = document.querySelector(".weather-widget-container");
@@ -105,10 +109,18 @@
   </div>
   <div class="row">
     <div class="widget-panel data-panel-7">
-      replace with graph 1
+      {{object|safe}}
     </div>
     <div class="widget-panel data-panel-8">
-      replace with graph 2
+      {{object2|safe}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="widget-panel data-panel-7">
+      {{object3|safe}}
+    </div>
+    <div class="widget-panel data-panel-8">
+      {{object4|safe}}
     </div>
   </div>
 
