@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}PharmAbout{% endblock %}
+{% block title %}{{request.user}}{% endblock %}
 {% block content %}
 <div class="wrapper">
 	<div class="panel title-panel">
-		<h2 class="h2">About Page</h2>
+		<h2 class="h2">User settings</h2>
 	</div>
 	<div class="panel article-section">
-		<p>In about us!</p>
+		<p>{{request.user}}</p>
 	</div>
 </div>
 {% endblock %}
