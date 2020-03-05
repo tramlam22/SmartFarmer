@@ -57,7 +57,7 @@
         Notifications<br><br>New sensors installed!
       </div>
       <div class="suggestions-panel">
-        Suggestions<br><br>Decrease water use in plot 3.
+        Suggestions<br><br>{{msg}}
       </div>
     </div>
   </div>
@@ -81,30 +81,30 @@
     </div>
     <div class="widget-panel data-panel-2">
       <!--widget2-->
-      <h4>Ph Level</h4>
-      <p>12345</p>
+      <h3>Local Temperature</h3>
+      <p style="font-size: 30px;">{{aT}}&#176;C</p>
     </div>
   </div>
   <div class="row">
     <div class="widget-panel data-panel-3">
       <!--widget3-->
-      <h4>ET</h4>
-      <p>1,000,000</p>
+      <h4>Humidity Level</h4>
+      <p>{{aH}}</p>
     </div>
     <div class="widget-panel data-panel-4">
       <!--widget4-->
-      <h4>Temperature</h4>
-      <p>30 Degrees Celcius</p>
+      <h4>Moisture Level</h4>
+      <p>{{aSM}}</p>
     </div>
 
     <div class="widget-panel data-panel-5">
-      <h4>Thing</h4>
-      <p>30493</p>
+      <h4>Moisture Temperature</h4>
+      <p>{{aST}}</p>
     </div>
 
     <div class="widget-panel data-panel-6">
-      <h4>Thing2</h4>
-      <p>24320</p>
+      <h4>Last Update</h4>
+      <p>{{date}}</p>
     </div>
 
   </div>
@@ -203,7 +203,11 @@
   }
 
   .data-panel-2 {
+    display: flex;
     height: 250px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: -webkit-linear-gradient(to right, #f19011, #f5af19);
     background: linear-gradient(to right, #f19011, #f5af19);
     color: white;

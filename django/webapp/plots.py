@@ -109,5 +109,5 @@ class sensorData():
     def getAllData(self):
         data = dataMCU.objects.values(
             'data_date', 'soil_temp', 'soil_moisture', 'temp', 'humidity').order_by('-data_date')
-        x = data
+        x = list(data)
         return x
