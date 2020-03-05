@@ -46,10 +46,14 @@ class sensorData():
 
         cursor.close()
 
-        if typeofData == "temp": typeofData = "Air Temperature"
-        elif typeofData == "soil_temp": typeofData = "Soil Temperature"
-        elif typeofData == "humidity": typeofData = "Humidity"
-        elif typeofData == "soil_moisture": typeofData = "Soil Moisture"        
+        if typeofData == "temp":
+            typeofData = "Air Temperature"
+        elif typeofData == "soil_temp":
+            typeofData = "Soil Temperature"
+        elif typeofData == "humidity":
+            typeofData = "Humidity"
+        elif typeofData == "soil_moisture":
+            typeofData = "Soil Moisture"
 
         figure = go.Figure()
         figure.add_trace(
@@ -61,15 +65,16 @@ class sensorData():
             )
         )
         figure.update_layout(
-            title = typeofData,
-            xaxis_title = "Date and Time",
+            title=typeofData,
+            xaxis_title="Date and Time",
             font=dict(
                 family="Courier New, monospace",
                 size=12
             )
         )
 
-        plot_div = plot(figure, output_type='div', include_plotlyjs=False)
+        plot_div = plot(figure, output_type='div',
+                        include_plotlyjs=False)
         return plot_div
 
     # get graphs for each module

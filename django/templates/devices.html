@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Devices{% endblock %}
+{% block content %}
+<div class="wrapper">
+	<div class="panel title-panel">
+		<h2 class="h2">Devices</h2>
+	</div>
+	<div class="panel">
+        <p>Registered devices</p>
+	</div>
+</div>
+{% endblock %}
+{% block contentcss %}
+<style>
+	#devices_link {
+		color: white;
+		background: var(--link-bg);
+	}
+
+	.wrapper {
+		display: grid;
+		grid-gap: 20px;
+	}
+</style>
+{% endblock %}

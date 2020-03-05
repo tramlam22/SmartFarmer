@@ -136,6 +136,8 @@ def service_workers(request):
 def user_view(request):
     return render(request, "user.html")
 
+def devices_view(request):
+    return render(request,"devices.html")
 
 class data_collection_view(TemplateView):
     template_name = 'data_collection.html'
