@@ -75,7 +75,14 @@
   <div class="row">
     <div class="module-container">
       <div class="module-container-title">
+        <div>
         Module ID:xxxxxxxx for Strawberries
+        </div>
+
+        <div>
+          {{date}}
+        </div>
+
       </div>
       <div class="widgets-container">
         <div class="row">
@@ -120,8 +127,8 @@
           </div>
 
           <div class="widget-panel data-panel-6">
-            <h4>Last Update</h4>
-            <p>{{date}}</p>
+            <h4>Illuminance</h4>
+            <p>{{light}}</p>
           </div>
 
         </div>
@@ -180,6 +187,8 @@
 
   .module-container-title {
     display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     height: max-content;
     padding-top: 10px;
   }
