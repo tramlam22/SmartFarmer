@@ -7,7 +7,6 @@ import numpy as np
 from .models import *
 from django.db import connection
 
-
 class sensorData():
     user = ''
     moduleList = []

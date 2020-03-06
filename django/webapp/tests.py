@@ -1,12 +1,11 @@
 import smtplib
 
-def sendAlert (curr_user):
+def sendAlert (curr_user, msg):
 
     #email properties
     sent_from = "153berkeley@gmail.com"
     to = 'tramphuonglam@gmail.com'
-    subject = "testing from code"
-    email_text = "hello from uwuplants!"
+    subject = "Farm Alert"
 
     #email send request
     try:
@@ -17,7 +16,8 @@ def sendAlert (curr_user):
         server.login("153berkeley@gmail.com", "A406Roomies")
 
         #send email
-        server.sendmail(sent_from, to, email_text)
+        msg = 'Subject:{}\n\n{}'.format(subject,msg)
+        server.sendmail(sent_from, to, msg)
         server.close()
 
         print ('Email sent!')

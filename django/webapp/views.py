@@ -6,7 +6,6 @@ from django.views.generic import TemplateView
 from webapp.plots import *
 from webapp.analysis import *
 from webapp.forms import *
-from webapp.tests import sendAlert
 from django.http import HttpRequest
 import requests
 
@@ -21,11 +20,9 @@ def home_view(request):
         city = 'Irvine'
         city_weather = requests.get(APIurl.format(city)).json()
 
-        sensor_data = sensorData("efai")
-        
+        sensor_data = sensorData(request.user.username)
         analysis_data = dataAnalysis()
         aT, aST, aSM, aH, date, light, msg = analysis_data.algorithm()              #aT: average temp, aST: average soil temp
-        
         
                                                                         #aSM: average soil moisture, aH average humidity
         homeview_data = {
@@ -46,8 +43,6 @@ def home_view(request):
             'msg' : msg
              
         }
-
-        sendAlert("efai")
 
         if request.is_ajax():
             return JsonResponse(homeview_data, safe=False)
@@ -95,7 +90,7 @@ class SimpleGraphs(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(SimpleGraphs, self).get_context_data(**kwargs)
-        sensor_data = sensorData("efai")
+        sensor_data = sensorData(request.user.username)
         context['object'] = sensor_data.getAvgGraph("temp", "months")
         context['object2'] = sensor_data.getAvgGraph("soil_temp", "hour")
         context['object3'] = sensor_data.getAvgGraph("soil_moisture", "hour")
@@ -164,17 +159,6 @@ class data_collection_view(TemplateView):
         return render(request, self.template_name, {'data': data})
 
     def post(self, request):
-
-        # data = createDataForm(request.POST)
-        # if data.is_valid():
-        #     print("valid")
-        # else:
-        #     print("invalid")
-        #     print(data.visible_fields)
-        # # if form.is_valid():
-        # #     dataObj = form.cleaned_data
-        # #     temp = dataObj['temperature']
-        # #     print("hello")
 
         data = dataMCU()
 

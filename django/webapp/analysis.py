@@ -1,4 +1,5 @@
 from webapp.plots import *
+from webapp.tests import sendAlert
 
 class dataAnalysis():
     
@@ -70,6 +71,8 @@ class dataAnalysis():
         suggestion_message += " and "
         suggestion_message += self.humidityAlgorithm(average_humidity)
 
+        if "ideal" in suggestion_message:
+            sendAlert("efai",suggestion_message)
 
         return average_temp, average_soil_temp, average_soil_moisture, average_humidity, recent_date, average_light_reading, suggestion_message
     
