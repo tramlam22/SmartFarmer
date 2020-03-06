@@ -218,8 +218,6 @@
 
 <body>
     <div class="base-page-wrapper">
-
-
         {% if user.is_authenticated %}
         <header class="header-container">
             <div class="header-items">
@@ -239,6 +237,7 @@
                     <li><a id="graphs_link" href="{% url 'graphs' %}">Graphs</a></li>
                     <li><a id="about_link" href="{% url 'about' %}">About</a></li>
                     <li><a id="contact_link" href="{% url 'contact' %}">Contact</a></li>
+                    <li><a id="devices_link" href="{% url 'devices' %}">My Devices</a></li>
                 </ul>
             </nav>
 
@@ -276,13 +275,13 @@
                     <div class="sidebar-links">
                         <a class="common-link" href="{% url 'data_collection' %}">Reports</a>
                         <a class="common-link">Contact</a>
-                        <a class="common-link">Settings</a>
+                        <a class="common-link" href="{% url 'user' %}">Settings</a>
                     </div>
 
                 </div>
                 <div class="signout-link">
                     {% if user.is_authenticated %}
-                    <a class="signout-button" href="{% url 'logout' %}">Sign out</a>
+                    <a class=" signout-button" href="{% url 'logout' %}">Sign out</a>
                     {% endif %}
                     <button id="theme-button" class="button" onclick="themeChange()"></button>
                 </div>

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block weatherjs %}
-<script defer>
+<script>
   const weatherWidget = document.querySelector(".weather-widget-container");
   const cityName = document.querySelector(".city");
   const temperature = document.querySelector(".temperature");
@@ -47,6 +47,17 @@
     })
   }
   setInterval(getWeather, 60000);
+
+  var feedback = document.querySelectorAll(".module-container-analysis");
+  var content = document.querySelectorAll(".feedback");
+  feedback[0].addEventListener("click", function () {
+    if (content[0].style.display === "block") {
+      content[0].style.display = "none";
+    } else {
+      content[0].style.display = "block";
+      content[0].style.height = "40px";
+    }
+  });
 </script>
 {% endblock %}{% block title %}PharmHome{% endblock %}
 {% block content %}
@@ -57,71 +68,94 @@
         Notifications<br><br>New sensors installed!
       </div>
       <div class="suggestions-panel">
-        Suggestions<br><br>Decrease water use in plot 3.
+        Suggestions<br><br> ----
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="widget-panel data-panel-1">
-      <!--widget1-->
-      <div class="weather-widget-container weather-day">
-        <div class="wwc-content-box">
-          <h2 class="city" style="margin:0; line-height: 50px; overflow: hidden;">{{city}}</h2>
-          <div style="display: flex; justify-content: center;">
-            <p class="temperature" style="font-size: 40px; margin: 0; width: 120px; overflow: hidden;">
-              {{temperature}}&#176;
-            </p>
+    <div class="module-container">
+      <div class="module-container-title">
+        Module ID:xxxxxxxx for Strawberries
+      </div>
+      <div class="widgets-container">
+        <div class="row">
+          <div class="widget-panel data-panel-1">
+            <!--widget1-->
+            <div class="weather-widget-container weather-day">
+              <div class="wwc-content-box">
+                <h2 class="city" style="margin:0; line-height: 50px; overflow: hidden;">{{city}}</h2>
+                <div style="display: flex; justify-content: center;">
+                  <p class="temperature" style="font-size: 40px; margin: 0; width: 120px; overflow: hidden;">
+                    {{temperature}}&#176;
+                  </p>
+                </div>
+              </div>
+              <div class="wwc-content-box"><img class="weathericon" src="../static/weathericons/{{icon}}.svg"
+                  alt="Image" width="100px">
+                <p class="description" style="font-size: 24px; margin: 0;">{{description}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="widget-panel data-panel-2">
+            <!--widget2-->
+            <h3>Local Temperature</h3>
+            <p style="font-size: 30px;">{{aT}}&#176;C</p>
           </div>
         </div>
-        <div class="wwc-content-box"><img class="weathericon" src="../static/weathericons/{{icon}}.svg" alt="Image"
-            width="100px">
-          <p class="description" style="font-size: 24px; margin: 0;">{{description}}</p>
+        <div class="row">
+          <div class="widget-panel data-panel-3">
+            <!--widget3-->
+            <h4>Humidity Level</h4>
+            <p>{{aH}}</p>
+          </div>
+          <div class="widget-panel data-panel-4">
+            <!--widget4-->
+            <h4>Moisture Level</h4>
+            <p>{{aSM}}</p>
+          </div>
+
+          <div class="widget-panel data-panel-5">
+            <h4>Moisture Temperature</h4>
+            <p>{{aST}}</p>
+          </div>
+
+          <div class="widget-panel data-panel-6">
+            <h4>Last Update</h4>
+            <p>{{date}}</p>
+          </div>
+
         </div>
       </div>
-    </div>
-    <div class="widget-panel data-panel-2">
-      <!--widget2-->
-      <h4>Ph Level</h4>
-      <p>12345</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="widget-panel data-panel-3">
-      <!--widget3-->
-      <h4>ET</h4>
-      <p>1,000,000</p>
-    </div>
-    <div class="widget-panel data-panel-4">
-      <!--widget4-->
-      <h4>Temperature</h4>
-      <p>30 Degrees Celcius</p>
-    </div>
+      <button type="button" class="module-container-analysis">
+        Quick Feedback</button>
+      <div class="feedback">
+        {{msg}}
+      </div>
 
-    <div class="widget-panel data-panel-5">
-      <h4>Thing</h4>
-      <p>30493</p>
-    </div>
-
-    <div class="widget-panel data-panel-6">
-      <h4>Thing2</h4>
-      <p>24320</p>
-    </div>
-
-  </div>
-  <div class="row-graphs">
-    <div class="widget-panel data-panel-7">
-      {{object|safe}}
-    </div>
-    <div class="widget-panel data-panel-8">
-      {{object2|safe}}
     </div>
   </div>
   <div class="row-graphs">
-    <div class="widget-panel data-panel-7">
-      {{object3|safe}}
+    <div>
+      <div class="widget-panel data-panel-7">
+        {{object|safe}}
+      </div>
     </div>
-    <div class="widget-panel data-panel-8">
-      {{object4|safe}}
+    <div>
+      <div class="widget-panel data-panel-8">
+        {{object2|safe}}
+      </div>
+    </div>
+  </div>
+  <div class="row-graphs">
+    <div>
+      <div class="widget-panel data-panel-7">
+        {{object3|safe}}
+      </div>
+    </div>
+    <div>
+      <div class="widget-panel data-panel-8">
+        {{object4|safe}}
+      </div>
     </div>
   </div>
 
@@ -132,6 +166,50 @@
   #main_link {
     color: #fff;
     background: var(--link-bg)
+  }
+
+  .module-container {
+    display: grid;
+    grid-auto-flow: row;
+    background-color: var(--widget-panel-bg);
+    box-shadow: var(--extended-shadow);
+    box-sizing: border-box;
+    grid-gap: 20px;
+
+  }
+
+  .module-container-title {
+    display: grid;
+    height: max-content;
+    padding-top: 10px;
+  }
+
+  .module-container-analysis {
+    cursor: pointer;
+    border: none;
+    padding: 20px;
+    margin: 20px;
+    font-size: 25px;
+    color: white;
+    background: -webkit-linear-gradient(to right, #818181, #a1a1a1);
+    background: linear-gradient(to right, #8a8a8a, #a1a1a1);
+  }
+
+  .module-container-analysis:hover {
+    opacity: 0.5;
+    border: none;
+  }
+
+  .feedback {
+    display: none;
+    height: 40px;
+  }
+
+  .widgets-container {
+    display: grid;
+    grid-gap: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .wrapper {
@@ -187,7 +265,7 @@
     display: grid;
     grid-auto-columns: 1fr;
     grid-auto-flow: column;
-    height: 150px;
+    height: 90px;
   }
 
   .data-panel-1 {
@@ -195,10 +273,15 @@
   }
 
   .data-panel-2 {
+    display: flex;
     height: 250px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: -webkit-linear-gradient(to right, #f19011, #f5af19);
     background: linear-gradient(to right, #f19011, #f5af19);
     color: white;
+    text-shadow: 0 0 5px #000000ee;
   }
 
   .data-panel-3 {
@@ -206,6 +289,7 @@
     background: -webkit-linear-gradient(to right, #38ef7d, #21eb53);
     background: linear-gradient(to right, #38ef7d, #21eb53);
     color: white;
+    text-shadow: 0 0 5px #000000ee;
   }
 
   .data-panel-4 {
@@ -215,6 +299,7 @@
     background: linear-gradient(to right, #8f94fb, #8488df);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: white;
+    text-shadow: 0 0 5px #000000ee;
   }
 
   .data-panel-5 {
@@ -222,6 +307,7 @@
     background: -webkit-linear-gradient(to right, #ffd151, #ffe259);
     background: linear-gradient(to right, #ffd151, #ffe259);
     color: white;
+    text-shadow: 0 0 5px #000000ee;
   }
 
   .data-panel-6 {
@@ -231,13 +317,18 @@
     background: linear-gradient(to right, #ff4800, #ff6969);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: white;
+    text-shadow: 0 0 5px #000000ee;
   }
 
+  .data-panel-7 {}
+
+  .data-panel-8 {}
 
   .row-graphs {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
+    position: relative;
   }
 
   .notification-panel {

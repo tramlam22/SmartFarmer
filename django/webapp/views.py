@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from django.views.generic import TemplateView
 #from .import plots
 from webapp.plots import *
+from webapp.analysis import *
 from webapp.forms import *
 import requests
 from django.http import HttpRequest
@@ -22,7 +23,12 @@ def home_view(request):
         city_weather = requests.get(APIurl.format(city)).json()
 
         sensor_data = sensorData("efai")
-
+        
+        analysis_data = dataAnalysis()
+        aT, aST, aSM, aH, date, msg = analysis_data.algorithm()              #aT: average temp, aST: average soil temp
+        
+        
+                                                                        #aSM: average soil moisture, aH average humidity
         homeview_data = {
             'city': city,
             'temperature': city_weather['main']['temp'],
@@ -31,7 +37,14 @@ def home_view(request):
             'object': sensor_data.getAvgGraph("temp", "hour"),
             'object2': sensor_data.getAvgGraph("humidity", "hour"),
             'object3': sensor_data.getAvgGraph("soil_temp", "hour"),
-            'object4': sensor_data.getAvgGraph("soil_moisture", "hour")
+            'object4': sensor_data.getAvgGraph("soil_moisture", "hour"),
+            'aT'  : aT,
+            'aST' : aST,
+            'aSM' : aSM,
+            'aH'  : aH,
+            'date': date,
+            'msg' : msg
+             
         }
 
         if request.is_ajax():
@@ -136,14 +149,16 @@ def service_workers(request):
 def user_view(request):
     return render(request, "user.html")
 
+def devices_view(request):
+    return render(request,"devices.html")
 
 class data_collection_view(TemplateView):
     template_name = 'data_collection.html'
 
     def get(self, request):
 
-        sensor_data = sensorData("farm")
-        data = sensor_data.getAllData()
+        sensor_data = dataAnalysis()
+        data = sensor_data.algorithm()
         return render(request, self.template_name, {'data': data})
 
     def post(self, request):

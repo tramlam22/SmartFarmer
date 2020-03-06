@@ -27,6 +27,7 @@ from webapp.views import create_account_view
 from webapp.views import service_workers  #new
 from webapp.views import uwu_view
 from webapp.views import user_view
+from webapp.views import devices_view
 from webapp.views import data_collection_view #also new 
 # from webapp.views import manifest
 
@@ -45,5 +46,6 @@ urlpatterns = [
     url('^serviceworker.js$', service_workers),#new
     #url(r'^Createaccount/$', create_account_view, name = 'createaccount'),
     url(r'^data_collection/$', data_collection_view.as_view(), name = "data_collection"),
-    url(r'^user/$',user_view, name = 'user')
+    url(r'^user/$',user_view, name = 'user'),
+    url(r'^devices/$', devices_view, name="devices")
 ]
