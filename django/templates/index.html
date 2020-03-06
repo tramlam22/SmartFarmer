@@ -47,6 +47,17 @@
     })
   }
   setInterval(getWeather, 60000);
+
+  var feedback = document.querySelectorAll(".module-container-analysis");
+  var content = document.querySelectorAll(".feedback");
+  feedback[0].addEventListener("click", function () {
+    if (content[0].style.display === "block") {
+      content[0].style.display = "none";
+    } else {
+      content[0].style.display = "block";
+      content[0].style.height = "40px";
+    }
+  });
 </script>
 {% endblock %}{% block title %}PharmHome{% endblock %}
 {% block content %}
@@ -115,10 +126,12 @@
 
         </div>
       </div>
-      <div class="module-container-analysis">
-        <p>Quick Feedback:</p>
-        <p>{{msg}}</p>
+      <button type="button" class="module-container-analysis">
+        Quick Feedback</button>
+      <div class="feedback">
+        {{msg}}
       </div>
+
     </div>
   </div>
   <div class="row-graphs">
@@ -170,7 +183,29 @@
     height: max-content;
     padding-top: 10px;
   }
-  .widgets-container{
+
+  .module-container-analysis {
+    cursor: pointer;
+    border: none;
+    padding: 20px;
+    margin: 20px;
+    font-size: 25px;
+    color: white;
+    background: -webkit-linear-gradient(to right, #818181, #a1a1a1);
+    background: linear-gradient(to right, #8a8a8a, #a1a1a1);
+  }
+
+  .module-container-analysis:hover {
+    opacity: 0.5;
+    border: none;
+  }
+
+  .feedback {
+    display: none;
+    height: 40px;
+  }
+
+  .widgets-container {
     display: grid;
     grid-gap: 20px;
     padding-left: 20px;
