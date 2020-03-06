@@ -39,7 +39,9 @@ class dataAnalysis():
         average_humidity = 0
         average_light_reading = 0
         recent_date = ""
+        feedback = ""
         suggestion_message = ""
+        notification = ""
       
         
         for i in range(number_of_entries):                  #loading the list, recent_data with just a given number of dictionaries
@@ -67,12 +69,20 @@ class dataAnalysis():
         average_light_reading /= number_of_entries
         recent_date = data_date[0]
         
-        suggestion_message += self.tempAlgorithm(average_temp)
-        suggestion_message += " and "
-        suggestion_message += self.humidityAlgorithm(average_humidity)
+        feedback += self.tempAlgorithm(average_temp)
+        if "low" in feedback:
+            suggestion_message = "Increase temperature to yield optimal strawberries!"
+            notification = "Temperature is below optimal!"
+        
+        feedback += "<br/>"
+        feedback += self.humidityAlgorithm(average_humidity)
+        if "low" in feedback:
+            suggestion_message = "Irrigate more to yield optimal strawberries!"
+            notification = "Low humidity level!"
+        
+        if "ideal" in feedback:
+            sendAlert("efai",feedback)
+            
 
-        if "ideal" in suggestion_message:
-            sendAlert("efai",suggestion_message)
-
-        return average_temp, average_soil_temp, average_soil_moisture, average_humidity, recent_date, average_light_reading, suggestion_message
+        return average_temp, average_soil_temp, average_soil_moisture, average_humidity, recent_date, average_light_reading, feedback, suggestion_message, notification
     

@@ -22,7 +22,7 @@ def home_view(request):
 
         sensor_data = sensorData(request.user.username)
         analysis_data = dataAnalysis()
-        aT, aST, aSM, aH, date, light, msg = analysis_data.algorithm()              #aT: average temp, aST: average soil temp
+        aT, aST, aSM, aH, date, light, msg, sm, notification = analysis_data.algorithm()              #aT: average temp, aST: average soil temp
         
                                                                         #aSM: average soil moisture, aH average humidity
         homeview_data = {
@@ -40,7 +40,9 @@ def home_view(request):
             'aH'  : aH,
             'date': date,
             'light': light,
-            'msg' : msg
+            'msg' : msg,
+            'sm'  : sm,
+            'notification' : notification
              
         }
 
