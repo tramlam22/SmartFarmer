@@ -20,11 +20,10 @@ def home_view(request):
         city = 'Irvine'
         city_weather = requests.get(APIurl.format(city)).json()
 
-        sensor_data = sensorData("efai")
+        sensor_data = sensorData(request.user.username)
         analysis_data = dataAnalysis()
         aT, aST, aSM, aH, date, light, msg = analysis_data.algorithm()              #aT: average temp, aST: average soil temp
         
-        #print(request.user.username)
                                                                         #aSM: average soil moisture, aH average humidity
         homeview_data = {
             'city': city,
@@ -91,7 +90,7 @@ class SimpleGraphs(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(SimpleGraphs, self).get_context_data(**kwargs)
-        sensor_data = sensorData("efai")
+        sensor_data = sensorData(request.user.username)
         context['object'] = sensor_data.getAvgGraph("temp", "months")
         context['object2'] = sensor_data.getAvgGraph("soil_temp", "hour")
         context['object3'] = sensor_data.getAvgGraph("soil_moisture", "hour")

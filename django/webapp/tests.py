@@ -16,6 +16,7 @@ def sendAlert (curr_user, msg):
         server.login("153berkeley@gmail.com", "A406Roomies")
 
         #send email
+        msg = 'Subject:{}\n\n{}'.format(subject,msg)
         server.sendmail(sent_from, to, msg)
         server.close()
 
