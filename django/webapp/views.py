@@ -6,7 +6,6 @@ from django.views.generic import TemplateView
 from webapp.plots import *
 from webapp.analysis import *
 from webapp.forms import *
-from webapp.tests import sendAlert
 from django.http import HttpRequest
 import requests
 
@@ -22,11 +21,10 @@ def home_view(request):
         city_weather = requests.get(APIurl.format(city)).json()
 
         sensor_data = sensorData("efai")
-        
         analysis_data = dataAnalysis()
         aT, aST, aSM, aH, date, light, msg = analysis_data.algorithm()              #aT: average temp, aST: average soil temp
         
-        
+        #print(request.user.username)
                                                                         #aSM: average soil moisture, aH average humidity
         homeview_data = {
             'city': city,
@@ -46,8 +44,6 @@ def home_view(request):
             'msg' : msg
              
         }
-
-        sendAlert("efai")
 
         if request.is_ajax():
             return JsonResponse(homeview_data, safe=False)
@@ -164,17 +160,6 @@ class data_collection_view(TemplateView):
         return render(request, self.template_name, {'data': data})
 
     def post(self, request):
-
-        # data = createDataForm(request.POST)
-        # if data.is_valid():
-        #     print("valid")
-        # else:
-        #     print("invalid")
-        #     print(data.visible_fields)
-        # # if form.is_valid():
-        # #     dataObj = form.cleaned_data
-        # #     temp = dataObj['temperature']
-        # #     print("hello")
 
         data = dataMCU()
 

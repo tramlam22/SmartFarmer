@@ -1,4 +1,5 @@
 from webapp.plots import *
+from webapp.tests import sendAlert
 
 class dataAnalysis():
     
@@ -7,8 +8,10 @@ class dataAnalysis():
             suggestion_message = "Temperature is great!"
         elif(average_temp < 20.0):        
             suggestion_message = "Your temperature is not ideal! the temperature is too low!"
+            sendAlert("efai",suggestion_message)
         elif(average_temp > 29):
             suggestion_message = "Your temperature is not ideal! the temperature is too high!"
+            sendAlert("efai",suggestion_message)
         return suggestion_message
     
     def humidityAlgorithm(self, average_humidity):
@@ -16,8 +19,10 @@ class dataAnalysis():
             suggestion_message = "Humidity level is good!"
         elif(average_humidity < 65.0):        
             suggestion_message = "Humidity level is not ideal! Humidity is too low!"
+            sendAlert("efai",suggestion_message)
         elif(average_humidity > 75):
             suggestion_message = "Humidity level is not ideal! Humidity is too high!"
+            sendAlert("efai",suggestion_message)
         return suggestion_message
     
     
@@ -69,7 +74,6 @@ class dataAnalysis():
         suggestion_message += self.tempAlgorithm(average_temp)
         suggestion_message += " and "
         suggestion_message += self.humidityAlgorithm(average_humidity)
-
 
         return average_temp, average_soil_temp, average_soil_moisture, average_humidity, recent_date, average_light_reading, suggestion_message
     
