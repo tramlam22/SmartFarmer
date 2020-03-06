@@ -19,8 +19,8 @@ class sensorData():
         
         self.user = current_user
         cmd = """SELECT mcu_no
-                FROM modulePlantlink
-                WHERE username = {}""".format(self.user)
+                FROM modulePlantLink
+                WHERE username = '{}'""".format(self.user)
 
         cursor.execute(cmd)
         self.moduleList = cursor.fetchall()

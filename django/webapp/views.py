@@ -3,13 +3,12 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.views.generic import TemplateView
-#from .import plots
 from webapp.plots import *
 from webapp.analysis import *
 from webapp.forms import *
-import requests
+from webapp.tests import sendAlert
 from django.http import HttpRequest
-# or from .models import (name of class)
+import requests
 
 
 ''' index page '''
@@ -46,6 +45,8 @@ def home_view(request):
             'msg' : msg
              
         }
+
+        sendAlert("efai")
 
         if request.is_ajax():
             return JsonResponse(homeview_data, safe=False)
@@ -94,7 +95,7 @@ class SimpleGraphs(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(SimpleGraphs, self).get_context_data(**kwargs)
         sensor_data = sensorData("efai")
-        context['object'] = sensor_data.getAvgGraph("temp", "hour")
+        context['object'] = sensor_data.getAvgGraph("temp", "months")
         context['object2'] = sensor_data.getAvgGraph("soil_temp", "hour")
         context['object3'] = sensor_data.getAvgGraph("soil_moisture", "hour")
         context['object4'] = sensor_data.getAvgGraph("humidity", "hour")
