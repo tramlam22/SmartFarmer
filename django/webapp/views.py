@@ -26,6 +26,8 @@ def home_view(request):
         
         analysis_data = dataAnalysis()
         aT, aST, aSM, aH, date, msg = analysis_data.algorithm()              #aT: average temp, aST: average soil temp
+        
+        
                                                                         #aSM: average soil moisture, aH average humidity
         homeview_data = {
             'city': city,
@@ -41,7 +43,8 @@ def home_view(request):
             'aSM' : aSM,
             'aH'  : aH,
             'date': date,
-            'msg' : msg 
+            'msg' : msg
+             
         }
 
         if request.is_ajax():

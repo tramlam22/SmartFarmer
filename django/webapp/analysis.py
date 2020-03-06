@@ -67,3 +67,4 @@ class dataAnalysis():
 
 
         return average_temp, average_soil_temp, average_soil_moisture, average_humidity, recent_date, suggestion_message;
+    
