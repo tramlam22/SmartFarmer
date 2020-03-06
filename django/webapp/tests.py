@@ -6,7 +6,7 @@ def sendAlert (curr_user):
     sent_from = "153berkeley@gmail.com"
     to = 'tramphuonglam@gmail.com'
     subject = "testing from code"
-    email_text = "hello uwu"
+    email_text = "hello from uwuplants!"
 
     #email send request
     try:
