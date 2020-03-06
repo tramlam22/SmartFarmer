@@ -21,7 +21,16 @@ class dataAnalysis():
             suggestion_message = "Humidity level is not ideal! Humidity is too high!"
         return suggestion_message
     
-    
+
+    def lightAlgorithm(self, average_light_reading):
+        pass
+
+    def soilMoistureAlgorithm(self, average_soil_moisture):
+        pass
+
+    def soilTempAlgorithm(self, average_soil_temp):
+        pass
+
     def algorithm(self):
         number_of_entries = 10
         data_date = []                                  #data_date from the last 'number' of entries
@@ -73,6 +82,9 @@ class dataAnalysis():
         if "low" in feedback:
             suggestion_message = "Increase temperature to yield optimal strawberries!"
             notification = "Temperature is below optimal!"
+        if "high" in feedback:
+            suggestion_message = "Lower temperature to yield optimal strawberries!"
+            notification = "Temperature is too high!"
         
         feedback += "\n"
         feedback += self.humidityAlgorithm(average_humidity)
