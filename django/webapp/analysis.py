@@ -69,7 +69,7 @@ class dataAnalysis():
         feedback = ""
         suggestion_message = ""
         notification = ""
-      
+        msg = ""
         
         for i in range(number_of_entries):                  #loading the list, recent_data with just a given number of dictionaries
             recent_data.append(all_data[i])     
@@ -96,51 +96,59 @@ class dataAnalysis():
         average_light_reading /= number_of_entries
         recent_date = data_date[0]
         
-        feedback += self.tempAlgorithm(average_temp)
-        if "low" in feedback:
+
+        msg = self.tempAlgorithm(average_temp)
+        feedback += msg
+        if "low" in msg:
             suggestion_message = "Increase temperature to yield optimal strawberries!"
             notification = "Temperature is below optimal!"
-        if "high" in feedback:
+        if "high" in msg:
             suggestion_message = "Lower temperature to yield optimal strawberries!"
             notification = "Temperature is too high!"
         
+
+
         feedback += "\n"
-        feedback += self.humidityAlgorithm(average_humidity)
-        if "low" in feedback:
+        msg = self.humidityAlgorithm(average_humidity)
+        feedback += msg
+        if "low" in msg:
             suggestion_message = "Irrigate more to yield optimal strawberries!"
             notification = "Low humidity level!"
         
 
         feedback += "\n"
-        feedback += self.lightAlgorithm(average_light_reading)
-        if "low" in feedback:
-            suggestion_message = "Increase temperature to yield optimal strawberries!"
-            notification = "Temperature is below optimal!"
-        if "high" in feedback:
-            suggestion_message = "Lower temperature to yield optimal strawberries!"
-            notification = "Temperature is too high!"
+        msg = self.lightAlgorithm(average_light_reading)
+        feedback += msg
+        if "low" in msg:
+            suggestion_message = "Increase Light exposure to yield optimal strawberries!"
+            notification = "Light level is below optimal!"
+        if "high" in msg:
+            suggestion_message = "Lower light exposure to yield optimal strawberries!"
+            notification = "Light level is too high!"
 
 
 
         feedback += "\n"
-        feedback += self.soilMoistureAlgorithm(average_soil_moisture)
+        msg = self.soilMoistureAlgorithm(average_soil_moisture)
+        feedback += msg
 
-        if "low" in feedback:
-            suggestion_message = "Increase temperature to yield optimal strawberries!"
-            notification = "Temperature is below optimal!"
-        if "high" in feedback:
-            suggestion_message = "Lower temperature to yield optimal strawberries!"
-            notification = "Temperature is too high!"
+        if "low" in msg:
+            suggestion_message = "Increase soil moisture to yield optimal strawberries!"
+            notification = "Soil moisture is below optimal!"
+        if "high" in msg:
+            suggestion_message = "Lower soil moisture to yield optimal strawberries!"
+            notification = "Soil moisture is too high!"
 
         feedback += "\n"
-        feedback += self.soilTempAlgorithm(average_soil_temp)
+        msg = self.soilTempAlgorithm(average_soil_temp)
+        feedback += msg
 
-        if "low" in feedback:
-            suggestion_message = "Increase temperature to yield optimal strawberries!"
-            notification = "Temperature is below optimal!"
-        if "high" in feedback:
-            suggestion_message = "Lower temperature to yield optimal strawberries!"
-            notification = "Temperature is too high!"
+        if "low" in msg:
+            suggestion_message = "Increase soil temperature to yield optimal strawberries!"
+            notification = "Soil temperature is below optimal!"
+        if "high" in msg:
+            suggestion_message = "Lower soil temperature to yield optimal strawberries!"
+            notification = "Soil temperature is too high!"
 
 
 
