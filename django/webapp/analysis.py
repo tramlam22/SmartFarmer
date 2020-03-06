@@ -74,7 +74,7 @@ class dataAnalysis():
             suggestion_message = "Increase temperature to yield optimal strawberries!"
             notification = "Temperature is below optimal!"
         
-        feedback += "<br/>"
+        feedback += "\n"
         feedback += self.humidityAlgorithm(average_humidity)
         if "low" in feedback:
             suggestion_message = "Irrigate more to yield optimal strawberries!"
@@ -83,6 +83,6 @@ class dataAnalysis():
         if "ideal" in feedback:
             sendAlert("efai",feedback)
             
-
+        feedback = feedback.split('\n')
         return average_temp, average_soil_temp, average_soil_moisture, average_humidity, recent_date, average_light_reading, feedback, suggestion_message, notification
     

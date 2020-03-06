@@ -55,7 +55,7 @@
       content[0].style.display = "none";
     } else {
       content[0].style.display = "block";
-      content[0].style.height = "40px";
+      content[0].style.height = "fit-content";
     }
   });
 </script>
@@ -136,7 +136,11 @@
       <button type="button" class="module-container-analysis">
         Quick Feedback</button>
       <div class="feedback">
-        {{msg}}
+        <ul>
+        {% for m in msg %}
+          <li>{{m}}</li>
+        {% endfor %}
+        </ul>
       </div>
 
     </div>
@@ -197,7 +201,7 @@
     cursor: pointer;
     border: none;
     padding: 20px;
-    margin: 20px;
+    margin: 0px 20px 20px 20px;
     font-size: 25px;
     color: white;
     background: -webkit-linear-gradient(to right, #818181, #a1a1a1);
@@ -211,7 +215,19 @@
 
   .feedback {
     display: none;
-    height: 40px;
+    height: fit-content;
+    margin: 0px 20px 20px 20px;
+    align-items: center;
+    text-align: left;
+  }
+  .feedback ul{
+    justify-content: center;
+    align-items: center;
+    
+  }
+  .feedback li{
+    align-items: center;
+
   }
 
   .widgets-container {
