@@ -237,6 +237,7 @@ body {
   background: var(--widget-panel-bg);
   box-shadow: var(--extended-shadow);
   box-sizing: border-box;
+
 }
 .article-section{
   text-align: left;

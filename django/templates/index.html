@@ -57,56 +57,69 @@
         Notifications<br><br>New sensors installed!
       </div>
       <div class="suggestions-panel">
-        Suggestions<br><br>{{msg}}
+        Suggestions<br><br> ----
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="widget-panel data-panel-1">
-      <!--widget1-->
-      <div class="weather-widget-container weather-day">
-        <div class="wwc-content-box">
-          <h2 class="city" style="margin:0; line-height: 50px; overflow: hidden;">{{city}}</h2>
-          <div style="display: flex; justify-content: center;">
-            <p class="temperature" style="font-size: 40px; margin: 0; width: 120px; overflow: hidden;">
-              {{temperature}}&#176;
-            </p>
+    <div class="module-container">
+      <div class="module-container-title">
+        Module ID:xxxxxxxx for Strawberries
+      </div>
+      <div class="widgets-container">
+        <div class="row">
+          <div class="widget-panel data-panel-1">
+            <!--widget1-->
+            <div class="weather-widget-container weather-day">
+              <div class="wwc-content-box">
+                <h2 class="city" style="margin:0; line-height: 50px; overflow: hidden;">{{city}}</h2>
+                <div style="display: flex; justify-content: center;">
+                  <p class="temperature" style="font-size: 40px; margin: 0; width: 120px; overflow: hidden;">
+                    {{temperature}}&#176;
+                  </p>
+                </div>
+              </div>
+              <div class="wwc-content-box"><img class="weathericon" src="../static/weathericons/{{icon}}.svg"
+                  alt="Image" width="100px">
+                <p class="description" style="font-size: 24px; margin: 0;">{{description}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="widget-panel data-panel-2">
+            <!--widget2-->
+            <h3>Local Temperature</h3>
+            <p style="font-size: 30px;">{{aT}}&#176;C</p>
           </div>
         </div>
-        <div class="wwc-content-box"><img class="weathericon" src="../static/weathericons/{{icon}}.svg" alt="Image"
-            width="100px">
-          <p class="description" style="font-size: 24px; margin: 0;">{{description}}</p>
+        <div class="row">
+          <div class="widget-panel data-panel-3">
+            <!--widget3-->
+            <h4>Humidity Level</h4>
+            <p>{{aH}}</p>
+          </div>
+          <div class="widget-panel data-panel-4">
+            <!--widget4-->
+            <h4>Moisture Level</h4>
+            <p>{{aSM}}</p>
+          </div>
+
+          <div class="widget-panel data-panel-5">
+            <h4>Moisture Temperature</h4>
+            <p>{{aST}}</p>
+          </div>
+
+          <div class="widget-panel data-panel-6">
+            <h4>Last Update</h4>
+            <p>{{date}}</p>
+          </div>
+
         </div>
       </div>
+      <div class="module-container-analysis">
+        <p>Quick Feedback:</p>
+        <p>{{msg}}</p>
+      </div>
     </div>
-    <div class="widget-panel data-panel-2">
-      <!--widget2-->
-      <h3>Local Temperature</h3>
-      <p style="font-size: 30px;">{{aT}}&#176;C</p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="widget-panel data-panel-3">
-      <!--widget3-->
-      <h4>Humidity Level</h4>
-      <p>{{aH}}</p>
-    </div>
-    <div class="widget-panel data-panel-4">
-      <!--widget4-->
-      <h4>Moisture Level</h4>
-      <p>{{aSM}}</p>
-    </div>
-
-    <div class="widget-panel data-panel-5">
-      <h4>Moisture Temperature</h4>
-      <p>{{aST}}</p>
-    </div>
-
-    <div class="widget-panel data-panel-6">
-      <h4>Last Update</h4>
-      <p>{{date}}</p>
-    </div>
-
   </div>
   <div class="row-graphs">
     <div>
@@ -140,6 +153,28 @@
   #main_link {
     color: #fff;
     background: var(--link-bg)
+  }
+
+  .module-container {
+    display: grid;
+    grid-auto-flow: row;
+    background-color: var(--widget-panel-bg);
+    box-shadow: var(--extended-shadow);
+    box-sizing: border-box;
+    grid-gap: 20px;
+
+  }
+
+  .module-container-title {
+    display: grid;
+    height: max-content;
+    padding-top: 10px;
+  }
+  .widgets-container{
+    display: grid;
+    grid-gap: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .wrapper {
@@ -211,6 +246,7 @@
     background: -webkit-linear-gradient(to right, #f19011, #f5af19);
     background: linear-gradient(to right, #f19011, #f5af19);
     color: white;
+    text-shadow: 0 0 5px #000000ee;
   }
 
   .data-panel-3 {
@@ -218,6 +254,7 @@
     background: -webkit-linear-gradient(to right, #38ef7d, #21eb53);
     background: linear-gradient(to right, #38ef7d, #21eb53);
     color: white;
+    text-shadow: 0 0 5px #000000ee;
   }
 
   .data-panel-4 {
@@ -227,6 +264,7 @@
     background: linear-gradient(to right, #8f94fb, #8488df);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: white;
+    text-shadow: 0 0 5px #000000ee;
   }
 
   .data-panel-5 {
@@ -234,6 +272,7 @@
     background: -webkit-linear-gradient(to right, #ffd151, #ffe259);
     background: linear-gradient(to right, #ffd151, #ffe259);
     color: white;
+    text-shadow: 0 0 5px #000000ee;
   }
 
   .data-panel-6 {
@@ -243,6 +282,7 @@
     background: linear-gradient(to right, #ff4800, #ff6969);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: white;
+    text-shadow: 0 0 5px #000000ee;
   }
 
   .data-panel-7 {}

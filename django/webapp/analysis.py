@@ -2,6 +2,25 @@ from webapp.plots import *
 
 class dataAnalysis():
     
+    def tempAlgorithm(self, average_temp):
+        if(average_temp > 20.0 and average_temp < 29 ):
+            suggestion_message = "Temperature is great!"
+        elif(average_temp < 20.0):        
+            suggestion_message = "Your temperature is not ideal! the temperature is too low!"
+        elif(average_temp > 29):
+            suggestion_message = "Your temperature is not ideal! the temperature is too high!"
+        return suggestion_message
+    
+    def humidityAlgorithm(self, average_humidity):
+        if(average_humidity > 65.0 and average_humidity < 75 ):
+            suggestion_message = "Humidity level is good!"
+        elif(average_humidity < 65.0):        
+            suggestion_message = "Humidity level is not ideal! Humidity is too low!"
+        elif(average_humidity > 75):
+            suggestion_message = "Humidity level is not ideal! Humidity is too high!"
+        return suggestion_message
+    
+    
     def algorithm(self):
         number_of_entries = 10
         data_date = []                                  #data_date from the last 'number' of entries
@@ -40,11 +59,11 @@ class dataAnalysis():
         average_soil_temp /= number_of_entries
         average_soil_moisture /= number_of_entries
         average_humidity /= number_of_entries 
-        recent_date = data_date[0];
+        recent_date = data_date[0]
         
-        if(average_temp > 10.0):
-            suggestion_message = "Temperature is great!"
-        else:        
-            suggestion_message = "Too Cold!"
+        suggestion_message += self.tempAlgorithm(average_temp)
+        suggestion_message += " and "
+        suggestion_message += self.humidityAlgorithm(average_humidity)
+
 
         return average_temp, average_soil_temp, average_soil_moisture, average_humidity, recent_date, suggestion_message;
