@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/about.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
 {% endblock %}
 {% block title %}PharmAbout{% endblock %}
 {% block content %}
@@ -10,9 +10,48 @@
 	<div class="panel title-panel">
 		<h3>Data Collection</h3>
 	</div>
-	<div class="panel article">
+	<div class="panel article report">
+
+		{{date}}
+		<h4>Temperature: </h4>
+		<ul>
+			
+			  <li>{{aT}}</li>
+		</ul>
+
 		<h4>Soil Temperature: </h4>
-		<p>{{data}}</p>
+		<ul>
+			
+			  <li>{{aST}}</li>
+			
+		</ul>
+		<h4>Soil Moisture: </h4>
+		<ul>
+			
+			  <li>{{aSM}}</li>
+			
+		</ul>
+		<h4>Humidity: </h4>
+		<ul>
+			
+			  <li>{{aH}}</li>
+			
+		</ul>
+		<h4>Light level: </h4>
+		<ul>
+			  <li>{{light}}</li>
+			
+		</ul>
+
+		
 	</div>
 </div>
+<style>
+	.report{
+		text-align: left;
+		padding-left: 40px;
+		padding-bottom: 40px;
+	}
+</style>
 {% endblock %}
+

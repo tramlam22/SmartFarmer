@@ -156,9 +156,23 @@ class data_collection_view(TemplateView):
 
     def get(self, request):
 
-        sensor_data = dataAnalysis()
-        data = sensor_data.algorithm()
-        return render(request, self.template_name, {'data': data})
+        sensor_data = sensorData(request.user.username)
+        analysis_data = dataAnalysis()
+        aT, aST, aSM, aH, date, light, msg, sm, notification = analysis_data.algorithm()   
+
+
+        data = {
+            'aT'  : aT,
+            'aST' : aST,
+            'aSM' : aSM,
+            'aH'  : aH,
+            'date': date,
+            'light': light,
+            'msg' : msg,
+            'sm'  : sm,
+            'notification' : notification    
+        }
+        return render(request, self.template_name, data)
 
     def post(self, request):
 

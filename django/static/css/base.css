@@ -329,3 +329,7 @@ input[type=text], input[type=password]{
   align-items: center;
 }
 
+.report{
+  align-items: center;
+  text-align: left;
+}
