@@ -92,11 +92,12 @@ class SimpleGraphs(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(SimpleGraphs, self).get_context_data(**kwargs)
-        sensor_data = sensorData(request.user.username)
+   
+        sensor_data = sensorData('efai')
         context['object'] = sensor_data.getAvgGraph("temp", "months")
-        context['object2'] = sensor_data.getAvgGraph("soil_temp", "hour")
-        context['object3'] = sensor_data.getAvgGraph("soil_moisture", "hour")
-        context['object4'] = sensor_data.getAvgGraph("humidity", "hour")
+        context['object2'] = sensor_data.getAvgGraph("soil_temp", "months")
+        context['object3'] = sensor_data.getAvgGraph("soil_moisture", "months")
+        context['object4'] = sensor_data.getAvgGraph("humidity", "months")
 
         return context
 

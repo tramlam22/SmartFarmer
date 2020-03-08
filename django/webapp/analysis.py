@@ -59,8 +59,7 @@ class dataAnalysis():
         light_reading = []
         recent_data = []  # data from the last 'number' of  entries
         sensor_data = sensorData("farm")
-        # getting all the data base entries in the form of a list
-        all_data = sensorData.getAllData(self)
+        
         average_temp = 0
         average_soil_temp = 0
         average_soil_moisture = 0
@@ -71,6 +70,43 @@ class dataAnalysis():
         suggestion_message = ""
         notification = ""
         msg = ""
+
+
+        #mysql connection
+        cursor = connection.cursor()
+
+        #cmd for getting average values
+        cmd = """SELECT AVG(temp)
+                    FROM dataMCU 
+                    WHERE '2020-02-20' = DATE(data_date)"""
+        cursor.execute(cmd)
+        average_temp = cursor.fetchone()[0]
+        cmd = """SELECT AVG(humidity)
+                    FROM dataMCU 
+                    WHERE '2020-02-20' = DATE(data_date)"""
+        cursor.execute(cmd)
+        average_humidity = cursor.fetchone()[0]
+        cmd = """SELECT AVG(soil_moisture)
+                    FROM dataMCU 
+                    WHERE '2020-02-20' = DATE(data_date)"""
+        cursor.execute(cmd)
+        average_soil_moisture = cursor.fetchone()[0]
+        cmd = """SELECT AVG(soil_temp)
+                    FROM dataMCU 
+                    WHERE '2020-02-20' = DATE(data_date)"""
+        cursor.execute(cmd)
+        average_soil_temp = cursor.fetchone()[0]
+        cmd = """SELECT AVG(light_reading)
+                    FROM dataMCU 
+                    WHERE '2020-02-20' = DATE(data_date)"""
+        cursor.execute(cmd)
+        average_light_reading = cursor.fetchone()[0]
+
+
+
+        # getting all the data base entries in the form of a list
+        # all_data = sensorData.getAllData(self)
+        """
 
         # loading the list, recent_data with just a given number of dictionaries
         for i in range(number_of_entries):
@@ -98,7 +134,7 @@ class dataAnalysis():
         average_soil_moisture /= number_of_entries
         average_humidity /= number_of_entries
         average_light_reading /= number_of_entries
-        recent_date = data_date[0]
+        recent_date = data_date[0]"""
 
         msg = self.tempAlgorithm(average_temp)
         feedback += msg
