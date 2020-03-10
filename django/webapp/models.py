@@ -153,7 +153,7 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-class Moduleplantlink(models.Model):
+class modulePlantLink(models.Model):
     username = models.ForeignKey(AuthUser, models.DO_NOTHING, db_column='username')
     plant_type = models.CharField(max_length=45)
     mcu_no = models.IntegerField(primary_key=True)

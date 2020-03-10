@@ -9,18 +9,20 @@ from webapp.forms import *
 from django.http import HttpRequest
 import requests
 
+#variable to check what user is currently logged in
+logged_in_user = None
 
 ''' index page '''
-
-
 def home_view(request):
+    global logged_in_user 
 
     if request.user.is_authenticated:
         APIurl = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=c3f7f9ebb4a78e437ec87f6a909dd3d0'
         city = 'Irvine'
         city_weather = requests.get(APIurl.format(city)).json()
 
-        sensor_data = sensorData(request.user.username)
+        logged_in_user = request.user.username
+        sensor_data = sensorData(logged_in_user)
         analysis_data = dataAnalysis()
         aT, aST, aSM, aH, date, light, msg, sm, notification = analysis_data.algorithm()              #aT: average temp, aST: average soil temp
         
@@ -93,7 +95,7 @@ class SimpleGraphs(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(SimpleGraphs, self).get_context_data(**kwargs)
    
-        sensor_data = sensorData('efai')
+        sensor_data = sensorData(logged_in_user)
         context['object'] = sensor_data.getAvgGraph("temp", "months")
         context['object2'] = sensor_data.getAvgGraph("soil_temp", "months")
         context['object3'] = sensor_data.getAvgGraph("soil_moisture", "months")
@@ -157,7 +159,7 @@ class data_collection_view(TemplateView):
 
     def get(self, request):
 
-        sensor_data = sensorData(request.user.username)
+        sensor_data = sensorData(logged_in_user)
         analysis_data = dataAnalysis()
         aT, aST, aSM, aH, date, light, msg, sm, notification = analysis_data.algorithm()   
 
