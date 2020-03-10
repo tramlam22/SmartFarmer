@@ -94,15 +94,14 @@ class Comments(models.Model):
 class dataMCU(models.Model):
     #mcu_no = models.ForeignKey('Moduleplantlink', models.DO_NOTHING, db_column='mcu_no', primary_key=True)
     mcu_no = models.IntegerField()
-    data_date = models.DateTimeField()
-    soil_moisture = models.IntegerField()
-    soil_temp = models.FloatField()
-    temp = models.FloatField()
-    humidity = models.FloatField()
-    light_reading = models.IntegerField()
-    heat_index = models.FloatField()
-    battery_lvl = models.IntegerField()
-
+    data_date = models.DateTimeField(auto_now_add = True)
+    soil_moisture = models.IntegerField(default=-1)
+    soil_temp = models.FloatField(default=-1.0)
+    temp = models.FloatField(default=-1.0)
+    humidity = models.FloatField(default=-1.0)
+    light_reading = models.IntegerField(default=-1)
+    heat_index = models.IntegerField(default=-1)
+    battery_lvl = models.IntegerField(default=-1)
     class Meta:
         managed = False
         db_table = 'dataMCU'
