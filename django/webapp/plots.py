@@ -66,9 +66,9 @@ class sensorData():
         figure = go.Figure()
         figure.add_trace(
             go.Scatter(
-                x=x, y=y, mode='lines',
+                x=x, y=y, mode='lines+markers',
                 name=typeofData,
-                line=dict(color="#003366", width=4),
+                line=dict(color="#003366", width=2),
                 connectgaps=True,
             )
         )

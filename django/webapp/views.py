@@ -32,14 +32,14 @@ def home_view(request):
             'temperature': city_weather['main']['temp'],
             'description': city_weather['weather'][0]['description'],
             'icon': city_weather['weather'][0]['icon'],
-            'object': sensor_data.getAvgGraph("temp", "hour"),
-            'object2': sensor_data.getAvgGraph("humidity", "hour"),
-            'object3': sensor_data.getAvgGraph("soil_temp", "hour"),
-            'object4': sensor_data.getAvgGraph("soil_moisture", "hour"),
-            'aT'  : aT,
-            'aST' : aST,
+            'object': sensor_data.getAvgGraph("temp", "day"),
+            'object2': sensor_data.getAvgGraph("humidity", "day"),
+            'object3': sensor_data.getAvgGraph("soil_temp", "day"),
+            'object4': sensor_data.getAvgGraph("soil_moisture", "day"),
+            'aT'  : "{:.2f}".format(aT),
+            'aST' : "{:.2f}".format(aST),
             'aSM' : aSM,
-            'aH'  : aH,
+            'aH'  : "{:.2f}".format(aH),
             'date': date,
             'light': light,
             'msg' : msg,
@@ -50,12 +50,7 @@ def home_view(request):
 
         if request.is_ajax():
             return JsonResponse(homeview_data, safe=False)
-
-        #context = super(SimpleGraphs, self).get_context_data(**kwargs)
-        #sensor_data = sensorData("efai")
-        #homeview_data['object'] = sensor_data.getAvgGraph("temp","hour")
-        #homeview_data['object2'] = sensor_data.getAvgGraph("soil_temp","hour")
-
+            
         return render(request, 'index.html', homeview_data)
     else:
         return HttpResponseRedirect('/')
@@ -96,10 +91,10 @@ class SimpleGraphs(TemplateView):
         context = super(SimpleGraphs, self).get_context_data(**kwargs)
    
         sensor_data = sensorData(logged_in_user)
-        context['object'] = sensor_data.getAvgGraph("temp", "months")
-        context['object2'] = sensor_data.getAvgGraph("soil_temp", "months")
-        context['object3'] = sensor_data.getAvgGraph("soil_moisture", "months")
-        context['object4'] = sensor_data.getAvgGraph("humidity", "months")
+        context['object'] = sensor_data.getAvgGraph("temp", "day")
+        context['object2'] = sensor_data.getAvgGraph("soil_temp", "day")
+        context['object3'] = sensor_data.getAvgGraph("soil_moisture", "day")
+        context['object4'] = sensor_data.getAvgGraph("humidity", "day")
 
         return context
 
