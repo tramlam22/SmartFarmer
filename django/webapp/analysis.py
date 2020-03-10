@@ -78,27 +78,33 @@ class dataAnalysis():
         #cmd for getting average values
         cmd = """SELECT AVG(temp)
                     FROM dataMCU 
-                    WHERE '2020-02-20' = DATE(data_date)"""
+                    WHERE DATE(CURDATE()) = DATE(data_date)
+                    GROUP BY HOUR(data_date)
+                    ORDER BY data_date DESC LIMIT 1"""
         cursor.execute(cmd)
         average_temp = cursor.fetchone()[0]
         cmd = """SELECT AVG(humidity)
                     FROM dataMCU 
-                    WHERE '2020-02-20' = DATE(data_date)"""
+                    WHERE DATE(CURDATE()) = DATE(data_date)
+                    ORDER BY data_date DESC LIMIT 1"""
         cursor.execute(cmd)
         average_humidity = cursor.fetchone()[0]
         cmd = """SELECT AVG(soil_moisture)
                     FROM dataMCU 
-                    WHERE '2020-02-20' = DATE(data_date)"""
+                    WHERE DATE(CURDATE()) = DATE(data_date)
+                    ORDER BY data_date DESC LIMIT 1"""
         cursor.execute(cmd)
         average_soil_moisture = cursor.fetchone()[0]
         cmd = """SELECT AVG(soil_temp)
                     FROM dataMCU 
-                    WHERE '2020-02-20' = DATE(data_date)"""
+                    WHERE DATE(CURDATE()) = DATE(data_date)
+                    ORDER BY data_date DESC LIMIT 1"""
         cursor.execute(cmd)
         average_soil_temp = cursor.fetchone()[0]
         cmd = """SELECT AVG(light_reading)
                     FROM dataMCU 
-                    WHERE '2020-02-20' = DATE(data_date)"""
+                    WHERE DATE(CURDATE()) = DATE(data_date)
+                    ORDER BY data_date DESC LIMIT 1"""
         cursor.execute(cmd)
         average_light_reading = cursor.fetchone()[0]
 
