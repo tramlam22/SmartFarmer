@@ -1,4 +1,4 @@
-# UwUPlants 
+# SmartFarmer
 
 Against unpredictable external factors, such as rising climate change, farmers face much difficulty in efficiently managing their farms. Therefore, to increase yields and reduce waste, IoT technologies can be used to evaluate the conditions of their land and inform farmers of any discrepancies. 
 
